@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Network & Association - University Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #0a192f 0%, #1e1b4b 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+        /* Fixed Enquire Now Tab on Right Edge */
+        .enquire-tab {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            transform-origin: right center;
+            z-index: 99;
+            background-color: #dc2626;
+            color: white;
+            padding: 8px 16px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            box-shadow: -3px 0 15px rgba(220, 38, 38, 0.3);
+            cursor: pointer;
+        }
+        /* Floating WhatsApp Icon */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 99;
+            background-color: #22c55e;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800 relative">
+
+    <!-- FIXED ENQUIRE NOW TAB -->
+    <div onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="enquire-tab">
+        ENQUIRE NOW
+    </div>
+
+    <!-- FLOATING WHATSAPP ICON -->
+    <a href="https://wa.me/" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- TOP BAR -->
+    <div class="bg-[#0a192f] text-slate-300 text-xs py-2 px-4 sm:px-8 flex flex-wrap justify-between items-center border-b border-slate-800">
+        <div class="flex items-center space-x-6">
+            <a href="tel:+917700303000" class="hover:text-red-500 transition flex items-center space-x-2">
+                <i class="fas fa-phone-alt text-red-500"></i>
+                <span>+91-7700-300-300</span>
+            </a>
+            <span class="hidden sm:inline"><i class="fas fa-map-marker-alt text-red-500"></i> NH-75, Gwalior Road, Jhansi (U.P.)</span>
+        </div>
+        <div class="flex items-center space-x-5 font-semibold">
+            <a href="#" class="hover:text-red-500 transition">NIRF</a>
+            <a href="#" class="hover:text-red-500 transition">IQAC</a>
+            <a href="#" class="hover:text-red-500 transition">Careers</a>
+            <a href="#" class="hover:text-red-500 transition">Login</a>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-9 h-9 bg-red-600 text-white flex items-center justify-center rounded-lg font-extrabold text-lg">U</div>
+                <div class="flex flex-col">
+                    <span class="text-base font-extrabold text-[#0a192f] tracking-tight leading-tight">University Portal</span>
+                    <span class="text-[10px] text-slate-500 font-medium">Alumni Association</span>
+                </div>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-700">
+                <a href="#" class="hover:text-red-600 transition">Home</a>
+                <a href="#" class="hover:text-red-600 transition">About Us</a>
+                <a href="#" class="hover:text-red-600 transition">Academics</a>
+                <a href="#" class="hover:text-red-600 transition">Admissions</a>
+                <a href="#" class="text-red-600 font-bold border-b-2 border-red-600 pb-1">Alumni Network</a>
+                <a href="#" class="hover:text-red-600 transition">Contact</a>
+            </nav>
+            <div>
+                <a href="#contact-section" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-5 py-2.5 rounded-lg shadow transition">Apply Now &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="hero-bg text-white py-12 px-4 sm:px-8 relative overflow-hidden" data-aos="fade-down">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center space-x-2 text-xs text-slate-300 mb-3">
+                <a href="#" class="hover:text-white">Home</a> <span>&gt;</span>
+                <span class="text-white font-semibold">Alumni Network & Association</span>
+            </div>
+            <div class="text-xs uppercase tracking-wider text-amber-400 font-extrabold mb-1">
+                SRGI Alumni Association
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Alumni Network & Association</h1>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT AREA (CENTER CARD) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 mb-16">
+        <div class="max-w-3xl mx-auto bg-white rounded-2xl card-shadow border border-slate-200/80 p-8 sm:p-12 text-center" data-aos="fade-up" data-aos-delay="200">
+            
+            <!-- Minimalist Circular Icon -->
+            <div class="w-16 h-16 bg-sky-50 text-[#0a192f] rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner text-2xl border border-sky-100">
+                <i class="fas fa-database"></i>
+            </div>
+
+            <!-- Heading with Red Accent Line -->
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0a192f] mb-2">Alumni Network & Association</h2>
+            <div class="w-16 h-1 bg-red-600 mx-auto rounded-full mb-6"></div>
+
+            <!-- Informational Text -->
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-8 max-w-xl mx-auto font-medium">
+                Data will be collected and updated from the Parental Website (SRGI Jhansi).
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="bg-red-600 hover:bg-red-700 text-white font-bold text-xs px-6 py-3 rounded-lg shadow-md transition flex items-center space-x-2">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="tel:+917700303000" class="border-2 border-[#0a192f] text-[#0a192f] hover:bg-[#0a192f] hover:text-white font-bold text-xs px-6 py-3 rounded-full transition flex items-center space-x-2">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Contact Office</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- LOWER SECTION: CONTACT US & MAP -->
+        <section id="contact-section" class="mt-16 bg-white p-6 sm:p-10 rounded-2xl card-shadow border border-slate-200/80" data-aos="fade-up">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column: Quick Contacts & Form -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div>
+                        <span class="text-xs font-extrabold text-red-600 uppercase tracking-wider bg-red-50 px-3 py-1 rounded-full">GET IN TOUCH</span>
+                        <h2 class="text-2xl font-extrabold text-[#0a192f] mt-2">Contact Us</h2>
+                        <p class="text-xs text-slate-500 mt-1">Reach out to us for alumni meets, networking events, or association queries.</p>
+                    </div>
+
+                    <!-- 3 Stacked Quick Contact Cards -->
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-4 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                            <div class="w-10 h-10 rounded-full bg-sky-50 text-[#0a192f] flex items-center justify-center text-sm shadow-sm flex-shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <div class="font-bold text-xs text-[#0a192f]">Address</div>
+                                <div class="text-[11px] text-slate-600">NH-75, Gwalior Road, Jhansi (U.P.) - 284419</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                            <div class="w-10 h-10 rounded-full bg-sky-50 text-[#0a192f] flex items-center justify-center text-sm shadow-sm flex-shrink-0"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <div class="font-bold text-xs text-[#0a192f]">Phone</div>
+                                <div class="text-[11px] text-slate-600">+91-7700-300-300</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                            <div class="w-10 h-10 rounded-full bg-sky-50 text-[#0a192f] flex items-center justify-center text-sm shadow-sm flex-shrink-0"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <div class="font-bold text-xs text-[#0a192f]">Email</div>
+                                <div class="text-[11px] text-slate-600">alumni@srgi.edu.in</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Send Direct Message Form -->
+                    <div class="pt-4 border-t border-slate-100">
+                        <h3 class="text-sm font-bold text-[#0a192f] mb-3">Send Direct Message</h3>
+                        <form onsubmit="event.preventDefault(); alert('Message sent successfully!');" class="space-y-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <input type="text" placeholder="Your Name *" required class="text-xs px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/50">
+                                <input type="tel" placeholder="Phone Number *" required class="text-xs px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/50">
+                            </div>
+                            <textarea rows="3" placeholder="Your Message *" required class="w-full text-xs px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/50 resize-none"></textarea>
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold text-xs px-6 py-2.5 rounded-lg shadow transition w-full sm:w-auto">
+                                Submit Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Column: Google Map Interface -->
+                <div class="lg:col-span-6 h-full min-h-[400px]">
+                    <div class="h-full rounded-xl overflow-hidden border border-slate-200 shadow-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14413.250482594412!2d78.5800!3d25.4500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDI3JzAwLjAiTiA3OMKwMzUnMDcuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0; min-height: 400px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-[#0a192f] text-slate-300 text-xs pt-12 pb-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-8 border-b border-slate-800">
+            
+            <!-- Logo on Far Left -->
+            <div class="lg:col-span-2 space-y-3">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-red-600 text-white flex items-center justify-center rounded-lg font-bold text-sm">U</div>
+                    <span class="font-bold text-white text-sm">University Portal</span>
+                </div>
+                <p class="text-[11px] text-slate-400 leading-relaxed">
+                    Connecting global alumni networks, fostering lifelong relationships, and supporting institutional growth.
+                </p>
+            </div>
+
+            <!-- Column 1: Accreditations -->
+            <div>
+                <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider">Accreditations</h4>
+                <ul class="space-y-2 text-[11px] text-slate-400">
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; NAAC A+ Grade</a></li>
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; AICTE Approved</a></li>
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; UGC Recognized</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Campus -->
+            <div>
+                <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider">Campus</h4>
+                <ul class="space-y-2 text-[11px] text-slate-400">
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; Central Library</a></li>
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; Sports Complex</a></li>
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; Hostel Facility</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: About CSE -->
+            <div>
+                <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider">About CSE</h4>
+                <ul class="space-y-2 text-[11px] text-slate-400">
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; B.Tech CSE</a></li>
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; AI & ML Labs</a></li>
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; Placements</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Quick Links -->
+            <div>
+                <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-2 text-[11px] text-slate-400">
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; NIRF Rankings</a></li>
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; IQAC Reports</a></li>
+                    <li><a href="#" class="hover:text-red-500 transition">&rsaquo; Contact Us</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom & Social Icons on Far Right -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-[10px] text-slate-500">
+            <div>© 2025 University Portal. All Rights Reserved. Parent Institution: SRGI Jhansi.</div>
+            
+            <div class="flex space-x-3 mt-4 sm:mt-0 text-sm">
+                <a href="#" class="w-7 h-7 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-facebook-f text-xs"></i></a>
+                <a href="#" class="w-7 h-7 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-instagram text-xs"></i></a>
+                <a href="#" class="w-7 h-7 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-linkedin-in text-xs"></i></a>
+                <a href="#" class="w-7 h-7 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-youtube text-xs"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+    </script>
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Clubs & Societies - College of Science & Engineering, Jhansi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="site-nav.css">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        .clubs-grid-container {
+            width: min(1280px, calc(100% - 32px));
+            margin: 36px auto 64px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .club-card {
+            min-width: 0;
+            background: #fff;
+            border: 1px solid #dce4ee;
+            border-radius: 9px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 3px 10px rgba(15, 36, 64, 0.08);
+            animation: club-card-enter 520ms both;
+            animation-delay: calc(var(--card-index, 0) * 35ms);
+            transition: transform 220ms ease, box-shadow 220ms ease;
+        }
+
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 24px rgba(15, 36, 64, 0.18);
+        }
+
+        .club-card-header {
+            min-height: 132px;
+            padding: 10px 8px 8px;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(145deg, var(--club-color), var(--club-color-dark));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 5px;
+        }
+
+        .club-emblem {
+            position: relative;
+            display: grid;
+            width: 66px;
+            height: 66px;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+        }
+
+        .club-emblem::before {
+            position: absolute;
+            inset: 5px;
+            border: 1px dashed rgba(255, 255, 255, 0.75);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .club-emblem::after {
+            position: absolute;
+            inset: -5px 13px;
+            border-right: 2px solid rgba(255, 255, 255, 0.8);
+            border-left: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            content: "";
+            transform: rotate(24deg);
+        }
+
+        .club-emblem > i {
+            font-size: 1.65rem;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+            transition: transform 220ms ease;
+        }
+
+        .club-card:hover .club-emblem > i {
+            transform: scale(1.12) rotate(-6deg);
+        }
+
+        .club-card-header h3 {
+            max-width: 100%;
+            margin: 2px 0 0;
+            font-size: clamp(0.56rem, 0.8vw, 0.76rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: 0.035em;
+            text-transform: uppercase;
+            overflow-wrap: anywhere;
+        }
+
+        .club-label {
+            font-size: 0.48rem;
+            font-weight: 800;
+            letter-spacing: 0.28em;
+            line-height: 1;
+        }
+
+        .club-card-body {
+            padding: 5px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .view-club-btn {
+            min-height: 28px;
+            background: linear-gradient(100deg, #104da5, #1677d2);
+            color: #fff;
+            width: 100%;
+            padding: 5px 6px;
+            border-radius: 4px;
+            font-size: 0.58rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: background 180ms ease, transform 180ms ease;
+        }
+
+        .view-club-btn:hover {
+            background: linear-gradient(100deg, #0b3a83, #105bb0);
+            transform: translateY(-1px);
+        }
+
+        .club-detail-panel {
+            width: min(860px, calc(100% - 32px));
+            margin: 36px auto 64px;
+            padding: clamp(22px, 5vw, 44px);
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 18px 45px rgba(15, 36, 64, 0.12);
+            animation: club-card-enter 450ms both;
+        }
+
+        .club-detail-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px;
+            padding: 11px 16px;
+            border-radius: 8px;
+            background: #104da5;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .club-detail-back:hover {
+            background: #0b3a83;
+        }
+
+        @keyframes club-card-enter {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .club-card,
+            .club-detail-panel {
+                animation: none;
+            }
+
+            .club-card,
+            .club-emblem > i,
+            .view-club-btn {
+                transition: none;
+            }
+        }
+
+        /* Footer Styling */
+        .club-footer {
+            background: #051120;
+            color: #fff;
+            padding: 48px 0 20px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .club-footer-inner {
+            width: min(1280px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .club-footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .club-footer h2 {
+            margin-bottom: 14px;
+            color: #e6b24d;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .club-footer ul {
+            display: grid;
+            gap: 9px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .club-footer a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .club-footer a:hover {
+            color: #e6b24d;
+        }
+
+        .club-footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .club-footer-social a {
+            display: grid;
+            width: 32px;
+            height: 32px;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .club-footer-social a:hover {
+            background: #e6b24d;
+            color: #051120;
+        }
+
+        .club-footer-bottom {
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.78rem;
+            text-align: center;
+        }
+
+        @media (max-width: 760px) {
+            .clubs-grid-container {
+                gap: 10px;
+            }
+
+            .club-card-header {
+                min-height: 116px;
+            }
+
+            .club-emblem {
+                width: 58px;
+                height: 58px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .club-footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .clubs-grid-container {
+                width: calc(100% - 24px);
+                gap: 9px;
+                margin-top: 24px;
+            }
+
+            .club-card-header {
+                min-height: 104px;
+                padding: 8px 5px 7px;
+            }
+
+            .club-emblem {
+                width: 52px;
+                height: 52px;
+            }
+
+            .club-emblem > i {
+                font-size: 1.35rem;
+            }
+
+            .view-club-btn {
+                min-height: 26px;
+                font-size: 0.52rem;
+            }
+            .club-footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .clubs-grid-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+    <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- TOP BAR -->
+    <div class="bg-[#051120] text-slate-300 text-xs py-2 px-4 sm:px-8 flex flex-wrap justify-between items-center border-b border-slate-800">
+        <div class="flex items-center space-x-6">
+            <a href="tel:+917700303000" class="hover:text-amber-400 transition flex items-center space-x-2">
+                <i class="fas fa-phone-alt text-amber-500"></i>
+                <span>+91-7700-300-300</span>
+            </a>
+            <span class="hidden sm:inline"><i class="fas fa-map-marker-alt text-amber-500 mr-1"></i> NH-75, Gwalior Road, Jhansi (U.P.) - 284419</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="hidden md:flex space-x-5 font-semibold text-slate-300">
+                <a href="ranking.html" class="hover:text-amber-400">NIRF</a>
+                <a href="internal.html" class="hover:text-amber-400">IQAC</a>
+                <a href="career.html" class="hover:text-amber-400">Careers</a>
+                <a href="alumni.html" class="hover:text-amber-400">Alumni</a>
+                <a href="download.html" class="hover:text-amber-400">Downloads</a>
+            </div>
+            <a href="erp_portal.html" class="bg-[#ffb703] hover:bg-[#e0a102] text-slate-950 font-extrabold px-4 py-1.5 rounded-full text-xs shadow transition">ERP Login</a>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION HEADER (Exact sequence & Apply Now button style as requested) -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <!-- Logo Section -->
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-blue-900 text-white flex items-center justify-center rounded font-extrabold text-sm shadow">CSE</div>
+                <div class="hidden sm:block">
+                    <div class="text-xs font-extrabold text-blue-950 tracking-tight leading-tight">COLLEGE OF SCIENCE &</div>
+                    <div class="text-xs font-extrabold text-blue-950 tracking-tight leading-tight">ENGINEERING</div>
+                    <div class="text-[10px] text-gray-500 font-bold tracking-wider">JHANSI</div>
+                </div>
+            </a>
+
+            <!-- Menu Nav Links (Exact Sequence) -->
+            <nav class="hidden lg:flex items-center space-x-4 text-[11px] font-bold text-slate-900 uppercase tracking-wide">
+                <a href="index.html" class="hover:text-amber-600 transition">Home</a>
+                <a href="about.html" class="hover:text-amber-600 transition">About Us</a>
+                <a href="academics.html" class="hover:text-amber-600 transition flex items-center space-x-0.5"><span>Academics</span> <i class="fas fa-chevron-down text-[8px]"></i></a>
+                <a href="admission.html" class="hover:text-amber-600 transition">Admissions</a>
+                <a href="rd.html" class="hover:text-amber-600 transition">R&D</a>
+                <a href="placements.html" class="hover:text-amber-600 transition">Placement</a>
+                <a href="life.html" class="text-amber-600 border-b-2 border-amber-500 pb-0.5 flex items-center space-x-0.5"><span>Life at SRGI</span> <i class="fas fa-chevron-down text-[8px]"></i></a>
+                <a href="achievement.html" class="hover:text-amber-600 transition">Achievements</a>
+                <a href="contact.html" class="hover:text-amber-600 transition">Contact</a>
+            </nav>
+
+            <div>
+                <a href="admission.html" class="bg-[#d4af37] hover:bg-[#c29e30] text-white text-[11px] font-extrabold px-4 py-3 rounded-lg shadow uppercase tracking-wider text-center leading-tight inline-block transition">
+                    APPLY<br>NOW
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section id="club-page-hero" class="bg-[#051120] text-white py-12 px-4 sm:px-8 relative overflow-hidden" data-aos="fade-down">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex items-center space-x-2 text-xs text-slate-400 mb-4">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <span>&gt;</span>
+                <a href="life.html" class="hover:text-white">Campus Life</a>
+                <span>&gt;</span>
+                <span class="text-white font-semibold">Student Clubs & Societies</span>
+            </div>
+
+            <div class="inline-block bg-[#ffb703] text-slate-950 font-extrabold text-[11px] uppercase tracking-wider px-3 py-1 rounded-md mb-3 shadow">
+                <i class="fas fa-users mr-1"></i> 29+ Active Societies
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">Student Clubs & Societies</h1>
+            <p class="text-sm text-slate-300 max-w-2xl font-light">
+                Explore your interests, meet like-minded people, and be a part of our vibrant community of 29+ student clubs and societies.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- COLORFUL CLUB CARDS GRID -->
+    <div id="clubs-grid" class="clubs-grid-container" data-aos="fade-up">
+        
+        <!-- 1. Art & Design Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-orange">
+                <i class="fa-solid fa-palette"></i>
+                <h3>Art & Design Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="art-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 2. Coding & Tech Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-blue">
+                <i class="fa-solid fa-code"></i>
+                <h3>Coding & Tech Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="tech-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 3. Debate & MUN Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-amber">
+                <i class="fa-solid fa-comments"></i>
+                <h3>Debate & MUN Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="debate-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 4. Photography Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-rose">
+                <i class="fa-solid fa-camera"></i>
+                <h3>Photography Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="photography-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 5. Music Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-purple">
+                <i class="fa-solid fa-music"></i>
+                <h3>Music Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="music-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 6. Environmental Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-emerald">
+                <i class="fa-solid fa-seedling"></i>
+                <h3>Environmental Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="eco-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 7. Sports Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-pink">
+                <i class="fa-solid fa-person-running"></i>
+                <h3>Sports Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="sports-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 8. Literary Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-emerald">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Literary Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="literary-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 9. Health & Wellness Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-rose">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h3>Health & Wellness Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="wellness-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 10. Robotics Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-orange">
+                <i class="fa-solid fa-robot"></i>
+                <h3>Robotics Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="robotics-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 11. Entrepreneurship Cell -->
+        <div class="club-card">
+            <div class="club-card-header bg-purple">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Entrepreneurship Cell</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="ecell.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+        <!-- 12. International Relations Club -->
+        <div class="club-card">
+            <div class="club-card-header bg-blue">
+                <i class="fa-solid fa-globe"></i>
+                <h3>International Relations Club</h3>
+            </div>
+            <div class="club-card-body">
+                <a href="ir-club.html" class="view-club-btn">View Club <i class="fa-solid fa-arrow-right" style="font-size: 0.65rem;"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER SECTION -->
+    <footer class="club-footer">
+        <div class="club-footer-inner">
+            <div class="club-footer-grid">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <!-- <div class="w-10 h-10 bg-blue-900 text-white flex items-center justify-center rounded font-extrabold text-lg shadow"></div> -->
+                        <!-- <span class="text-xs font-extrabold text-white">ABC INSTITUTE OF ENGINEERING</span> -->
+                          <img src="images/logo.png" alt="College of Science & Engineering logo" style="height:58px;width:58px;object-fit:contain;margin-bottom:16px;" />
+                    </div>
+                    <p class="text-xs leading-relaxed text-white/75 mb-4">Pioneering technical education, innovation-driven laboratories, and high-impact industry placements.</p>
+                    <div class="club-footer-social" aria-label="Social media links">
+                        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="about.html">About Our Institute</a></li>
+                        <li><a href="graduated.html">Courses & Programs</a></li>
+                        <li><a href="placements.html">Placements</a></li>
+                        <li><a href="rd.html">Research & Development</a></li>
+                        <li><a href="admission.html">Admissions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Engineering Departments</h2>
+                    <ul>
+                        <li><a href="engineering.html#dept-cse">Computer Science & Engineering</a></li>
+                        <li><a href="graduated.html#program-aiml">Artificial Intelligence & Machine Learning</a></li>
+                        <li><a href="engineering.html#dept-elec">Electrical Engineering</a></li>
+                        <li><a href="engineering.html#dept-mech">Mechanical Engineering</a></li>
+                        <li><a href="engineering.html#dept-civil">Civil Engineering</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Admissions & Campus</h2>
+                    <ul class="space-y-2 mb-4">
+                        <li><i class="fas fa-map-marker-alt mr-2 text-amber-400" aria-hidden="true"></i>NH-75, Gwalior Road, Jhansi (U.P.) - 284419</li>
+                        <li><a href="tel:+917700300300"><i class="fas fa-phone mr-2 text-amber-400" aria-hidden="true"></i>+91-7700-300-300</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope mr-2 text-amber-400" aria-hidden="true"></i>Contact the Institute</a></li>
+                    </ul>
+                    <a href="admission.html#enquiry-form" class="inline-flex rounded-lg bg-amber-500 px-4 py-2 text-xs font-bold text-slate-950 hover:bg-amber-400 transition">Inquire Admissions</a>
+                </div>
+            </div>
+            <div class="club-footer-bottom">
+                © 2026 ABC Institute of Engineering & Technology. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS ANIMATION SCRIPT -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        const clubs = [
+            { id: "aryabhatt", name: "Aryabhatt", icon: "fa-atom", color: "#ff7418", dark: "#e94e0b", description: "The Aryabhatt Club encourages scientific curiosity, mathematics, problem-solving, and innovation through student-led activities." },
+            { id: "athlete", name: "Athlete", icon: "fa-person-running", color: "#123a8c", dark: "#071d57", description: "The Athlete Club brings students together for fitness, training, team sports, and healthy competition." },
+            { id: "cinematic", name: "Cinematic", icon: "fa-film", color: "#e3ad39", dark: "#c5861d", description: "The Cinematic Club explores filmmaking, acting, photography, editing, and storytelling." },
+            { id: "corporate", name: "Corporate", icon: "fa-people-group", color: "#9a0714", dark: "#69000b", description: "The Corporate Club helps students develop professional communication, leadership, and workplace readiness." },
+            { id: "creativity", name: "Creativity", icon: "fa-lightbulb", color: "#4b168e", dark: "#300c64", description: "The Creativity Club gives students a space to explore new ideas, design, crafts, and creative problem-solving." },
+            { id: "cv-raman", name: "CV Raman", icon: "fa-atom", color: "#08a8c4", dark: "#08788e", description: "The CV Raman Club promotes science learning, experiments, and curiosity about the natural world." },
+            { id: "dance", name: "Dance", icon: "fa-person-rays", color: "#bd0050", dark: "#85003b", description: "The Dance Club celebrates movement and culture through practice, performances, and campus events." },
+            { id: "drama", name: "Drama", icon: "fa-masks-theater", color: "#a40008", dark: "#710006", description: "The Drama Club develops stagecraft, acting, writing, and confidence through theatre productions." },
+            { id: "entrepreneurs", name: "Entrepreneurs", icon: "fa-lightbulb", color: "#ff54b1", dark: "#e53590", description: "The Entrepreneurs Club helps students shape ideas into ventures through mentoring, workshops, and pitch events." },
+            { id: "event-management", name: "Event Management", icon: "fa-calendar-check", color: "#c854df", dark: "#9f31bc", description: "The Event Management Club plans and delivers campus events while building teamwork and organizational skills." },
+            { id: "food-nutrition", name: "Food & Nutrition", icon: "fa-apple-whole", color: "#075b40", dark: "#03412c", description: "The Food & Nutrition Club promotes nutrition awareness, food science, and healthy lifestyle choices." },
+            { id: "humour", name: "Humour", icon: "fa-face-laugh-beam", color: "#f3a900", dark: "#ce7900", description: "The Humour Club brings students together through comedy, performance, and light-hearted campus activities." },
+            { id: "innovation", name: "Innovation", icon: "fa-lightbulb", color: "#a7004b", dark: "#750034", description: "The Innovation Club encourages students to prototype solutions and turn creative ideas into practical projects." },
+            { id: "instrumental", name: "Instrumental", icon: "fa-music", color: "#a00045", dark: "#71002f", description: "The Instrumental Club connects student musicians for practice, collaboration, and live performances." },
+            { id: "it-club", name: "IT Club", icon: "fa-laptop-code", color: "#062d67", dark: "#031c46", description: "The IT Club explores coding, emerging technologies, digital skills, and collaborative technical projects." },
+            { id: "leadership", name: "Leadership", icon: "fa-award", color: "#a5000a", dark: "#710007", description: "The Leadership Club helps students build responsibility, communication, collaboration, and decision-making skills." },
+            { id: "literature", name: "Literature", icon: "fa-book-open", color: "#092d78", dark: "#061d52", description: "The Literature Club celebrates reading, writing, poetry, discussion, and student publishing." },
+            { id: "marketing", name: "Marketing", icon: "fa-chart-line", color: "#e8a923", dark: "#c98013", description: "The Marketing Club gives students practical experience with branding, campaigns, research, and communication." },
+            { id: "media", name: "Media", icon: "fa-photo-film", color: "#00a7c8", dark: "#007c9d", description: "The Media Club creates and shares campus stories through photography, video, design, and reporting." },
+            { id: "meditation", name: "Meditation", icon: "fa-spa", color: "#4b1389", dark: "#2e075f", description: "The Meditation Club supports mindfulness, focus, and well-being through guided practice and group sessions." },
+            { id: "research-analytic", name: "Research & Analytic", icon: "fa-microscope", color: "#082d69", dark: "#041b46", description: "The Research & Analytic Club develops research, data interpretation, and evidence-based problem-solving skills." },
+            { id: "saksharta", name: "Saksharta", icon: "fa-book-reader", color: "#092c70", dark: "#061b4b", description: "The Saksharta Club supports literacy, reading habits, and educational outreach in the wider community." },
+            { id: "sampurna", name: "Sampurna", icon: "fa-people-group", color: "#24683e", dark: "#15482c", description: "The Sampurna Club promotes inclusion, personal growth, and student participation in community initiatives." },
+            { id: "singing", name: "Singing", icon: "fa-microphone-lines", color: "#092e91", dark: "#061d60", description: "The Singing Club brings vocalists together for music practice, collaboration, and campus performances." },
+            { id: "social-media", name: "Social Media", icon: "fa-share-nodes", color: "#9b145b", dark: "#6e0b3e", description: "The Social Media Club develops digital storytelling, content creation, and responsible online communication." },
+            { id: "social-welfare", name: "Social Welfare", icon: "fa-hand-holding-heart", color: "#4b1b91", dark: "#30105e", description: "The Social Welfare Club organizes volunteering and initiatives that support the local community." },
+            { id: "sports", name: "Sports", icon: "fa-trophy", color: "#092d70", dark: "#061a45", description: "The Sports Club encourages active participation, teamwork, fitness, and fair play across campus." },
+            { id: "sustainable-agriculture", name: "Sustainable Agriculture", icon: "fa-seedling", color: "#17653c", dark: "#0b4227", description: "The Sustainable Agriculture Club explores responsible farming, environmental stewardship, and food sustainability." },
+            { id: "coding-tech", name: "Coding & Tech", icon: "fa-code", color: "#1555a4", dark: "#0a3474", description: "The Coding & Tech Club brings students together to build software, explore emerging technologies, and collaborate on technical projects." }
+        ];
+
+        const clubPages = {
+            aryabhatt: "aryabhatta.html",
+            athlete: "athlete.html",
+            cinematic: "cinematic.html",
+            corporate: "corporate.html",
+            creativity: "creativity.html",
+            "cv-raman": "cv_raman.html",
+            dance: "dance.html",
+            drama: "drama.html",
+            entrepreneurs: "entrepreneurs.html",
+            "event-management": "event.html",
+            "food-nutrition": "food.html",
+            humour: "humour.html",
+            innovation: "innovation.html",
+            instrumental: "instrumental.html",
+            "it-club": "it_club.html",
+            leadership: "leadership.html",
+            literature: "literature.html",
+            marketing: "marketing.html",
+            media: "media.html",
+            meditation: "meditation.html",
+            "research-analytic": "research.html",
+            saksharta: "saksharta.html",
+            sampurna: "sampurna.html",
+            singing: "singing.html",
+            "social-media": "social_media.html",
+            "social-welfare": "social.html",
+            sports: "sports_club.html",
+            "sustainable-agriculture": "sustainable.html",
+            "coding-tech": "tech_gamers.html"
+        };
+
+        const clubsGrid = document.getElementById("clubs-grid");
+        clubsGrid.innerHTML = clubs.map((club, index) => `
+            <article class="club-card" style="--club-color:${club.color};--club-color-dark:${club.dark};--card-index:${index}">
+                <div class="club-card-header">
+                    <span class="club-emblem" aria-hidden="true"><i class="fa-solid ${club.icon}"></i></span>
+                    <h3>${club.name}</h3>
+                    <span class="club-label">CLUB</span>
+                </div>
+                <div class="club-card-body">
+                    <a href="${clubPages[club.id] || `club-detail.html?club=${club.id}`}" class="view-club-btn" aria-label="View ${club.name} Club">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Club
+                    </a>
+                </div>
+            </article>
+        `).join("");
+
+        const selectedClubId = new URLSearchParams(window.location.search).get("club");
+        if (selectedClubId) {
+            const selectedClub = clubs.find(club => club.id === selectedClubId);
+            const heroHeading = document.querySelector("#club-page-hero h1");
+            const heroDescription = document.querySelector("#club-page-hero p");
+            const breadcrumbCurrent = document.querySelector("#club-page-hero .text-white.font-semibold");
+            clubsGrid.hidden = true;
+            heroHeading.textContent = selectedClub ? `${selectedClub.name} Club` : "Club Not Found";
+            breadcrumbCurrent.textContent = heroHeading.textContent;
+            heroDescription.textContent = selectedClub
+                ? selectedClub.description
+                : "We could not find that club. Return to the club directory to explore all student clubs.";
+
+            const detailPanel = document.createElement("section");
+            detailPanel.className = "club-detail-panel";
+            detailPanel.innerHTML = `
+                <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-blue-800">
+                    <i class="fas fa-users" aria-hidden="true"></i> Student Club
+                </span>
+                <h2 class="mt-4 text-2xl font-extrabold text-slate-900 sm:text-3xl">${selectedClub ? `${selectedClub.name} Club` : "Club Not Found"}</h2>
+                <p class="mt-4 leading-relaxed text-slate-600">${selectedClub ? selectedClub.description : "Please return to the directory and choose one of the available clubs."}</p>
+                <a class="club-detail-back" href="club-detail.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to All Clubs</a>
+            `;
+            clubsGrid.after(detailPanel);
+            document.title = `${selectedClub ? selectedClub.name : "Club Not Found"} - Student Clubs`;
+        }
+
+        if (window.AOS) {
+            window.AOS.init({ duration: 700, once: true, easing: 'ease-out' });
+            window.AOS.refreshHard();
+        }
+    </script>
+</body>
+</html>

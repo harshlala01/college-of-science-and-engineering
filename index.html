@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ABC Institute of Engineering & Technology</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ========== RESET & VARIABLES ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #0B1F3A;
+  --royal: #174EA6;
+  --gold: #D6AD60;
+  --bg: #F8FAFC;
+  --white: #FFFFFF;
+  --text: #1E293B;
+  --grey: #64748B;
+  --border: rgba(11, 31, 58, 0.08);
+  --shadow-sm: 0 2px 8px rgba(11, 31, 58, 0.06);
+  --shadow-md: 0 8px 24px rgba(11, 31, 58, 0.08);
+  --shadow-lg: 0 16px 40px rgba(11, 31, 58, 0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.2; color: var(--navy); }
+h1 { font-size: 3rem; } h2 { font-size: 2.25rem; } h3 { font-size: 1.5rem; } h4 { font-size: 1.125rem; }
+p { color: var(--grey); font-size: 0.95rem; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section-dark { background: var(--navy); color: var(--white); }
+.section-dark h1, .section-dark h2, .section-dark h3 { color: var(--white); }
+.section-dark p { color: rgba(255,255,255,0.7); }
+
+.eyebrow { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; position: relative; padding-left: 24px; }
+.eyebrow::before { content: ''; position: absolute; left: 0; top: 50%; width: 16px; height: 2px; background: var(--gold); transform: translateY(-50%); }
+.section-title { text-align: center; margin-bottom: 48px; }
+.section-title h2 { margin-bottom: 12px; }
+.section-title h2::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 16px auto 0; border-radius: 2px; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius-sm); font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.875rem; cursor: pointer; border: none; transition: var(--transition); text-transform: uppercase; letter-spacing: 0.5px; }
+.btn-gold { background: var(--gold); color: var(--white); }
+.btn-gold:hover { box-shadow: 0 0 24px rgba(214, 173, 96, 0.5); transform: scale(1.05); }
+.btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.4); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--royal); }
+
+/* Scroll Progress */
+#scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--gold); z-index: 9999; transition: width 0.1s linear; }
+
+/* Top Bar */
+.top-bar { background: var(--navy); color: var(--white); font-size: 0.8rem; padding: 10px 0; }
+.top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 16px; }
+.top-bar-left span { display: flex; align-items: center; gap: 6px; }
+.top-bar-left i, .top-bar-right i { color: var(--gold); }
+.top-bar-right a { font-size: 0.8rem; }
+.top-bar-right a:hover { color: var(--gold); }
+.top-bar-right .btn-gold { padding: 6px 14px; font-size: 0.7rem; }
+
+/* Navbar */
+.navbar { background: var(--white); padding: 16px 0; position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+.navbar .container { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.nav-logo img { height: 50px; width: auto; }
+.nav-menu { display: flex; align-items: center; gap: 18px; list-style: none; }
+.nav-menu a { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.8rem; color: var(--text); position: relative; padding: 4px 0; text-transform: uppercase; white-space: nowrap; }
+.nav-menu a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease-out; }
+.nav-menu a:hover::after { width: 100%; }
+.nav-menu a:hover { color: var(--navy); }
+.nav-menu .nav-chevron { margin-left: 3px; color: var(--royal); font-size: 0.65rem; }
+.nav-menu .nav-apply { padding: 9px 14px; border-radius: var(--radius-sm); color: var(--white); font-size: 0.68rem; }
+.nav-menu .nav-apply::after { display: none; }
+.nav-toggle { display: none; font-size: 1.5rem; color: var(--navy); cursor: pointer; background: none; border: none; }
+
+/* Hero */
+.hero { background: var(--navy); color: var(--white); padding: 60px 0 120px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(214,173,96,0.15) 0%, transparent 70%); animation: pulseGlow 6s ease-in-out infinite; pointer-events: none; }
+@keyframes pulseGlow { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.1); } }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(214,173,96,0.15); color: var(--gold); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(214,173,96,0.3); }
+.hero h1 { color: var(--white); font-size: 3.25rem; margin-bottom: 20px; }
+.hero h1 .gold { color: var(--gold); display: inline-block; }
+.hero p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 32px; max-width: 500px; }
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+.hero-credentials { margin-top: 32px; }
+.hero-credentials .label { font-size: 0.7rem; letter-spacing: 2px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 12px; }
+.credential-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.credential { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm); padding: 12px 10px; text-align: center; transition: var(--transition); }
+.credential:hover { border-color: var(--gold); background: rgba(214,173,96,0.1); }
+.credential i { color: var(--gold); font-size: 1.1rem; margin-bottom: 6px; display: block; }
+.credential span { font-size: 0.75rem; font-weight: 600; display: block; }
+.credential small { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
+
+.hero-visual { position: relative; }
+.hero-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); animation: floatY 6s ease-in-out infinite; }
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.hero-img img { width: 100%; height: 380px; object-fit: cover; }
+.hero-float-badge { position: absolute; bottom: -20px; left: -20px; background: var(--gold); color: var(--white); padding: 14px 20px; border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.875rem; animation: pulseBadge 3s ease-in-out infinite; }
+@keyframes pulseBadge { 0%, 100% { box-shadow: 0 16px 40px rgba(214,173,96,0.3); } 50% { box-shadow: 0 16px 40px rgba(214,173,96,0.6); } }
+
+/* Stats Bar */
+.stats-bar { margin-top: -60px; position: relative; z-index: 10; }
+.stats-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-lg); display: grid; grid-template-columns: repeat(4, 1fr); padding: 32px; gap: 20px; }
+.stat-item { text-align: center; position: relative; }
+.stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; height: 60%; width: 1px; background: var(--border); }
+.stat-value { font-family: 'Poppins', sans-serif; font-size: 2.25rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.stat-label { font-size: 0.75rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+.stat-sub { font-size: 0.7rem; color: var(--grey); margin-top: 4px; }
+
+/* Heritage */
+.heritage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.heritage-img { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+.heritage-img img { width: 100%; height: 450px; object-fit: cover; }
+.heritage-badge { position: absolute; bottom: 20px; left: 20px; background: var(--navy); color: var(--white); padding: 14px 20px; border-radius: var(--radius-sm); font-family: 'Poppins', sans-serif; }
+.heritage-badge strong { color: var(--gold); font-size: 1.5rem; display: block; }
+.heritage-badge span { font-size: 0.75rem; opacity: 0.8; }
+.accordion { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+.acc-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; transition: var(--transition); }
+.acc-item.active { border-color: var(--gold); box-shadow: var(--shadow-sm); }
+.acc-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--navy); }
+.acc-icon { width: 36px; height: 36px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+.acc-arrow { margin-left: auto; transition: transform 0.3s; color: var(--grey); }
+.acc-item.active .acc-arrow { transform: rotate(180deg); color: var(--gold); }
+.acc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 20px; }
+.acc-item.active .acc-body { max-height: 200px; padding: 0 20px 20px 68px; }
+.acc-body p { font-size: 0.875rem; }
+
+/* Chairman */
+.chairman-card { background: var(--navy); border-radius: var(--radius); padding: 48px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: center; position: relative; overflow: hidden; }
+.chairman-card::before { content: ''; position: absolute; top: -40%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(214,173,96,0.2) 0%, transparent 70%); animation: pulseGlow 5s ease-in-out infinite; }
+.chairman-photo { position: relative; z-index: 2; }
+.chairman-photo img { width: 100%; height: 260px; object-fit: cover; object-position: center; border-radius: 50%; border: 3px solid var(--gold); }
+.chairman-content { position: relative; z-index: 2; color: var(--white); }
+.chairman-content .quote-mark { font-size: 4rem; color: var(--gold); line-height: 1; font-family: Georgia, serif; }
+.chairman-content blockquote { font-size: 1.35rem; font-family: 'Poppins', sans-serif; font-weight: 500; margin: 12px 0 20px; line-height: 1.4; }
+.chairman-content .name { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--gold); }
+.chairman-content .role { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+.chairman-content a { color: var(--gold); font-weight: 600; font-size: 0.875rem; display: inline-flex; align-items: center; gap: 8px; }
+.chairman-content a:hover { gap: 12px; }
+
+/* Director */
+.director-grid { display: grid; grid-template-columns: 1fr 180px; gap: 40px; align-items: center; padding: 32px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.director-photo { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.director-photo img { width: 132px; height: 132px; object-fit: cover; border-radius: 50%; box-shadow: var(--shadow-lg); border: 3px solid var(--gold); }
+.director-role-badge { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 7px 10px; border-radius: 20px; background: rgba(214,173,96,0.14); color: var(--navy); font-size: 0.7rem; font-weight: 600; text-align: center; }
+.director-role-badge i { color: var(--gold); }
+.director-content .name { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--navy); margin-top: 20px; }
+.director-content .role { font-size: 0.85rem; color: var(--grey); margin-bottom: 16px; }
+
+/* Why Choose */
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.why-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 24px; transition: var(--transition); cursor: pointer; }
+.why-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: var(--shadow-lg); }
+.why-icon { width: 52px; height: 52px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 20px; transition: var(--transition); }
+.why-card:hover .why-icon { transform: scale(1.1); box-shadow: 0 0 20px rgba(214,173,96,0.4); }
+.why-card h4 { margin-bottom: 8px; }
+.why-card p { font-size: 0.85rem; }
+
+/* Programs */
+.tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+.tab { padding: 10px 20px; background: var(--white); border: 1px solid var(--border); border-radius: 25px; font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.85rem; cursor: pointer; transition: var(--transition); position: relative; }
+.tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.tab.active::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 24px; height: 3px; background: var(--gold); border-radius: 2px; }
+.programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.program-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: var(--transition); cursor: pointer; }
+.program-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: var(--shadow-lg); }
+.program-img { height: 180px; overflow: hidden; }
+.program-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.program-card:hover .program-img img { transform: scale(1.1); }
+.program-body { padding: 20px; }
+.program-body h4 { font-size: 1rem; margin-bottom: 8px; }
+.program-meta { display: flex; gap: 12px; font-size: 0.75rem; color: var(--grey); margin-bottom: 12px; }
+.program-meta span { display: flex; align-items: center; gap: 4px; }
+.program-link { color: var(--gold); font-weight: 600; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; }
+.program-link:hover { gap: 10px; }
+
+/* Milestones */
+.milestones-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.milestone { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm); padding: 24px 16px; text-align: center; transition: var(--transition); }
+.milestone:hover { border-color: var(--gold); background: rgba(214,173,96,0.08); }
+.milestone-value { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; color: var(--gold); }
+.milestone-label { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+/* Approvals */
+.approvals-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.approval { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px 16px; text-align: center; transition: var(--transition); filter: grayscale(1); }
+.approval:hover { filter: grayscale(0); transform: scale(1.05); border-color: var(--gold); box-shadow: var(--shadow-md); }
+.approval i { font-size: 2rem; color: var(--navy); margin-bottom: 8px; display: block; }
+.approval span { font-size: 0.75rem; font-weight: 600; }
+
+/* Placement */
+.placement-card { background: var(--navy); border-radius: var(--radius); padding: 48px; color: var(--white); }
+.placement-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; }
+.placement-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.placement-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm); padding: 20px; text-align: center; transition: var(--transition); }
+.placement-stat:hover { border-color: var(--gold); background: rgba(214,173,96,0.1); }
+.placement-stat-value { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); }
+.placement-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+/* Marquee */
+.marquee-container { overflow: hidden; position: relative; padding: 24px 0; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+.marquee-track { display: flex; gap: 60px; animation: marquee 30s linear infinite; width: max-content; }
+.marquee-container:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-logo { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--grey); filter: grayscale(1); opacity: 0.6; transition: var(--transition); white-space: nowrap; }
+.marquee-logo:hover { filter: grayscale(0); opacity: 1; color: var(--navy); }
+
+/* Training Ecosystem */
+.training-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.training-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: var(--transition); cursor: pointer; }
+.training-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: var(--shadow-md); }
+.training-card .training-icon { width: 48px; height: 48px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 16px; }
+.training-card h4 { font-size: 1rem; margin-bottom: 8px; }
+.training-card p { font-size: 0.85rem; }
+
+/* Labs */
+.labs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.lab-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: var(--transition); cursor: pointer; }
+.lab-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: var(--shadow-lg); }
+.lab-img { height: 180px; overflow: hidden; }
+.lab-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.lab-card:hover .lab-img img { transform: scale(1.1); }
+.lab-body { padding: 20px; }
+.lab-body h4 { font-size: 0.95rem; margin-bottom: 6px; }
+.lab-body p { font-size: 0.8rem; margin-bottom: 12px; }
+
+/* Research */
+.research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.research-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: var(--transition); cursor: pointer; }
+.research-card:hover { transform: translateY(-8px) rotateX(2deg); border-color: var(--gold); box-shadow: var(--shadow-lg); }
+.research-badge { display: inline-block; padding: 4px 10px; background: rgba(214,173,96,0.15); color: var(--gold); border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.research-card h4 { font-size: 1rem; margin-bottom: 10px; }
+.research-card p { font-size: 0.8rem; margin-bottom: 16px; }
+
+/* Faculty */
+.faculty-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.faculty-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: center; transition: var(--transition); cursor: pointer; }
+.faculty-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: var(--shadow-lg); }
+.faculty-photo { width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 16px; overflow: hidden; border: 3px solid var(--gold); }
+.faculty-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.faculty-card:hover .faculty-photo img { transform: scale(1.15); }
+.faculty-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+.faculty-card .role { font-size: 0.75rem; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+.faculty-card .qual { font-size: 0.7rem; color: var(--grey); }
+
+/* Campus Life */
+.campus-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.campus-card { border-radius: var(--radius); overflow: hidden; position: relative; height: 220px; cursor: pointer; }
+.campus-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.campus-card:hover img { transform: scale(1.1); }
+.campus-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(11,31,58,0.9), transparent); padding: 20px; color: var(--white); }
+.campus-overlay h4 { color: var(--white); font-size: 0.95rem; }
+
+/* News */
+.news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.news-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: var(--transition); cursor: pointer; }
+.news-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: var(--shadow-md); }
+.news-badge { display: inline-block; padding: 3px 8px; background: rgba(214,173,96,0.15); color: var(--gold); font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; border-radius: 3px; margin-bottom: 10px; animation: pulseBadge 2s infinite; }
+.news-card h4 { font-size: 0.9rem; margin-bottom: 8px; line-height: 1.4; }
+.news-date { font-size: 0.75rem; color: var(--grey); margin-bottom: 12px; }
+.news-link { color: var(--gold); font-weight: 600; font-size: 0.75rem; }
+
+/* Events */
+.events-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.event-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: var(--transition); cursor: pointer; }
+.event-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: var(--shadow-md); }
+.event-date { display: inline-block; padding: 6px 12px; background: var(--navy); color: var(--gold); font-weight: 700; font-size: 0.75rem; border-radius: 6px; margin-bottom: 12px; animation: pulseBadge 3s infinite; }
+.event-card h4 { font-size: 0.9rem; margin-bottom: 8px; }
+.event-location { font-size: 0.75rem; color: var(--grey); margin-bottom: 12px; }
+
+/* Gallery */
+.gallery-bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 220px 220px; gap: 16px; }
+.gallery-item { border-radius: var(--radius); overflow: hidden; position: relative; cursor: pointer; }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(2) { grid-column: span 2; }
+.gallery-item:nth-child(3) { grid-column: span 1; }
+.gallery-item:nth-child(4) { grid-column: span 1; }
+.gallery-item:nth-child(5) { grid-column: span 2; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(11,31,58,0.9), transparent); padding: 20px; color: var(--white); font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; transform: translateY(20px); opacity: 0; transition: all 0.4s; }
+.gallery-item:hover .gallery-caption { transform: translateY(0); opacity: 1; }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.contact-form { background: var(--white); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-md); }
+.form-group { margin-bottom: 20px; position: relative; }
+.form-group label { position: absolute; top: 14px; left: 16px; font-size: 0.85rem; color: var(--grey); transition: var(--transition); pointer-events: none; background: var(--white); padding: 0 6px; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text); transition: var(--transition); background: var(--white); }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(214,173,96,0.15); }
+.form-group input:focus + label, .form-group input:not(:placeholder-shown) + label, .form-group textarea:focus + label, .form-group textarea:not(:placeholder-shown) + label { top: -10px; font-size: 0.7rem; color: var(--gold); font-weight: 600; }
+.form-group textarea { min-height: 100px; resize: vertical; }
+
+.contact-map { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); display: flex; flex-direction: column; }
+.contact-map iframe { width: 100%; height: 300px; border: 0; }
+.map-info { padding: 24px; }
+.map-info h4 { margin-bottom: 12px; }
+.map-info p { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; margin-bottom: 8px; }
+.map-info i { color: var(--gold); }
+
+/* Footer */
+.footer { background: var(--navy); color: var(--white); padding: 60px 0 20px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer h4 { color: var(--gold); font-size: 0.9rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+.footer ul { list-style: none; }
+.footer ul li { margin-bottom: 10px; }
+.footer ul a { color: rgba(255,255,255,0.7); font-size: 0.85rem; }
+.footer ul a:hover { color: var(--gold); }
+.footer-social { display: flex; gap: 12px; margin-top: 16px; }
+.footer-social a { width: 38px; height: 38px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); transition: var(--transition); }
+.footer-social a:hover { background: var(--gold); transform: scale(1.1); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+/* Back to Top */
+#back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--gold); color: var(--white); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); z-index: 999; }
+#back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+#back-to-top:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 0 24px rgba(214,173,96,0.6); }
+
+/* Loader */
+#loader { position: fixed; inset: 0; background: var(--navy); display: flex; align-items: center; justify-content: center; z-index: 99999; transition: opacity 0.6s ease, visibility 0.6s; }
+#loader.hide { opacity: 0; visibility: hidden; }
+.loader-spinner { width: 50px; height: 50px; border: 3px solid rgba(214,173,96,0.2); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .navbar .container { gap: 10px; }
+  .nav-menu { gap: 9px; }
+  .nav-menu a { font-size: 0.66rem; }
+  .nav-logo img { height: 42px; }
+  .nav-menu .nav-apply { padding: 8px 10px; font-size: 0.62rem; }
+}
+
+@media (max-width: 900px) {
+  .nav-menu { position: fixed; top: 0; right: -100%; width: min(82%, 360px); height: 100vh; background: var(--navy); flex-direction: column; align-items: flex-start; padding: 80px 30px; gap: 20px; transition: right 0.4s ease; z-index: 1001; }
+  .nav-menu.open { right: 0; }
+  .nav-menu a { color: var(--white); font-size: 1rem; }
+  .nav-menu .nav-apply { color: var(--white); font-size: 0.8rem; }
+  .nav-toggle { display: block; z-index: 1002; }
+}
+
+@media (max-width: 968px) {
+  h1 { font-size: 2.2rem; } h2 { font-size: 1.75rem; }
+  .section { padding: 60px 0; }
+  .top-bar { padding: 8px 0; }
+  .top-bar .container { flex-wrap: nowrap; gap: 10px; }
+  .top-bar-left, .top-bar-right { gap: 10px; }
+  .top-bar-left span:last-child, .top-bar-right a:not(.btn-gold) { display: none; }
+  .top-bar-left span, .top-bar-right a { font-size: 0.7rem; }
+  .top-bar-right .btn-gold { padding: 6px 10px; font-size: 0.65rem; white-space: nowrap; }
+  .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 32px; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-img img { height: 300px; }
+  .credential-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-card { grid-template-columns: repeat(4, 1fr); padding: 24px 16px; gap: 12px; }
+  .stat-value { font-size: 1.65rem; }
+  .heritage-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .heritage-img img { height: 340px; }
+  .chairman-card { grid-template-columns: 220px 1fr; padding: 32px; gap: 26px; }
+  .chairman-photo img { height: 220px; }
+  .chairman-content blockquote { font-size: 1.1rem; }
+  .director-grid { grid-template-columns: 1fr 170px; gap: 28px; }
+  .why-grid, .programs-grid, .training-grid, .labs-grid, .campus-grid, .news-grid, .events-grid { grid-template-columns: repeat(2, 1fr); }
+  .milestones-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .approvals-grid { grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .placement-grid { grid-template-columns: 1fr 1.2fr; gap: 24px; }
+  .placement-card { padding: 32px; }
+  .research-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .faculty-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .gallery-bento { grid-template-rows: 180px 180px; gap: 12px; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+}
+
+@media (max-width: 800px) {
+  .hero-grid, .heritage-grid, .director-grid, .placement-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-grid { gap: 40px; }
+  .hero-visual { max-width: 620px; width: 100%; margin: 0 auto; }
+  .hero-img img { height: 320px; }
+  .heritage-img img { height: 360px; }
+  .chairman-card { grid-template-columns: 190px 1fr; }
+  .chairman-photo img { height: 190px; }
+  .director-photo { max-width: 320px; width: 100%; margin: 0 auto; }
+  .director-photo img { width: 132px; height: 132px; }
+  .placement-grid { gap: 24px; }
+  .research-grid { grid-template-columns: repeat(2, 1fr); }
+  .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+  .approvals-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: 200px 160px 160px; }
+  .gallery-item:nth-child(1) { grid-row: span 2; }
+  .gallery-item:nth-child(2) { grid-column: span 1; }
+  .gallery-item:nth-child(5) { grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.9rem; } h2 { font-size: 1.5rem; }
+  .container { padding-left: 16px; padding-right: 16px; }
+  .section { padding: 44px 0; }
+  .top-bar-left span:nth-child(2) { display: none; }
+  .hero { padding: 42px 0 90px; }
+  .hero h1 { font-size: 1.9rem; }
+  .hero p { font-size: 0.9rem; }
+  .hero-buttons { gap: 10px; }
+  .hero-buttons .btn { padding: 10px 14px; font-size: 0.72rem; }
+  .hero-img img { height: 240px; }
+  .hero-float-badge { left: 10px; bottom: -18px; padding: 10px 12px; font-size: 0.7rem; }
+  .stats-card { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
+  .stat-item:not(:last-child)::after { display: none; }
+  .stat-value { font-size: 1.5rem; }
+  .heritage-img img { height: 270px; }
+  .chairman-card { grid-template-columns: 1fr; padding: 26px 20px; text-align: center; }
+  .chairman-photo img { height: 190px; max-width: 190px; margin: 0 auto; }
+  .chairman-content blockquote { font-size: 1rem; }
+  .why-grid, .programs-grid, .training-grid, .labs-grid, .research-grid, .faculty-grid, .campus-grid, .news-grid, .events-grid { grid-template-columns: 1fr; }
+  .milestones-grid { grid-template-columns: repeat(2, 1fr); }
+  .approvals-grid { grid-template-columns: repeat(2, 1fr); }
+  .placement-stats { grid-template-columns: 1fr; }
+  .placement-card { padding: 24px 18px; }
+  .gallery-bento { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .gallery-item, .gallery-item:nth-child(n) { grid-column: auto !important; grid-row: auto !important; height: 220px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+  .contact-form { padding: 24px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* Reference section layouts */
+.section,
+.stats-bar,
+.why-grid > :not([hidden]),
+.programs-grid > :not([hidden]),
+.milestones-grid > :not([hidden]),
+.approvals-grid > :not([hidden]),
+.training-grid > :not([hidden]),
+.labs-grid > :not([hidden]),
+.research-grid > :not([hidden]),
+.faculty-grid > :not([hidden]),
+.campus-grid > :not([hidden]),
+.news-grid > :not([hidden]),
+.events-grid > :not([hidden]),
+.gallery-bento > :not([hidden]) {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.section-eyebrow { display: block; margin-bottom: 5px; color: var(--royal); font-size: 0.68rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+.section-title { margin-bottom: 42px; }
+.section-title h2 { margin-bottom: 9px; }
+.section-title h2::after { margin-top: 10px; }
+.section-title p { font-size: 0.86rem; line-height: 1.55; }
+.section-dark .section-eyebrow { color: var(--gold); }
+.desktop-break { display: initial; }
+
+.why-grid { gap: 20px 24px; }
+.why-card { background: #F8FAFC; border-color: #E7EDF3; padding: 24px; }
+.why-icon { width: 44px; height: 44px; font-size: 1rem; margin-bottom: 17px; }
+.why-card h4 { font-size: 0.98rem; margin-bottom: 7px; }
+.why-card p { font-size: 0.78rem; line-height: 1.55; }
+
+.tabs { width: fit-content; max-width: 100%; gap: 4px; padding: 4px; margin: 0 auto 30px; border: 1px solid var(--border); border-radius: 9px; background: var(--white); }
+.tab { border: 0; border-radius: 6px; padding: 9px 17px; font-size: 0.75rem; }
+.tab.active { background: var(--navy); }
+.tab.active::after { display: none; }
+.programs-grid { align-items: stretch; gap: 20px; }
+.program-card { min-height: 235px; display: flex; flex-direction: column; padding: 19px; border-color: #E6EBF0; box-shadow: var(--shadow-sm); }
+.program-card[hidden] { display: none; }
+.program-card:hover { transform: translateY(-4px); }
+@keyframes programCardEnter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.program-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+.program-duration { padding: 4px 8px; background: #EFF6FF; color: var(--royal); font-size: 0.62rem; font-weight: 700; text-transform: uppercase; }
+.program-icon { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 0.78rem; }
+.program-card h4 { font-size: 0.95rem; margin-bottom: 8px; }
+.program-card > p { font-size: 0.76rem; line-height: 1.5; margin-bottom: 10px; }
+.program-points { display: grid; gap: 4px; margin: 0 0 13px; padding: 0; list-style: none; color: var(--grey); font-size: 0.7rem; }
+.program-points li::before { content: '\f00c'; margin-right: 7px; color: var(--gold); font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+.program-card .program-link { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); color: var(--royal); font-size: 0.72rem; justify-content: space-between; }
+
+.milestones-grid { gap: 14px; }
+.milestone { padding: 18px 12px; border-color: rgba(255,255,255,0.07); background: rgba(255,255,255,0.055); }
+.milestone-value { font-size: 1.55rem; }
+.milestone-label { font-size: 0.67rem; }
+.approvals-grid { gap: 14px; }
+.approval { display: flex; min-height: 125px; flex-direction: column; align-items: center; justify-content: center; padding: 16px 12px; background: #F8FAFC; border-color: #E7EDF3; filter: none; }
+.approval:hover { transform: translateY(-3px); }
+.approval i { display: grid; width: 36px; height: 36px; place-items: center; margin-bottom: 8px; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 0.9rem; }
+.approval span { color: var(--navy); font-size: 0.72rem; }
+.approval small { display: block; margin-top: 5px; color: var(--grey); font-size: 0.6rem; line-height: 1.4; }
+
+.placement-card { padding: 38px; }
+.placement-grid { grid-template-columns: 1fr 1.05fr; gap: 32px; }
+.placement-grid > div:first-child > p { font-size: 0.78rem; line-height: 1.65; }
+.placement-highlights { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 18px; color: rgba(255,255,255,.82); font-size: 0.64rem; list-style: none; }
+.placement-highlights li::before { content: '\f058'; margin-right: 6px; color: var(--gold); font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+.placement-stat { padding: 15px 9px; }
+.placement-stat-ring { display: grid; width: 72px; height: 72px; place-items: center; margin: 0 auto 10px; border: 2px solid var(--gold); border-radius: 50%; }
+.placement-stat-value { font-size: 1.05rem; }
+.placement-stat-label { font-size: 0.67rem; line-height: 1.4; }
+.placement-stat-label small { color: rgba(255,255,255,.6); font-size: 0.58rem; }
+
+.marquee-container { padding: 12px 0 22px; }
+.marquee-track { gap: 0; }
+.marquee-group { display: flex; align-items: center; gap: 42px; padding-right: 42px; }
+.marquee-logo { display: inline-flex; align-items: center; gap: 8px; color: #344256; filter: none; opacity: 1; font-size: 0.9rem; }
+.marquee-logo i { color: var(--royal); font-size: 0.9rem; }
+.marquee-logo:nth-child(3n + 1) i { color: var(--gold); }
+.training-grid { gap: 18px; }
+.training-card { position: relative; min-height: 150px; padding: 20px; }
+.training-number { display: grid; width: 34px; height: 34px; place-items: center; margin-bottom: 12px; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 0.68rem; font-weight: 700; }
+.training-card h4 { font-size: 0.86rem; margin-bottom: 7px; }
+.training-card p { font-size: 0.72rem; line-height: 1.5; }
+
+.labs-grid { gap: 20px; }
+.lab-card { box-shadow: var(--shadow-sm); }
+.lab-card:hover { transform: translateY(-4px); }
+.lab-img { height: 160px; position: relative; }
+.lab-img img { object-position: center; }
+.lab-icon { position: absolute; left: 16px; bottom: -15px; display: grid; width: 34px; height: 34px; place-items: center; border: 2px solid white; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 0.72rem; }
+.lab-body { min-height: 110px; padding: 22px 17px 16px; }
+.lab-body h4 { font-size: 0.84rem; }
+.lab-body p { font-size: 0.7rem; line-height: 1.48; margin-bottom: 0; }
+
+#research.section-dark { background: #F8FAFC; color: var(--text); }
+#research.section-dark h2 { color: var(--navy) !important; }
+#research.section-dark p { color: var(--grey) !important; }
+#research .research-grid { gap: 18px; }
+#research .research-card { padding: 19px; border-radius: 9px; box-shadow: var(--shadow-md); }
+.research-meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 11px; color: var(--grey); font-size: 0.65rem; font-weight: 600; }
+.research-badge { margin-bottom: 0; padding: 4px 7px; background: #FEF3C7; color: #9A6A14; font-size: 0.58rem; letter-spacing: 0; text-transform: none; }
+.research-card h4 { font-size: 0.82rem; line-height: 1.4; margin-bottom: 7px; }
+.research-card p { min-height: 60px; margin-bottom: 13px; font-size: 0.68rem; line-height: 1.48; }
+.research-footer { display: flex; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid var(--border); color: var(--grey); font-size: 0.58rem; }
+.research-footer strong { color: var(--royal); white-space: nowrap; }
+
+.faculty-grid { gap: 18px; }
+.faculty-card { padding: 20px 16px; background: #F8FAFC; border-color: #E7EDF3; }
+.faculty-photo { width: 82px; height: 82px; margin-bottom: 12px; }
+.faculty-card h4 { font-size: 0.82rem; }
+.faculty-card .role { font-size: 0.64rem; margin-bottom: 3px; }
+.faculty-card .qual { font-size: 0.6rem; }
+.faculty-card p { margin-top: 8px; font-size: 0.65rem; line-height: 1.4; }
+
+.campus-grid { align-items: stretch; gap: 16px; }
+.campus-card { height: auto; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.campus-card > img { width: 100%; height: 132px; object-fit: cover; }
+.campus-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.campus-card-body { padding: 12px; color: var(--text); }
+.campus-icon { display: grid; width: 30px; height: 30px; place-items: center; margin-bottom: 7px; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 0.7rem; }
+.campus-card-body h4 { font-size: 0.78rem; margin-bottom: 5px; }
+.campus-card-body p { font-size: 0.64rem; line-height: 1.45; }
+.news-grid { gap: 16px; }
+.news-card { padding: 16px; background: #F8FAFC; border-color: #E7EDF3; }
+.news-badge { background: var(--gold); color: var(--navy); animation: none; }
+.news-card h4 { font-size: 0.77rem; line-height: 1.4; }
+.news-card p { margin: 7px 0 11px; font-size: 0.66rem; line-height: 1.48; }
+.news-link { color: var(--royal); font-size: 0.65rem; }
+
+.events-grid { gap: 16px; }
+.event-card { padding: 16px; }
+.event-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.event-date { display: flex; width: 42px; min-width: 42px; height: 48px; flex-direction: column; align-items: center; justify-content: center; margin: 0; padding: 3px; border-radius: 7px; background: var(--navy); color: var(--gold); animation: none; }
+.event-date strong { font-size: 0.59rem; }
+.event-date span { font-size: 0.85rem; font-weight: 700; line-height: 1.1; }
+.event-top > div:last-child strong, .event-top > div:last-child small { display: block; }
+.event-top > div:last-child strong { color: var(--royal); font-size: 0.62rem; text-transform: uppercase; }
+.event-top > div:last-child small { color: var(--grey); font-size: 0.6rem; }
+.event-card h4 { font-size: 0.77rem; margin-bottom: 7px; }
+.event-card p { min-height: 55px; margin-bottom: 12px; font-size: 0.66rem; line-height: 1.45; }
+.event-action { display: block; padding: 8px; background: #F1F5F9; color: var(--text); text-align: center; font-size: 0.65rem; font-weight: 600; }
+.event-action:hover { background: var(--navy); color: var(--white); }
+
+.gallery-bento { grid-template-columns: repeat(6, 1fr); grid-template-rows: 200px 170px; gap: 12px; }
+.gallery-item:nth-child(1) { grid-column: span 4; grid-row: 1; }
+.gallery-item:nth-child(2) { grid-column: span 2; grid-row: 1; }
+.gallery-item:nth-child(3), .gallery-item:nth-child(4), .gallery-item:nth-child(5) { grid-column: span 2; grid-row: 2; }
+.gallery-caption { transform: translateY(0); opacity: 1; padding: 14px; font-size: 0.75rem; }
+
+.contact-grid { grid-template-columns: 1.2fr 0.8fr; align-items: stretch; gap: 24px; }
+.contact-form { padding: 24px; border: 1px solid var(--border); }
+.contact-form h4 { margin-bottom: 4px !important; }
+.contact-form > p { margin-bottom: 18px; font-size: 0.7rem; }
+.contact-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; }
+.form-group { margin-bottom: 13px; }
+.form-group label { position: static; display: block; margin-bottom: 5px; padding: 0; color: var(--text); font-size: 0.65rem; font-weight: 600; }
+.form-group input, .form-group textarea, .form-group select { padding: 10px 12px; font-size: 0.72rem; }
+.form-group input:focus + label, .form-group input:not(:placeholder-shown) + label, .form-group textarea:focus + label, .form-group textarea:not(:placeholder-shown) + label { position: static; font-size: 0.65rem; }
+.form-group-wide { grid-column: 1 / -1; }
+.form-group textarea { min-height: 76px; }
+.contact-form > .btn { width: 100%; justify-content: center; padding: 11px; color: var(--navy); font-size: 0.72rem; }
+.contact-side { display: flex; flex-direction: column; gap: 16px; }
+.contact-address { padding: 20px; border-radius: var(--radius-sm); background: var(--navy); color: var(--white); }
+.contact-address h4 { margin-bottom: 12px; color: var(--gold); font-size: 0.9rem; }
+.contact-address p { display: flex; gap: 9px; align-items: flex-start; margin-bottom: 9px; color: rgba(255,255,255,.84); font-size: 0.66rem; line-height: 1.45; }
+.contact-address p:last-child { margin-bottom: 0; }
+.contact-address i { width: 14px; margin-top: 2px; color: var(--gold); }
+.contact-map { min-height: 180px; border: 1px solid var(--border); }
+.contact-map iframe { height: 100%; min-height: 200px; }
+
+@media (max-width: 968px) {
+  .milestones-grid { grid-template-columns: repeat(4, 1fr); }
+  .approvals-grid { grid-template-columns: repeat(5, 1fr); }
+  .campus-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr 0.9fr; }
+  .placement-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 800px) {
+  .approvals-grid { grid-template-columns: repeat(3, 1fr); }
+  .research-grid, #research .research-grid { grid-template-columns: repeat(2, 1fr); }
+  .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-bento { grid-template-columns: repeat(4, 1fr); grid-template-rows: 190px 150px; }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gallery-item:nth-child(2), .gallery-item:nth-child(3), .gallery-item:nth-child(4), .gallery-item:nth-child(5) { grid-column: span 2; grid-row: auto; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-map iframe { height: 240px; }
+}
+@media (max-width: 600px) {
+  .desktop-break { display: none; }
+  .section-title { margin-bottom: 28px; }
+  .why-grid, .programs-grid, .training-grid, .labs-grid, #research .research-grid, .faculty-grid, .campus-grid, .news-grid, .events-grid { grid-template-columns: 1fr; }
+  .milestones-grid { grid-template-columns: repeat(2, 1fr); }
+  .approvals-grid { grid-template-columns: repeat(2, 1fr); }
+  .tabs { width: 100%; }
+  .tab { flex: 1; padding: 9px 7px; font-size: 0.65rem; }
+  .program-card { min-height: 0; }
+  .placement-highlights { flex-direction: column; }
+  .placement-stats { grid-template-columns: repeat(3, 1fr); }
+  .placement-stat-ring { width: 58px; height: 58px; }
+  .placement-stat-value { font-size: 0.85rem; }
+  .marquee-group { gap: 25px; padding-right: 25px; }
+  .marquee-logo { font-size: 0.78rem; }
+  .research-card p { min-height: 0; }
+  .campus-card > img { height: 180px; }
+  .news-card { min-height: 0; }
+  .event-card p { min-height: 0; }
+  .gallery-bento { grid-template-columns: 1fr; grid-template-rows: none; }
+  .gallery-item:nth-child(n) { grid-column: auto; grid-row: auto; height: 210px; }
+  .contact-fields { grid-template-columns: 1fr; }
+  .form-group-wide { grid-column: auto; }
+}
+</style>
+<link rel="stylesheet" href="site-nav.css">
+<script src="site-nav.js" defer></script>
+</head>
+<body>
+
+<div id="loader"><div class="loader-spinner"></div></div>
+<div id="scroll-progress"></div>
+
+<!-- ========== TOP BAR ========== -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <span><i class="fas fa-phone"></i> +91 755 280 0100 / 101</span>
+      <!-- <span><i class="fas fa-envelope"></i> admissions@abcinstitute.ac.in</span> -->
+       <a href="contact.html"><span><i class="fas fa-map-marker-alt"></i> NH-75, Gwalior Road, Jhansi (U.P.) - 284419</span></a>
+    </div>
+    <div class="top-bar-right">
+      <a href="ranking.html">NIRF</a><a href="internal.html">IQAC</a><a href="career.html">Careers</a><a href="alumni.html">Alumni</a><a href="download.html">Downloads</a><a href="erp_portal.html">ERP Login</a>
+    </div>
+  </div>
+</div>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo" aria-label="ABC Institute home"><img src="images/logo.png" alt="College of Science & Engineering logo" /></a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="academics.html">Academics <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i></a></li>
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="rd.html">R&amp;D</a></li>
+      <li><a href="placements.html">Placement</a></li>
+      <li><a href="life.html">Life at SRGI <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i></a></li>
+      <li><a href="achievement.html">Achievements</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="admission.html" class="btn btn-gold nav-apply">Apply Now</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-award"></i> Celebrating 28+ Years of Academic Excellence</div>
+        <h1>Shaping the Engineers Who Build a Better <span class="gold">Tomorrow</span></h1>
+        <p>ABC Institute of Engineering & Technology offers industry-immersed multidisciplinary engineering education, pioneering advanced research labs, and record-setting placement trajectories.</p>
+        <div class="hero-buttons">
+          <a href="campus.html" class="btn btn-gold">Explore Engineering Degrees <i class="fas fa-arrow-right"></i></a>
+          <a href="download.html" class="btn btn-outline"><i class="fas fa-download"></i> Download Prospectus</a>
+          <a href="contact.html" class="btn btn-outline"><i class="fas fa-play"></i> Contact Admissions</a>
+        </div>
+        <div class="hero-credentials">
+          <div class="label">Accreditations & Institutional Recognition</div>
+          <div class="credential-grid">
+            <div class="credential"><i class="fas fa-check-circle"></i><span>AICTE</span><small>Govt. of India</small></div>
+            <div class="credential"><i class="fas fa-check-circle"></i><span>UGC</span><small>2(f) & 12(B)</small></div>
+            <div class="credential"><i class="fas fa-check-circle"></i><span>RGPV</span><small>State University</small></div>
+            <div class="credential"><i class="fas fa-check-circle"></i><span>NAAC A+</span><small>Highest Rating</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800" alt="Campus" /></div>
+        <div class="hero-float-badge"><i class="fas fa-trophy"></i> Ranked Top 50 Private Tech Colleges</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS BAR ========== -->
+<section class="stats-bar" id="achievements">
+  <div class="container">
+    <div class="stats-card">
+      <div class="stat-item"><div class="stat-value" data-count="24.5">0</div><div class="stat-label">LPA</div><div class="stat-sub">Highest Package 2024</div></div>
+      <div class="stat-item"><div class="stat-value" data-count="98.4">0</div><div class="stat-label">%</div><div class="stat-sub">Placement Record</div></div>
+      <div class="stat-item"><div class="stat-value" data-count="150">0</div><div class="stat-label">+</div><div class="stat-sub">Recruitment Partners</div></div>
+      <div class="stat-item"><div class="stat-value" data-count="50">0</div><div class="stat-label">Top</div><div class="stat-sub">Engineering Ranking</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT / HERITAGE ========== -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="heritage-grid">
+      <div class="heritage-img">
+        <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800" alt="Campus" />
+        <div class="heritage-badge"><strong>28 Years</strong><span>Of producing leaders in tech, research, entrepreneurship, and public service.</span></div>
+      </div>
+      <div class="heritage-content">
+        <div class="eyebrow">Institution Heritage</div>
+        <h2 style="margin-bottom:16px;">Committed to Quality Technical Education & Global Impact</h2>
+        <p style="margin-bottom:24px;">Established in 1997, ABC Institute of Engineering & Technology operates on a 42-acre state-of-the-art green campus. Our rigorous pedagogical foundation combines theoretical rigor with industry-directed project laboratories.</p>
+        <div class="accordion">
+          <div class="acc-item active"><div class="acc-header"><div class="acc-icon"><i class="fas fa-eye"></i></div>Our Vision<i class="fas fa-chevron-down acc-arrow"></i></div><div class="acc-body"><p>To emerge as a premier global institution recognized for groundbreaking technological research, ethically grounded innovation, and human-centric engineering education.</p></div></div>
+          <div class="acc-item"><div class="acc-header"><div class="acc-icon"><i class="fas fa-bullseye"></i></div>Our Mission<i class="fas fa-chevron-down acc-arrow"></i></div><div class="acc-body"><p>Deliver dynamic curriculum synced with Industry 4.0 trends, foster interdisciplinary scholarly inquiry, and instil integrity, entrepreneurship, and environmental stewardship in students.</p></div></div>
+          <div class="acc-item"><div class="acc-header"><div class="acc-icon"><i class="fas fa-gem"></i></div>Core Values<i class="fas fa-chevron-down acc-arrow"></i></div><div class="acc-body"><p>Integrity, Academic Freedom, Research Rigor, Inclusivity, and Sustainable Innovation guide every facet of teaching, mentorship, and institutional governance.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CHAIRMAN MESSAGE ========== -->
+<section class="section">
+  <div class="container">
+    <div class="chairman-card">
+      <div class="chairman-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="Chairman" /></div>
+      <div class="chairman-content">
+        <div class="quote-mark">"</div>
+        <blockquote>Engineering is not merely a degree—it is the noble pursuit of solving humanity's most pressing challenges.</blockquote>
+        <div class="name">Shri Surendra Rai</div>
+        <div class="role">Founder & Chairman, ABC Institute Group</div>
+        <a href="#">Leadership Directive 2025-2030 <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DIRECTOR MESSAGE ========== -->
+<section class="section">
+  <div class="container">
+    <div class="director-grid">
+      <div class="director-content">
+        <div class="eyebrow">From the Director's Desk</div>
+        <h2 style="margin-bottom:16px;">Fostering Innovation, Rigorous Scholarship & Industry Alignment</h2>
+        <p style="margin-bottom:16px;">At ABC Institute, our academic philosophy pursues an experiential, integrative approach that blends rigorous theoretical foundations with practical research and industry-driven problem-solving.</p>
+        <p>We aim to develop technically competent, innovative, and ethically grounded engineers prepared for the complexity of modern technologies.</p>
+        <div class="name">Dr. S.K. Sharma</div>
+        <div class="role">Director, ABC Institute of Engineering & Technology</div>
+        <a href="#" style="color:var(--gold);font-weight:600;font-size:0.875rem;">Read Academic Statement <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="director-photo">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Director" />
+        <span class="director-role-badge"><i class="fas fa-award"></i> Director & Professor</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY CHOOSE ========== -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">The ABC Advantage</span><h2>Why Students Choose ABC Institute</h2><p>A harmonious balance of pedagogical excellence, modern infrastructure, and outcome-oriented<br class="desktop-break"> industry readiness.</p></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon"><i class="fas fa-laptop-code"></i></div><h4>Industry 4.0 Curriculum</h4><p>Continuously revised course content integrating AI, Cloud Computing, IoT, Robotics, and Green Energy modules in direct consultation with tech conglomerates.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-user-graduate"></i></div><h4>Doctoral Faculty Mentors</h4><p>Over 80% of our permanent teaching members hold Ph.Ds from IITs, NITs, and reputed international institutions with active research grants.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-briefcase"></i></div><h4>Proactive T&P Assistance</h4><p>Multi-tier soft-skill training, mock technical interviews, hackathons, and company-specific coding tracks starting from the second academic year.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-microchip"></i></div><h4>Advanced Research Centers</h4><p>State-sponsored Centers of Excellence, FabLabs, and prototyping zones funded by DST, AICTE, and premier corporate research agreements.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-lightbulb"></i></div><h4>Incubation & Startup Cell</h4><p>Dedicated pre-incubation facility providing seed funding, legal advisory, patent assistance, and venture mentoring for student-led startups.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-city"></i></div><h4>World-Class Green Campus</h4><p>A lush, Wi-Fi 6 enabled 42-acre secure campus featuring multi-sport complexes, modern air-conditioned hostels, and digital libraries.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROGRAMS ========== -->
+<section class="section" id="programs">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Academic Offerings</span><h2>Engineering Programs (B.Tech &<br class="desktop-break"> M.Tech)</h2><p>Rigorous 4-Year Undergraduate & 2-Year Postgraduate degrees curated for technological leadership.</p></div>
+    <div class="tabs" role="tablist" aria-label="Filter engineering programs">
+      <button class="tab active" type="button" role="tab" aria-selected="true" data-program-filter="btech">Undergraduate (B.Tech)</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" data-program-filter="mtech">Postgraduate (M.Tech)</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" data-program-filter="phd">Doctoral (Ph.D.)</button>
+    </div>
+    <div class="programs-grid">
+      <article class="program-card" data-level="btech"><div class="program-card-head"><span class="program-duration">4 Years · Full-Time</span><span class="program-icon"><i class="fas fa-code"></i></span></div><h4>Computer Science & Engineering</h4><p>Comprehensive mastery of algorithms, cloud systems, full-stack software development, distributed systems, and cyber architecture.</p><ul class="program-points"><li>Annual Intake: 180 Seats</li><li>Highest Package: 24.5 LPA</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="btech"><div class="program-card-head"><span class="program-duration">4 Years · Full-Time</span><span class="program-icon"><i class="fas fa-brain"></i></span></div><h4>CSE (Artificial Intelligence & ML)</h4><p>Deep dive into neural networks, natural language processing, computer vision, automated intelligence pipelines, and generative AI systems.</p><ul class="program-points"><li>Annual Intake: 120 Seats</li><li>GPU & High-Performance Compute Lab</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="btech"><div class="program-card-head"><span class="program-duration">4 Years · Full-Time</span><span class="program-icon"><i class="fas fa-tower-broadcast"></i></span></div><h4>Electronics & Comm. Engineering</h4><p>Semiconductor design, VLSI circuitry, 5G wireless networks, embedded systems, and RF engineering with specialized Cadence suites.</p><ul class="program-points"><li>Annual Intake: 120 Seats</li><li>Embedded IoT Research Lab</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="btech"><div class="program-card-head"><span class="program-duration">4 Years · Full-Time</span><span class="program-icon"><i class="fas fa-gears"></i></span></div><h4>Mechanical & Automation Engg.</h4><p>Mechatronics, advanced robotics, CAD/CAM computational design, EV powertrain dynamics, and additive manufacturing techniques.</p><ul class="program-points"><li>Annual Intake: 60 Seats</li><li>CNC Machining & Robotics Center</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="btech"><div class="program-card-head"><span class="program-duration">4 Years · Full-Time</span><span class="program-icon"><i class="fas fa-landmark"></i></span></div><h4>Civil & Infrastructure Engineering</h4><p>Smart city design, structural modeling, environmental impact engineering, geographics, and sustainable concrete materials.</p><ul class="program-points"><li>Annual Intake: 60 Seats</li><li>GIS & Heavy Structures Testing Bay</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="btech"><div class="program-card-head"><span class="program-duration">4 Years · Full-Time</span><span class="program-icon"><i class="fas fa-bolt"></i></span></div><h4>Electrical & Electronics Engg.</h4><p>Smart power grids, high-voltage engineering, solar power conversion, electric vehicle battery technology, and power electronics.</p><ul class="program-points"><li>Annual Intake: 60 Seats</li><li>Microgrid & Smart Energy Lab</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="mtech" hidden><div class="program-card-head"><span class="program-duration">2 Years · Full-Time</span><span class="program-icon"><i class="fas fa-robot"></i></span></div><h4>M.Tech Artificial Intelligence</h4><p>Advanced machine learning, computer vision, intelligent automation, and applied AI research.</p><ul class="program-points"><li>Annual Intake: 18 Seats</li><li>Research-led thesis pathway</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="mtech" hidden><div class="program-card-head"><span class="program-duration">2 Years · Full-Time</span><span class="program-icon"><i class="fas fa-microchip"></i></span></div><h4>M.Tech VLSI & Embedded Systems</h4><p>Chip architecture, semiconductor technology, embedded platforms, and hardware verification.</p><ul class="program-points"><li>Annual Intake: 18 Seats</li><li>Cadence & FPGA design suites</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="mtech" hidden><div class="program-card-head"><span class="program-duration">2 Years · Full-Time</span><span class="program-icon"><i class="fas fa-leaf"></i></span></div><h4>M.Tech Power & Renewable Energy</h4><p>Smart-grid planning, clean power conversion, energy storage, and sustainable power systems.</p><ul class="program-points"><li>Annual Intake: 18 Seats</li><li>Microgrid research facilities</li></ul><a href="#contact" class="program-link">View Syllabus & Eligibility <i class="fas fa-chevron-right"></i></a></article>
+      <article class="program-card" data-level="phd" hidden><div class="program-card-head"><span class="program-duration">Full-Time / Part-Time</span><span class="program-icon"><i class="fas fa-book-open"></i></span></div><h4>Doctoral Research (Ph.D.)</h4><p>Interdisciplinary doctoral research supervised by experienced faculty across emerging engineering fields.</p><ul class="program-points"><li>Admissions twice each year</li><li>Funded research opportunities</li></ul><a href="#contact" class="program-link">View Research Areas <i class="fas fa-chevron-right"></i></a></article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MILESTONES ========== -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">ABC at a Glance</span><h2 style="color:var(--white);">Our Quantitative Milestones</h2></div>
+    <div class="milestones-grid">
+      <div class="milestone"><div class="milestone-value" data-count="28" data-suffix="+">0</div><div class="milestone-label">Years of Academic Legacy</div></div>
+      <div class="milestone"><div class="milestone-value" data-count="12500" data-suffix="+">0</div><div class="milestone-label">Distinguished Alumni Worldwide</div></div>
+      <div class="milestone"><div class="milestone-value" data-count="42" data-suffix=" Acres">0</div><div class="milestone-label">Lush Green Campus</div></div>
+      <div class="milestone"><div class="milestone-value" data-count="65" data-suffix="+">0</div><div class="milestone-label">Advanced Research Labs</div></div>
+      <div class="milestone"><div class="milestone-value" data-count="150" data-suffix="+">0</div><div class="milestone-label">Patents Filed & Published</div></div>
+      <div class="milestone"><div class="milestone-value" data-count="45" data-suffix="+">0</div><div class="milestone-label">Student Tech & Cultural Clubs</div></div>
+      <div class="milestone"><div class="milestone-value" data-count="18" data-suffix=" Cr+">0</div><div class="milestone-label">Active Sponsored R&D Grants</div></div>
+      <div class="milestone"><div class="milestone-value" data-count="100" data-suffix="%">0</div><div class="milestone-label">Ragging-Free Safe Campus</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== APPROVALS ========== -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Accreditations & Regulatory Standing</span><h2>Recognized by Apex National Bodies</h2></div>
+    <div class="approvals-grid">
+      <div class="approval"><i class="fas fa-stamp"></i><span>AICTE</span><small>All India Council for Technical Education, New Delhi</small></div>
+      <div class="approval"><i class="fas fa-landmark"></i><span>UGC 2(f) & 12(B)</span><small>University Grants Commission, Govt. of India</small></div>
+      <div class="approval"><i class="fas fa-building-columns"></i><span>RGPV Bhopal</span><small>Affiliated to Rajiv Gandhi Proudyogiki Vishwavidyalaya</small></div>
+      <div class="approval"><i class="fas fa-award"></i><span>NAAC A+</span><small>National Assessment & Accreditation Council</small></div>
+      <div class="approval"><i class="fas fa-chart-line"></i><span>NIRF Ranking Band</span><small>Participating Institutional Member, Ministry of Education</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PLACEMENTS ========== -->
+<section class="section" id="placements">
+  <div class="container">
+    <div class="placement-card">
+      <div class="placement-grid">
+        <div>
+          <div class="eyebrow">Career Advancement Center</div>
+          <h2 style="color:var(--white);margin-bottom:16px;">Corporate Relations & Placement Cell (CRPC)</h2>
+          <p style="color:rgba(255,255,255,0.7);margin-bottom:24px;">Our dedicated Corporate Relations team operates year-round to build deep hiring partnerships with Fortune 500 tech enterprises, global capability centers, and fast-growth technology unicorns. From pre-placement training to post-offer guidance, every engineer receives personalized mentorship.</p>
+          <a href="#" class="btn btn-gold">Explore Placement Records <i class="fas fa-arrow-right"></i></a>
+          <ul class="placement-highlights"><li>Specialized Coding Bootcamps</li><li>Full-Semester Paid Internships</li><li>Executive Leadership Talks</li></ul>
+        </div>
+        <div class="placement-stats">
+          <div class="placement-stat"><div class="placement-stat-ring"><span class="placement-stat-value" data-count="98.4" data-suffix="%">0</span></div><div class="placement-stat-label">Placement Rate<br><small>Batch 2023–2024</small></div></div>
+          <div class="placement-stat"><div class="placement-stat-ring"><span class="placement-stat-value" data-count="24.5" data-suffix="L">0</span></div><div class="placement-stat-label">Max Package<br><small>Top Engineering Offer</small></div></div>
+          <div class="placement-stat"><div class="placement-stat-ring"><span class="placement-stat-value" data-count="7.8" data-suffix="L">0</span></div><div class="placement-stat-label">Avg Package<br><small>Core Tech Branches</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MARQUEE ========== -->
+<section class="section" style="background:var(--white);padding:40px 0;">
+  <div class="container"><div class="section-title"><span class="section-eyebrow">Our Distinguished Hiring Partners</span></div></div>
+  <div class="marquee-container">
+    <div class="marquee-track" aria-label="Hiring partners">
+      <div class="marquee-group" aria-hidden="false">
+        <span class="marquee-logo"><i class="fas fa-caret-left"></i> Tata Consultancy Services</span><span class="marquee-logo"><i class="fas fa-code"></i> Infosys Technologies</span><span class="marquee-logo"><i class="fas fa-sun"></i> Wipro Digital</span><span class="marquee-logo"><i class="fab fa-microsoft"></i> Microsoft India</span><span class="marquee-logo"><i class="fab fa-aws"></i> Amazon AWS</span><span class="marquee-logo"><i class="fas fa-diagram-project"></i> Cisco Systems</span><span class="marquee-logo"><i class="fas fa-bars"></i> Cognizant</span><span class="marquee-logo"><i class="fas fa-cube"></i> Capgemini</span><span class="marquee-logo"><i class="fas fa-industry"></i> L&T Technology Services</span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span class="marquee-logo"><i class="fas fa-caret-left"></i> Tata Consultancy Services</span><span class="marquee-logo"><i class="fas fa-code"></i> Infosys Technologies</span><span class="marquee-logo"><i class="fas fa-sun"></i> Wipro Digital</span><span class="marquee-logo"><i class="fab fa-microsoft"></i> Microsoft India</span><span class="marquee-logo"><i class="fab fa-aws"></i> Amazon AWS</span><span class="marquee-logo"><i class="fas fa-diagram-project"></i> Cisco Systems</span><span class="marquee-logo"><i class="fas fa-bars"></i> Cognizant</span><span class="marquee-logo"><i class="fas fa-cube"></i> Capgemini</span><span class="marquee-logo"><i class="fas fa-industry"></i> L&T Technology Services</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRAINING ECOSYSTEM ========== -->
+<section class="section" style="background:var(--bg);">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Holistic Career Pipeline</span><h2>Placement Training Ecosystem</h2><p>A structured 4-year continuous training roadmap ensuring students transition seamlessly from<br class="desktop-break"> students to corporate-ready tech leaders.</p></div>
+    <div class="training-grid">
+      <div class="training-card"><span class="training-number">01</span><h4>Aptitude & Quantitative Logic</h4><p>Rigorous mastery of analytical reasoning, data interpretation, arithmetic speed, and comprehension tests required for tier-1 IT recruitment.</p></div>
+      <div class="training-card"><span class="training-number">02</span><h4>DSA & Competitive Coding</h4><p>Intensive daily problem-solving covering LeetCode mediums, tree graphs, dynamic programming, and space-time complexity analysis.</p></div>
+      <div class="training-card"><span class="training-number">03</span><h4>Full-Stack Capstone Projects</h4><p>Students develop live microservices, production-grade cloud apps, and hardware IoT solutions with GitHub portfolios and deployment pipelines.</p></div>
+      <div class="training-card"><span class="training-number">04</span><h4>Mock Technical Interviews</h4><p>1-on-1 video interviews evaluated by senior corporate engineering leads replicating FAANG and big-tech selection panels with constructive rubrics.</p></div>
+      <div class="training-card"><span class="training-number">05</span><h4>Soft Skills & Corporate Etiquette</h4><p>Professional communication, technical pitching, group discussion nuances, corporate emotional intelligence, and resume writing workshops.</p></div>
+      <div class="training-card"><span class="training-number">06</span><h4>Industry Certifications</h4><p>Subsidized pathways for globally accredited credentials including AWS Certified Cloud Practitioner, Cisco CCNA, and Red Hat Enterprise Linux.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LABS ========== -->
+<section class="section" id="labs">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Infrastructure</span><h2>Laboratories & Specialized Centers</h2><p>World-class experiential infrastructure empowering experimental research and high-order<br class="desktop-break"> engineering tasks.</p></div>
+    <div class="labs-grid">
+      <article class="lab-card"><div class="lab-img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85" alt="Advanced AI computing hardware" /><span class="lab-icon"><i class="fas fa-microchip"></i></span></div><div class="lab-body"><h4>AI & Supercomputing Cluster</h4><p>Equipped with NVIDIA A100 Tensor Core GPUs, enterprise Linux clusters, and petabyte-scale storage arrays for deep learning research.</p></div></article>
+      <article class="lab-card"><div class="lab-img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=85" alt="Robotics and mechatronics laboratory" /><span class="lab-icon"><i class="fas fa-robot"></i></span></div><div class="lab-body"><h4>Robotics & Mechatronics Cell</h4><p>6-axis articulated industrial robotic arms, pneumatics stations, PLC programming bays, and computer vision integration benches.</p></div></article>
+      <article class="lab-card"><div class="lab-img"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=85" alt="Engineers working on digital systems" /><span class="lab-icon"><i class="fas fa-memory"></i></span></div><div class="lab-body"><h4>VLSI Design & Embedded Lab</h4><p>Full licensed suites of Cadence, Synopsys, Xilinx FPGA development boards, and real-time digital logic analyzers.</p></div></article>
+      <article class="lab-card"><div class="lab-img"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=85" alt="Electronics and embedded systems workbench" /><span class="lab-icon"><i class="fas fa-wifi"></i></span></div><div class="lab-body"><h4>IoT & Cyber-Physical Lab</h4><p>LoRaWAN gateways, edge-compute Raspberry Pi & ESP32 benches, sensor networks, and industrial SCADA testbeds.</p></div></article>
+      <article class="lab-card"><div class="lab-img"><img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=900&q=85" alt="Precision manufacturing research equipment" /><span class="lab-icon"><i class="fas fa-gears"></i></span></div><div class="lab-body"><h4>Additive Mfg & CNC FabLab</h4><p>3-axis CNC vertical milling machines, industrial SLS 3D printers, laser profiling cutters, and coordinate measuring machines.</p></div></article>
+      <article class="lab-card"><div class="lab-img"><img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=900&q=85" alt="Renewable energy solar research facility" /><span class="lab-icon"><i class="fas fa-solar-panel"></i></span></div><div class="lab-body"><h4>Renewable Energy & Smart Grid</h4><p>Rooftop 150 kW solar microgrid research test rig, power electronics inverter benches, and EV battery testing dynos.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESEARCH ========== -->
+<section class="section section-dark" id="research">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Pioneering Solutions</span><h2 style="color:var(--white);">Research & Sponsored Projects</h2><p style="color:rgba(255,255,255,0.7);">Government-funded and cross-industry research endeavors addressing critical global engineering<br class="desktop-break"> challenges.</p></div>
+    <div class="research-grid">
+      <article class="research-card"><div class="research-meta"><span class="research-badge">DST - SERB Grant</span><span>₹ 48.5 Lakhs</span></div><h4>Autonomous Edge-AI Drone Surveillance for Precision Agriculture</h4><p>Development of lightweight deep neural network models embedded directly on aerial edge nodes to classify crop infestations and compute water stress indicators in real-time.</p><div class="research-footer"><span>PI: Dr. M. K. Kulkarni (ECE)</span><strong>Active (2023–26)</strong></div></article>
+      <article class="research-card"><div class="research-meta"><span class="research-badge">AICTE RPS Scheme</span><span>₹ 22.0 Lakhs</span></div><h4>Nanostructured Solid-State Electrolytes for High-Density EV Batteries</h4><p>Synthesis and thermodynamic characterization of ceramic oxide composites to eliminate thermal runaway risks and triple cycle degradation thresholds in next-gen EV cells.</p><div class="research-footer"><span>PI: Dr. Radhika Joshi (Mech)</span><strong>Active (2024–26)</strong></div></article>
+      <article class="research-card"><div class="research-meta"><span class="research-badge">TEQIP Collaborative</span><span>₹ 35.0 Lakhs</span></div><h4>Secure Zero-Trust Blockchain Architecture for Smart Microgrid Trading</h4><p>Implementation of fault-tolerant consensus algorithms and verifiable zero-knowledge proofs for peer-to-peer municipal renewable energy distribution networks.</p><div class="research-footer"><span>PI: Dr. Arvind Deshmukh (CSE)</span><strong>Active (2023–25)</strong></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FACULTY ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Scholarly Mentors</span><h2>Eminent Faculty Leadership</h2><p>World-renowned educators and active industry researchers dedicated to nurturing future engineers.</p></div>
+    <div class="faculty-grid">
+      <article class="faculty-card"><div class="faculty-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=85" alt="Dr. Anil Roy" /></div><h4>Dr. Anil Roy</h4><div class="role">Head, Computer Science & Engg.</div><div class="qual">Ph.D. (IIT Delhi) · 18+ Yrs Exp.</div><p>Specialization: Machine Learning, NLP, Distributed Systems.</p></article>
+      <article class="faculty-card"><div class="faculty-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=240&q=85" alt="Dr. Rajesh N. Verma" /></div><h4>Dr. Rajesh N. Verma</h4><div class="role">Dean (Research & Consultancy)</div><div class="qual">Ph.D. (IISc Bangalore) · 22+ Yrs Exp.</div><p>Specialization: Microelectronics, Embedded VLSI Architectures.</p></article>
+      <article class="faculty-card"><div class="faculty-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=240&q=85" alt="Dr. Preeti Sharma" /></div><h4>Dr. Preeti Sharma</h4><div class="role">Head, Mechanical Engineering</div><div class="qual">Ph.D. (IIT Bombay) · 15+ Yrs Exp.</div><p>Specialization: Mechatronics, Finite Element Analysis & EV Design.</p></article>
+      <article class="faculty-card"><div class="faculty-photo"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=85" alt="Dr. Amitava Ghosh" /></div><h4>Dr. Amitava Ghosh</h4><div class="role">Dean (Student Welfare)</div><div class="qual">Ph.D. (IIT Kharagpur) · 19+ Yrs Exp.</div><p>Specialization: Power Electronics, Renewable Grids, Battery Storage.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CAMPUS LIFE ========== -->
+<section class="section" style="background:var(--white);" id="campus">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Beyond the Classroom</span><h2>Campus Life at ABC</h2><p>A vibrant campus life balancing high-octane engineering with arts, athletics, and residential<br class="desktop-break"> community spirit.</p></div>
+    <div class="campus-grid">
+      <article class="campus-card"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=85" alt="Engineering students collaborating in a campus club" /><div class="campus-card-body"><span class="campus-icon"><i class="fas fa-medal"></i></span><h4>Student Tech Clubs</h4><p>Google Developer Student Club, IEEE Student Chapter, SAE BAJA Motorsport team, and Cyber Security Guilds.</p></div></article>
+      <article class="campus-card"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=700&q=85" alt="Indoor sports and basketball facilities" /><div class="campus-card-body"><span class="campus-icon"><i class="fas fa-basketball"></i></span><h4>Sports Infrastructure</h4><p>Olympic-dimension athletic track, floodlit basketball and tennis courts, cricket pavilion, and modern gymnasiums.</p></div></article>
+      <article class="campus-card"><img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=700&q=85" alt="Students attending a campus cultural festival" /><div class="campus-card-body"><span class="campus-icon"><i class="fas fa-masks-theater"></i></span><h4>Cultural Festivals</h4><p>“TechSparks” annual national techno-management fest and “Rangjaali” cultural extravaganza hosting artists worldwide.</p></div></article>
+      <article class="campus-card"><img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=700&q=85" alt="Student residence and campus dining" /><div class="campus-card-body"><span class="campus-icon"><i class="fas fa-bed"></i></span><h4>Hostels & Dining</h4><p>Separate Wi-Fi enabled residential blocks for boys and girls with hygienic mess facilities, 24×7 security, and medical clinic.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NEWS ========== -->
+<section class="section" id="news">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Current Happenings</span><h2>Latest News & Announcements</h2><p>Stay informed about campus milestones, accolades, and academic bulletins.</p></div>
+    <div class="news-grid">
+      <article class="news-card"><span class="news-badge">14 Feb 2025</span><h4>ABC Institute Secures NAAC A+ Re-Accreditation with 3.52 CGPA</h4><p>The peer assessment committee lauded our faculty research outputs, green campus stewardship, and exceptional graduate employability.</p><a href="#contact" class="news-link">Read Full Circular →</a></article>
+      <article class="news-card"><span class="news-badge">08 Feb 2025</span><h4>Mechanical Team ‘Aeros’ Clinches 2nd Prize at Formula Bharat 2025</h4><p>Student-designed electric racecar clocked phenomenal acceleration in the endurance trials at the Kari Motor Speedway.</p><a href="#contact" class="news-link">Read Full Circular →</a></article>
+      <article class="news-card"><span class="news-badge">29 Jan 2025</span><h4>MoU Signed with NVIDIA for Academic AI & Deep Learning Lab</h4><p>Partnership facilitates GPU compute infrastructure access and certified instruction for 600+ CSE & ECE students annually.</p><a href="#contact" class="news-link">Read Full Circular →</a></article>
+      <article class="news-card"><span class="news-badge">15 Jan 2025</span><h4>Admissions Open for B.Tech & M.Tech Programs: Session 2025–26</h4><p>Early entrance merit scholarship applications are now live on the university portal for JEE and state exam qualifiers.</p><a href="#programs" class="news-link">Read Full Circular →</a></article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EVENTS ========== -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Campus Calendar</span><h2>Upcoming Conclaves & Events</h2><p>Mark your calendar for premier national symposiums, hackathons, and webinars.</p></div>
+    <div class="events-grid">
+      <article class="event-card"><div class="event-top"><div class="event-date"><strong>MAR</strong><span>12</span></div><div><strong>National Hackathon</strong><small>Auditorium Main Bay</small></div></div><h4>HackTech 2025: 36-Hr Dev Sprint</h4><p>Over 120 intercollegiate teams solving problem statements in FinTech, Smart Healthcare, and Clean Energy.</p><a href="#contact" class="event-action">Register Now</a></article>
+      <article class="event-card"><div class="event-top"><div class="event-date"><strong>MAR</strong><span>25</span></div><div><strong>Conference</strong><small>IEEE MPP Section</small></div></div><h4>Intl. Conf. on AI & Sustainable IoT</h4><p>Keynotes by distinguished IEEE Fellows, paper presentations, and Springer-indexed publications.</p><a href="#contact" class="event-action">Submit Abstract</a></article>
+      <article class="event-card"><div class="event-top"><div class="event-date"><strong>APR</strong><span>05</span></div><div><strong>Annual Fest</strong><small>Open Air Theatre</small></div></div><h4>TechSparks 2025: Grand Tech Fest</h4><p>RoboWars, drone racing, gaming arenas, design exhibitions, and celebrity music concert finale.</p><a href="#contact" class="event-action">Event Schedule</a></article>
+      <article class="event-card"><div class="event-top"><div class="event-date"><strong>APR</strong><span>18</span></div><div><strong>Alumni Meet</strong><small>Convention Hall</small></div></div><h4>Global Alumni Reunion & Awards</h4><p>Welcoming batch distinguished alumni from Silicon Valley, Bangalore, Europe, and public leadership.</p><a href="#contact" class="event-action">RSVP Attendance</a></article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Campus Vistas</span><h2>Life & Spaces at ABC Institute</h2><p>Take a pictorial journey across our sprawling modern academic haven.</p></div>
+    <div class="gallery-bento">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=85" alt="Graduate receiving a degree at convocation" /><div class="gallery-caption">Annual Convocation & Degree Conferment</div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1000&q=85" alt="Modern knowledge resource and digital library" /><div class="gallery-caption">Central Knowledge Resource & Digital Library</div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=85" alt="Academic and industry leaders meeting" /><div class="gallery-caption">Corporate Boardroom & MDP Center</div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=85" alt="Outdoor campus amphitheatre" /><div class="gallery-caption">2000-Seater Amphitheatre</div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=85" alt="Students in the campus cafeteria" /><div class="gallery-caption">Student Cafeteria & Commons</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="section" style="background:var(--white);" id="contact">
+  <div class="container">
+    <div class="section-title"><span class="section-eyebrow">Connect with ABC</span><h2>Admissions Inquiry & Campus<br class="desktop-break"> Location</h2><p>Have queries regarding admission cut-offs, fee structures, or campus visits? Our counselors are here<br class="desktop-break"> to help.</p></div>
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry submitted!');">
+        <h4>Send an Admission Inquiry</h4><p>Fill in the details below and an official counselor will get back within 24 hours.</p>
+        <div class="contact-fields">
+        <div class="form-group"><label for="name">Student Full Name *</label><input type="text" id="name" placeholder="e.g. Rahul Sharma" required /></div>
+        <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" placeholder="e.g. rahul@example.com" required /></div>
+        <div class="form-group"><label for="phone">Mobile / WhatsApp Number *</label><input type="tel" id="phone" placeholder="+91 98765 43210" required /></div>
+        <div class="form-group"><label for="program">Program of Interest *</label>
+          <select id="program" required>
+            <option value="">B.Tech Computer Science & Engg.</option>
+            <option>Computer Science & Engineering</option>
+            <option>CSE (AI & ML)</option>
+            <option>Electronics & Communication</option>
+            <option>Mechanical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Electrical Engineering</option>
+          </select>
+        </div>
+        <div class="form-group form-group-wide"><label for="message">Message / Specific Inquiry</label><textarea id="message" placeholder="Mention your 12th PCM % or JEE score and any hostel/scholarship questions..."></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-gold">Submit Inquiry Application</button>
+      </form>
+      <div class="contact-side">
+        <div class="contact-address">
+          <h4>Central Administrative Office</h4>
+          <p><i class="fas fa-map-location-dot"></i><span>ABC Knowledge City, Outer Ring Road, Tech Corridor, Bhopal, Madhya Pradesh 462003</span></p>
+          <p><i class="fas fa-phone"></i><span>+91 755 280 0100 / +91 755 280 0101</span></p>
+          <p><i class="fas fa-envelope"></i><span>admissions@abcinstitute.edu.in</span></p>
+          <p><i class="fas fa-clock"></i><span>Monday – Saturday: 9:00 AM – 5:30 PM IST</span></p>
+        </div>
+        <div class="contact-map"><iframe title="Map showing ABC Institute campus in Bhopal" src="https://maps.google.com/maps?q=Bhopal%2C%20Madhya%20Pradesh&t=&z=12&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="images/logo.png" alt="College of Science & Engineering logo" style="height:58px;width:58px;object-fit:contain;margin-bottom:16px;" />
+        <p style="color:rgba(255,255,255,0.7);font-size:0.85rem;">Pioneering technical education, innovation-driven laboratories, and high-impact industry placements since 1997.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Our Heritage</a></li>
+          <li><a href="#programs">Academic Degrees & Intake</a></li>
+          <li><a href="#placements">Corporate Placement Cell</a></li>
+          <li><a href="#research">Research Centers & Labs</a></li>
+          <li><a href="#contact">Admissions 2026-2027</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Engineering Disciplines</h4>
+        <ul>
+          <li><a href="#">Computer Science & Engg.</a></li>
+          <li><a href="#">CSE (Artificial Intelligence & ML)</a></li>
+          <li><a href="#">Electronics & Comm. Engg.</a></li>
+          <li><a href="#">Mechanical & Automation Engg.</a></li>
+          <li><a href="#">Civil & Infrastructure Engg.</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Admissions & Campus</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:8px;"></i> NH-75, Gwalior Road, Jhansi (U.P.) - 284419</li>
+          <li><i class="fas fa-phone" style="color:var(--gold);margin-right:8px;"></i> +91 755 280 0100 / 101</li>
+          <!-- <li><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px;"></i> admissions@abcinstitute.ac.in</li> -->
+        </ul>
+        <a href="#contact" class="btn btn-gold" style="margin-top:12px;">Inquire Admissions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 ABC Institute of Engineering & Technology. All Rights Reserved. | Approved by AICTE, New Delhi | Affiliated to RGPV, Bhopal
+    </div>
+  </div>
+</footer>
+
+<!-- ========== BACK TO TOP ========== -->
+<button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+/* ========== 1. PAGE LOADER ========== */
+setTimeout(() => document.getElementById('loader').classList.add('hide'), 900);
+
+/* ========== 2. SCROLL PROGRESS ========== */
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scroll-progress').style.width = (scrollTop / docHeight) * 100 + '%';
+});
+
+/* ========== 3. BACK TO TOP ========== */
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) backToTop.classList.add('show');
+  else backToTop.classList.remove('show');
+});
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ========== 4. ACCORDION ========== */
+document.querySelectorAll('.acc-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
+  });
+});
+
+/* ========== 7. PROGRAM FILTER TABS ========== */
+const programTabs = document.querySelectorAll('[data-program-filter]');
+const programCards = document.querySelectorAll('.program-card[data-level]');
+
+programTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const selectedLevel = tab.dataset.programFilter;
+    programTabs.forEach(button => {
+      const isActive = button === tab;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+    });
+
+    programCards.forEach(card => {
+      const isVisible = card.dataset.level === selectedLevel;
+      card.hidden = !isVisible;
+      if (isVisible) {
+        card.style.animation = 'programCardEnter .42s ease both';
+        card.onanimationend = () => {
+          card.style.animation = '';
+          card.onanimationend = null;
+        };
+      }
+    });
+  });
+});
+
+/* ========== 8. COUNT-UP NUMBERS ========== */
+const counters = document.querySelectorAll('[data-count]');
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = Number(el.dataset.count);
+      const isDecimal = el.dataset.count.includes('.');
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        const displayValue = isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString();
+        el.textContent = `${displayValue}${suffix}`;
+      }, 20);
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => countObserver.observe(c));
+
+/* ========== 9. GSAP SCROLL ANIMATIONS ========== */
+if (window.gsap && window.ScrollTrigger && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.hero-content > *', { y: 24, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15 });
+  gsap.from('.hero-visual', { x: 30, duration: 0.9, ease: 'power2.out', delay: 0.2 });
+
+  gsap.utils.toArray('.why-grid, .programs-grid, .training-grid, .labs-grid, .faculty-grid, .news-grid, .events-grid, .campus-grid, .research-grid').forEach(grid => {
+    const visibleCards = [...grid.children].filter(card => !card.hidden);
+    gsap.from(visibleCards, {
+      y: 24, duration: 0.6, stagger: 0.08, ease: 'power2.out',
+      scrollTrigger: { trigger: grid, start: 'top 80%', toggleActions: 'play none none none' }
+    });
+  });
+
+  gsap.from('.stats-card .stat-item', { y: 18, duration: 0.6, stagger: 0.1, ease: 'power2.out', scrollTrigger: { trigger: '.stats-card', start: 'top 85%' } });
+  gsap.from('.milestones-grid .milestone', { y: 18, duration: 0.5, stagger: 0.06, ease: 'power2.out', scrollTrigger: { trigger: '.milestones-grid', start: 'top 80%' } });
+  gsap.from('.chairman-card', { y: 24, duration: 0.9, ease: 'power2.out', scrollTrigger: { trigger: '.chairman-card', start: 'top 80%' } });
+  gsap.from('.placement-card', { y: 24, duration: 0.9, ease: 'power2.out', scrollTrigger: { trigger: '.placement-card', start: 'top 80%' } });
+  gsap.from('.gallery-item', { y: 18, duration: 0.7, stagger: 0.08, ease: 'power2.out', scrollTrigger: { trigger: '.gallery-bento', start: 'top 80%' } });
+}
+</script>
+
+</body>
+</html>

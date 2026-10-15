@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instrumental Club | College of Science & Engineering (CSE), Jhansi</title>
+  
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* CSS RESET & VARIABLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark-main: #1A0B12;
+      --bg-dark-card: #2A1B24;
+      --bg-dark-nav: #14080E;
+      --border-burgundy: #4A2338;
+      --border-gold-glow: #D4AF37;
+      --accent-gold: #D4AF37;
+      --accent-gold-hover: #F3E5AB;
+      --accent-amber: #F59E0B;
+      --text-white: #FFFFFF;
+      --text-grey: #D1D5DB;
+      --text-muted: #9CA3AF;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-dark-main);
+      color: var(--text-grey);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background-color: var(--bg-dark-nav);
+      color: var(--text-grey);
+      font-size: 13px;
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .top-bar-left span {
+      margin-right: 20px;
+    }
+
+    .top-bar-left i {
+      color: var(--accent-gold);
+      margin-right: 6px;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .top-bar-right a:hover {
+      color: var(--text-white);
+    }
+
+    .btn-erp {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-main) !important;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .btn-erp:hover {
+      background-color: var(--accent-gold-hover);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    /* MAIN NAV */
+    .main-nav {
+      background-color: var(--bg-dark-main);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-box {
+      width: 42px;
+      height: 42px;
+      background: var(--bg-dark-card);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 20px;
+      border: 1px solid var(--accent-gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .logo-text h1 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--text-white);
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-grey);
+      position: relative;
+    }
+
+    .nav-links a.active {
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-gold);
+      box-shadow: 0 0 8px var(--accent-gold);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .btn-apply {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-main);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-apply:hover {
+      background-color: var(--accent-gold-hover);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+                  linear-gradient(135deg, var(--bg-dark-main) 0%, var(--bg-dark-card) 100%);
+      color: var(--text-white);
+      padding: 90px 5%;
+      position: relative;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-gold {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-main);
+    }
+
+    .badge-slate {
+      background-color: var(--bg-dark-card);
+      border: 1px solid var(--border-burgundy);
+      color: var(--accent-gold);
+    }
+
+    .hero-text h1 {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--text-white);
+    }
+
+    .hero-text p {
+      font-size: 16px;
+      color: var(--text-grey);
+      max-width: 580px;
+      line-height: 1.6;
+    }
+
+    .hero-image-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-card {
+      background: rgba(42, 27, 36, 0.4);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+      position: relative;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .logo-square {
+      width: 120px;
+      height: 120px;
+      background: #881337;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 10px 25px rgba(136, 19, 55, 0.5);
+    }
+
+    .logo-square i {
+      font-size: 48px;
+    }
+
+    .official-tag {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-grey);
+      letter-spacing: 1px;
+    }
+
+    .dot-gold {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-gold);
+    }
+
+    /* VISION & OBJECTIVES SECTION */
+    .vision-section {
+      padding: 90px 5%;
+      background-color: var(--bg-dark-main);
+    }
+
+    .vision-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.6fr 0.4fr;
+      gap: 50px;
+      align-items: flex-start;
+    }
+
+    .pill-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background-color: var(--bg-dark-card);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--accent-gold);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .vision-left h2 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      color: var(--text-white);
+      margin-bottom: 24px;
+    }
+
+    .vision-left p {
+      color: var(--text-grey);
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .vision-card {
+      background-color: var(--bg-dark-card);
+      color: var(--text-white);
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid var(--border-burgundy);
+      border-top: 3px solid var(--accent-gold);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transition: var(--transition);
+    }
+
+    .vision-card:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+
+    .card-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .vision-card h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .vision-card p {
+      font-size: 14px;
+      color: var(--text-grey);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .card-footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-burgundy);
+    }
+
+    .footer-col-card span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col-card strong {
+      font-size: 13px;
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    /* CORE ACTIVITIES SECTION - MASONRY LAYOUT */
+    .activities-section {
+      padding: 90px 5%;
+      background-color: var(--bg-dark-main);
+    }
+
+    .activities-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      color: var(--text-white);
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-grey);
+      font-size: 15px;
+    }
+
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 25px;
+    }
+
+    .masonry-card {
+      break-inside: avoid;
+      background-color: var(--bg-dark-card);
+      border: 1px solid var(--border-burgundy);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 25px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .masonry-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      background-color: rgba(212, 175, 55, 0.1);
+      color: var(--accent-gold);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: var(--transition);
+    }
+
+    .masonry-card:hover .card-icon {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-main);
+      transform: scale(1.08) rotate(4deg);
+    }
+
+    .masonry-card h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: var(--text-white);
+      margin-bottom: 16px;
+    }
+
+    .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-grey);
+    }
+
+    .bullet-list i {
+      color: var(--accent-gold);
+      font-size: 14px;
+      margin-top: 3px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--bg-dark-nav);
+      color: var(--text-grey);
+      padding: 70px 5% 0 5%;
+      font-size: 14px;
+      border-top: 1px solid var(--border-burgundy);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid var(--border-burgundy);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      color: var(--text-white);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      padding-left: 4px;
+    }
+
+    .accreditations {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .accreditation-item {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-white);
+      border: 1px solid var(--border-burgundy);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      background-color: var(--bg-dark-card);
+      color: var(--text-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-burgundy);
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-main);
+      border-color: var(--accent-gold);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 25px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    /* ANIMATION UTILITIES */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .hero-container,
+      .vision-container {
+        grid-template-columns: 1fr;
+      }
+
+      .masonry-grid {
+        column-count: 2;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar-left, .top-bar-right {
+        display: none;
+      }
+      .top-bar {
+        justify-content: center;
+      }
+
+      .main-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .masonry-grid {
+        column-count: 1;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span><i class="fa-solid fa-phone"></i> 1800-123-4567 (Toll Free)</span>
+      <span><i class="fa-solid fa-location-dot"></i> Jhansi, Uttar Pradesh</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#">NIRF</a>
+      <a href="#">IQAC</a>
+      <a href="#">Careers</a>
+      <a href="#">Alumni</a>
+      <a href="#">Downloads</a>
+      <a href="#" class="btn-erp">ERP Login</a>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION BAR -->
+  <nav class="main-nav">
+    <div class="logo">
+      <div class="logo-box">C</div>
+      <div class="logo-text">
+        <h1>CSE JHANSI</h1>
+        <span>COLLEGE OF SCIENCE & ENGINEERING</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Academics</a>
+      <a href="#">Admissions</a>
+      <a href="#">R&D</a>
+      <a href="#">Placement</a>
+      <a href="#" class="active">Life at SRGI</a>
+      <a href="#">Achievements</a>
+      <a href="#">Contact</a>
+    </div>
+    <a href="#" class="btn-apply">APPLY NOW</a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-text fade-in-left">
+        <div class="breadcrumb">Home > Student Clubs > Instrumental Club</div>
+        <div class="badge-group">
+          <span class="badge badge-gold">STUDENT ACTIVITY CENTER (SAC)</span>
+          <span class="badge badge-slate">Culture & Arts</span>
+        </div>
+        <h1>Instrumental Club</h1>
+        <p>Mastering instrumental symphony, musical arrangements, technical recording, and harmonious stage performances across classic and modern genres.</p>
+      </div>
+      <div class="hero-image-wrapper fade-up">
+        <div class="glass-card">
+          <div class="logo-square">
+            <i class="fa-solid fa-guitar"></i>
+          </div>
+          <div class="official-tag">
+            <span class="dot-gold"></span>
+            OFFICIAL CSE CLUB
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & OBJECTIVES SECTION -->
+  <section class="vision-section">
+    <div class="vision-container">
+      <div class="vision-left fade-up">
+        <span class="pill-badge">VISION & OBJECTIVES</span>
+        <h2>About Instrumental Club</h2>
+        <p>The Instrumental Club provides an enriching acoustic and digital platform for musicians of all skill levels to master instruments, explore music theory, and collaborate in symphonic ensembles. We cultivate artistic discipline and acoustic excellence.</p>
+        <p>Through jam sessions, string orchestras, percussion clinics, live concerts, and sound recording workshops, members develop acoustic dexterity, teamwork, and lifelong musical confidence.</p>
+      </div>
+      <div class="vision-card fade-up">
+        <span class="card-badge">ACTIVITY HIGHLIGHTS</span>
+        <h3>Empowering Future Achievers</h3>
+        <p>Hands-on participation in live orchestral ensembles, musical production, and peer mentorship.</p>
+        <div class="card-footer-grid">
+          <div class="footer-col-card">
+            <span>DOMAIN AREA</span>
+            <strong>Culture & Arts</strong>
+          </div>
+          <div class="footer-col-card">
+            <span>AFFILIATION</span>
+            <strong>SAC • CSE Jhansi</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE ACTIVITIES SECTION (MASONRY LAYOUT) -->
+  <section class="activities-section">
+    <div class="activities-container">
+      <div class="section-header fade-up">
+        <h2>Key Pillars & Initiatives</h2>
+        <p>An organic, fluid framework reflecting the harmony, rhythm, and dexterity of music.</p>
+      </div>
+      
+      <div class="masonry-grid">
+        <!-- CARD 1 -->
+        <div class="masonry-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-music"></i></div>
+          <h3>Performance Groups</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Forming campus bands and string ensembles</li>
+            <li><i class="fa-solid fa-circle-check"></i> Orchestras, percussion groups, and jazz jams</li>
+          </ul>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="masonry-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-sliders"></i></div>
+          <h3>Workshops & Training</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Guitar, keyboard, and drum fundamentals</li>
+            <li><i class="fa-solid fa-circle-check"></i> Sheet music & chord progression reading</li>
+          </ul>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="masonry-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+          <h3>Live Events</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Organizing "Battle of the Bands" and acoustic nights</li>
+          </ul>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="masonry-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+          <h3>Cultural & Folk Music</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Traditional instruments and classical folk compositions</li>
+          </ul>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="masonry-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+          <h3>Collaborations</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Performing in university fests, theatre plays, and vocal accompaniment</li>
+          </ul>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="masonry-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3>Recording & Technical Skills</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Learning to record, edit, and produce sound for live events and media</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 15px;">
+          <div class="logo-box">C</div>
+          <div class="logo-text">
+            <h1 style="color: white;">CSE JHANSI</h1>
+            <span>SRGI CAMPUS</span>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin-bottom: 15px;">Premier institution dedicated to academic brilliance, innovation, and holistic student development.</p>
+        <div class="accreditations">
+          <div class="accreditation-item">AICTE</div>
+          <div class="accreditation-item">AKTU</div>
+          <div class="accreditation-item">BTE</div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Campus Links</h4>
+        <div class="footer-links">
+          <a href="#">SRGI Campus</a>
+          <a href="#">CSE Student Clubs</a>
+          <a href="#">Location Map</a>
+          <a href="#">Infrastructure</a>
+          <a href="#">Hostels & Facilities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>About CSE</h4>
+        <div class="footer-links">
+          <a href="#">Chairman's Message</a>
+          <a href="#">Director's Message</a>
+          <a href="#">Heritage of Excellence</a>
+          <a href="#">Educational Philosophy</a>
+          <a href="#">Why Choose SRGI</a>
+          <a href="#">Departments</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="#">Admissions 2026</a>
+          <a href="#">Training & Placement</a>
+          <a href="#">R&D Cell</a>
+          <a href="#">Career Opportunities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons" style="margin-top: 10px;">
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 College of Science & Engineering (CSE), Jhansi. All Rights Reserved.</div>
+      <div>Managed by Act T Connect</div>
+    </div>
+  </footer>
+
+  <!-- INTERSECTION OBSERVER SCRIPT FOR ANIMATIONS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll(".fade-up, .fade-in-left").forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

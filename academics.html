@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academics - ABC Engineering & Technology Institute</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation Library CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .custom-gradient-bg {
+      background: linear-gradient(135deg, #071931 0%, #0a2540 60%, #10345e 100%);
+    }
+
+    .gold-btn {
+      background: linear-gradient(180deg, #e3a833 0%, #c98b18 100%);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .gold-btn:hover {
+      background: linear-gradient(180deg, #f0b742 0%, #d89921 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 139, 24, 0.4);
+    }
+
+    /* MULTI-LEVEL DROPDOWN STYLING */
+    .dropdown-parent:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .sub-dropdown-parent:hover .sub-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .card-animated {
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card-animated:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -10px rgba(10, 37, 64, 0.12);
+      border-color: #e3a833;
+    }
+    .card-animated:hover .card-icon {
+      transform: rotate(6deg) scale(1.1);
+      background-color: #e3a833;
+      color: #071931;
+    }
+    .card-icon {
+      transition: all 0.3s ease;
+    }
+  </style>
+  <link rel="stylesheet" href="site-nav.css">
+  <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- TOP BAR -->
+  <div class="bg-[#051120] text-gray-300 text-xs py-2 px-4 sm:px-8 flex flex-wrap justify-between items-center border-b border-gray-800">
+    <div class="flex items-center space-x-6">
+      <a href="tel:+917700303000" class="hover:text-yellow-400 transition flex items-center space-x-2">
+        <i class="fas fa-phone-alt text-yellow-500"></i>
+        <span>+91-7700-300-300</span>
+      </a>
+      <!-- <a href="mailto:info@abc.edu.in" class="hover:text-yellow-400 transition flex items-center space-x-2"> -->
+        <!-- <i class="fas fa-envelope text-yellow-500"></i> -->
+        <!-- <span>info@abc.edu.in</span> -->
+          <a href="contact.html"><span><i class="fas fa-map-marker-alt"></i> NH-75, Gwalior Road, Jhansi (U.P.) - 284419</span></a>
+         
+      
+    </div>
+    <div class="top-bar-right">
+      <a href="ranking.html">NIRF</a><a href="internal.html">IQAC</a><a href="career.html">Careers</a><a href="alumni.html">Alumni</a><a href="download.html">Downloads</a><a href="erp_portal.html">ERP Login</a>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER WITH MULTI-LEVEL ACADEMICS DROPDOWN -->
+  <header class="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+      
+      <!-- LOGO -->
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <img src="images/logo.png" alt="College Logo" class="h-12 w-auto object-contain transition transform group-hover:scale-105 duration-300">
+        <div class="flex flex-col">
+          <span class="text-lg font-extrabold text-[#0a2540] tracking-tight leading-tight">ABC</span>
+          <span class="text-xs font-bold text-gray-800 tracking-wide">Engineering & Technology Institute</span>
+        </div>
+      </a>
+
+      <!-- DESKTOP MENU -->
+      <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-gray-700">
+        <a href="index.html" class="hover:text-yellow-600 transition">Home</a>
+        <a href="about.html" class="hover:text-yellow-600 transition">About Us</a>
+
+        <!-- ACADEMICS DROPDOWN PARENT -->
+        <div class="relative dropdown-parent py-2">
+          <a href="academics.html" class="text-yellow-600 font-bold border-b-2 border-yellow-500 pb-1 flex items-center space-x-1">
+            <span>Academics</span>
+            <i class="fas fa-chevron-down text-[10px]"></i>
+          </a>
+
+          <!-- FIRST LEVEL DROPDOWN MENU -->
+          <div class="dropdown-menu absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible transform -translate-y-2 transition-all duration-300 z-50">
+            
+            <!-- Sub-Item 1: Courses (With nested right dropdown) -->
+            <div class="relative sub-dropdown-parent">
+              <a href="#" class="flex items-center justify-between px-4 py-3 hover:bg-red-50 hover:text-red-600 text-gray-800 text-xs font-semibold transition">
+                <div class="flex items-center space-x-3">
+                  <i class="fas fa-graduation-cap text-red-600 text-base w-5"></i>
+                  <span>Courses</span>
+                </div>
+                <i class="fas fa-chevron-right text-[10px]"></i>
+              </a>
+
+              <!-- SECOND LEVEL SUB-MENU FOR COURSES -->
+              <div class="sub-dropdown-menu absolute top-0 left-full w-80 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 opacity-0 invisible transform -translate-x-2 transition-all duration-300 z-50">
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-laptop-code text-blue-600 w-4"></i>
+                  <span>B.Tech. in Computer Science & Engineering (CSE)</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-brain text-purple-600 w-4"></i>
+                  <span>B.Tech. in AI & Machine Learning</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-database text-indigo-600 w-4"></i>
+                  <span>B.Tech. in CSE – Data Science (CSE-DS)</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-shield-alt text-green-600 w-4"></i>
+                  <span>B.Tech. in Computer Science and Cyber Security</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-network-wired text-cyan-600 w-4"></i>
+                  <span>B.Tech. in CSE – Internet of Things (CSE-IOT)</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-code text-orange-600 w-4"></i>
+                  <span>B.Tech in Computer Science & Technology (CST)</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-bolt text-yellow-600 w-4"></i>
+                  <span>B.Tech. in Electrical Engineering (EE)</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-cogs text-gray-600 w-4"></i>
+                  <span>B.Tech. in Mechanical Engineering (ME)</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-hard-hat text-amber-700 w-4"></i>
+                  <span>B.Tech. in Civil Engineering (CE)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Sub-Item 2: Departments (With nested right dropdown) -->
+            <div class="relative sub-dropdown-parent border-t border-gray-100">
+              <a href="#" class="flex items-center justify-between px-4 py-3 hover:bg-red-50 hover:text-red-600 text-gray-800 text-xs font-semibold transition">
+                <div class="flex items-center space-x-3">
+                  <i class="fas fa-university text-red-600 text-base w-5"></i>
+                  <span>Departments</span>
+                </div>
+                <i class="fas fa-chevron-right text-[10px]"></i>
+              </a>
+
+              <!-- SECOND LEVEL SUB-MENU FOR DEPARTMENTS -->
+              <div class="sub-dropdown-menu absolute top-0 left-full w-72 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 opacity-0 invisible transform -translate-x-2 transition-all duration-300 z-50">
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-university text-blue-600 w-4"></i>
+                  <span>Department of Computer Science & Engineering</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-university text-yellow-600 w-4"></i>
+                  <span>Department of Electrical Engineering</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-university text-gray-600 w-4"></i>
+                  <span>Department of Mechanical Engineering</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-xs">
+                  <i class="fas fa-university text-amber-700 w-4"></i>
+                  <span>Department of Civil Engineering</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Sub-Item 3: Faculty & Staff -->
+            <div class="border-t border-gray-100">
+              <a href="#" class="flex items-center space-x-3 px-4 py-3 hover:bg-red-50 hover:text-red-600 text-gray-800 text-xs font-semibold transition">
+                <i class="fas fa-users text-red-600 text-base w-5"></i>
+                <span>Faculty & Staff</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <a href="admission.html" class="hover:text-yellow-600 transition">Admissions</a>
+        <a href="rd.html" class="hover:text-yellow-600 transition">R&D</a>
+        <a href="placements.html" class="hover:text-yellow-600 transition">Placements</a>
+        <a href="achievement.html" class="hover:text-yellow-600 transition">Achievements</a>
+        <a href="contact.html" class="hover:text-yellow-600 transition">Contact</a>
+      </nav>
+
+      <div>
+        <a href="#" class="gold-btn text-white text-xs font-semibold px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-md">
+          <span>Apply Now</span>
+          <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative custom-gradient-bg text-white overflow-hidden py-16" data-aos="fade-down">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex items-center space-x-2 text-xs text-gray-300 mb-3">
+        <a href="index.html" class="hover:text-yellow-400 flex items-center space-x-1">
+          <i class="fas fa-arrow-left text-[10px]"></i>
+          <span>Home</span>
+        </a>
+        <span>&gt;</span>
+        <span class="text-white font-medium">Academics</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-2">
+        Excellence in Academic Innovation
+      </h1>
+      <p class="text-xs sm:text-sm text-gray-300 font-light mb-6 max-w-2xl">
+        Discover comprehensive undergraduate and postgraduate programs engineered to build future tech leaders.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION -->
+  <section id="courses" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-12" data-aos="fade-up">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center">
+      <h2 class="text-2xl font-bold text-[#0a2540] mb-3">Welcome to Academics at ABC Institute</h2>
+      <p class="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        Use the Academics dropdown menu above to navigate through our diverse engineering courses, explore specialized academic departments, and meet our distinguished faculty members.
+      </p>
+    </div>
+  </section>
+
+  <section id="departments" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-12" data-aos="fade-up">
+    <div class="mb-8 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-yellow-600">Academic Departments</span>
+      <h2 class="mt-2 text-2xl font-bold text-[#0a2540]">Explore Our Departments</h2>
+    </div>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <a href="engineering.html#dept-cse" class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+        <i class="fas fa-laptop-code text-xl text-blue-700" aria-hidden="true"></i>
+        <h3 class="mt-3 text-sm font-bold text-[#0a2540]">Computer Science & Engineering</h3>
+      </a>
+      <a href="engineering.html#dept-elec" class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+        <i class="fas fa-bolt text-xl text-blue-700" aria-hidden="true"></i>
+        <h3 class="mt-3 text-sm font-bold text-[#0a2540]">Electrical Engineering</h3>
+      </a>
+      <a href="engineering.html#dept-mech" class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+        <i class="fas fa-gears text-xl text-blue-700" aria-hidden="true"></i>
+        <h3 class="mt-3 text-sm font-bold text-[#0a2540]">Mechanical Engineering</h3>
+      </a>
+      <a href="engineering.html#dept-civil" class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+        <i class="fas fa-building text-xl text-blue-700" aria-hidden="true"></i>
+        <h3 class="mt-3 text-sm font-bold text-[#0a2540]">Civil Engineering</h3>
+      </a>
+    </div>
+    <a href="faculty.html" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-800 hover:text-yellow-600">
+      Faculty &amp; Staff <i class="fas fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <!-- AOS ANIMATION SCRIPT -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out'
+    });
+  </script>
+</body>
+</html>

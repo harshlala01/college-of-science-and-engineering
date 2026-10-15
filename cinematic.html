@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Club | College of Science & Engineering (CSE), Jhansi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navyPrimary: '#0F172A',
+                        offWhiteBg: '#F8FAFC',
+                        accentOrange: '#F97316',
+                        accentYellow: '#FACC15',
+                        accentRed: '#EF4444',
+                        darkSlate: '#1E293B',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Poppins & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1E293B;
+            background-color: #F8FAFC;
+        }
+        h1, h2, h3, h4, h5, h6, .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Custom smooth transition utility classes */
+        .transition-all-custom {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-offWhiteBg text-darkSlate antialiased selection:bg-accentOrange selection:text-white">
+
+    <!-- 1. Top Bar & Navigation (Header) -->
+    <header class="w-full sticky top-0 z-50 shadow-sm">
+        <!-- Top Bar -->
+        <div class="bg-navyPrimary text-white text-xs py-2 px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-phone text-accentOrange"></i> Toll-Free: 1800-123-4567</span>
+                <span class="hidden md:flex items-center gap-2"><i class="fa-solid fa-location-dot text-accentOrange"></i> Campus: Jhansi, Uttar Pradesh</span>
+            </div>
+            <div class="flex items-center flex-wrap gap-4 font-medium text-slate-300">
+                <a href="#nirf" class="hover:text-accentOrange transition-all-custom">NIRF</a>
+                <a href="#iqac" class="hover:text-accentOrange transition-all-custom">IQAC</a>
+                <a href="#careers" class="hover:text-accentOrange transition-all-custom">Careers</a>
+                <a href="#alumni" class="hover:text-accentOrange transition-all-custom">Alumni</a>
+                <a href="#downloads" class="hover:text-accentOrange transition-all-custom">Downloads</a>
+                <a href="#erp" class="bg-accentRed text-white px-3 py-1 rounded text-xs font-semibold hover:bg-red-600 transition-all-custom shadow-sm">ERP Login</a>
+            </div>
+        </div>
+
+        <!-- Main Nav Bar -->
+        <nav class="bg-white border-b border-slate-200 px-4 sm:px-8 py-3.5 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="bg-navyPrimary text-white font-poppins font-bold px-3 py-2 rounded text-lg tracking-wider">
+                    SRGI <span class="text-accentOrange text-sm block font-normal">CSE Jhansi</span>
+                </div>
+            </div>
+
+            <!-- Desktop Menu Items -->
+            <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-darkSlate">
+                <a href="#" class="hover:text-accentOrange transition-all-custom pb-1 border-b-2 border-transparent hover:border-accentOrange">Home</a>
+                <a href="#about" class="hover:text-accentOrange transition-all-custom pb-1 border-b-2 border-transparent hover:border-accentOrange">About Us</a>
+                <a href="#academics" class="hover:text-accentOrange transition-all-custom pb-1 border-b-2 border-transparent hover:border-accentOrange">Academics</a>
+                <a href="#admissions" class="hover:text-accentOrange transition-all-custom pb-1 border-b-2 border-transparent hover:border-accentOrange">Admissions</a>
+                <a href="#rnd" class="hover:text-accentOrange transition-all-custom pb-1 border-b-2 border-transparent hover:border-accentOrange">R&amp;D</a>
+                <a href="#placement" class="hover:text-accentOrange transition-all-custom pb-1 border-b-2 border-transparent hover:border-accentOrange">Placement</a>
+                <!-- Active Section -->
+                <a href="#life" class="text-accentRed font-semibold transition-all-custom pb-1 border-b-2 border-accentRed">Life at SRGI</a>
+                <a href="#achievements" class="hover:text-accentOrange transition-all-custom pb-1 border-b-2 border-transparent hover:border-accentOrange">Achievements</a>
+                <a href="#contact" class="hover:text-accentOrange transition-all-custom pb-1 border-b-2 border-transparent hover:border-accentOrange">Contact</a>
+            </div>
+
+            <!-- Apply Now Button & Mobile Menu Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="#apply" class="hidden sm:inline-block bg-accentRed text-white font-poppins font-semibold text-xs px-4 py-2.5 rounded shadow hover:bg-red-600 transition-all-custom">
+                    APPLY NOW
+                </a>
+                <button id="menu-btn" class="lg:hidden text-darkSlate text-xl focus:outline-none" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Nav Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-4 flex flex-col gap-3 shadow-md transition-all-custom">
+            <a href="#" class="text-darkSlate hover:text-accentOrange font-medium py-1">Home</a>
+            <a href="#about" class="text-darkSlate hover:text-accentOrange font-medium py-1">About Us</a>
+            <a href="#academics" class="text-darkSlate hover:text-accentOrange font-medium py-1">Academics</a>
+            <a href="#admissions" class="text-darkSlate hover:text-accentOrange font-medium py-1">Admissions</a>
+            <a href="#rnd" class="text-darkSlate hover:text-accentOrange font-medium py-1">R&amp;D</a>
+            <a href="#placement" class="text-darkSlate hover:text-accentOrange font-medium py-1">Placement</a>
+            <a href="#life" class="text-accentRed font-semibold py-1">Life at SRGI (Active)</a>
+            <a href="#achievements" class="text-darkSlate hover:text-accentOrange font-medium py-1">Achievements</a>
+            <a href="#contact" class="text-darkSlate hover:text-accentOrange font-medium py-1">Contact</a>
+            <a href="#apply" class="mt-2 text-center bg-accentRed text-white font-poppins font-semibold text-xs py-2.5 rounded shadow">
+                APPLY NOW
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section (Main Banner) -->
+    <section class="bg-gradient-to-r from-navyPrimary via-slate-900 to-navyPrimary text-white py-12 md:py-20 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Side (Text) -->
+            <div class="lg:col-span-7 flex flex-col gap-4">
+                <!-- Breadcrumb -->
+                <div class="text-xs text-slate-400 font-medium tracking-wide">
+                    Home &gt; Student Clubs &gt; <span class="text-slate-200">Cinematic Club</span>
+                </div>
+
+                <!-- Two Pill-shaped Badges -->
+                <div class="flex flex-wrap items-center gap-3 pt-1">
+                    <span class="bg-accentYellow text-slate-900 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                        STUDENT ACTIVITY CENTER (SAC)
+                    </span>
+                    <span class="bg-slate-800 text-slate-200 border border-slate-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Culture &amp; Arts
+                    </span>
+                </div>
+
+                <!-- Heading -->
+                <h1 class="font-poppins font-bold text-3xl sm:text-4xl md:text-[48px] leading-tight text-white pt-2">
+                    Cinematic Club
+                </h1>
+
+                <!-- Paragraph (Max 3 lines, left-aligned) -->
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl font-inter">
+                    Celebrating visual storytelling, cinematic appreciation, filmmaking craft, and media artistry through curated screenings, production workshops, and analytical discussions.
+                </p>
+            </div>
+
+            <!-- Right Side (Image / Visual Box) -->
+            <div class="lg:col-span-5 flex flex-col items-center lg:items-end justify-center">
+                <div class="relative w-full max-w-sm bg-orange-600/20 p-6 rounded-xl border border-orange-500/30 shadow-xl flex flex-col items-center text-center backdrop-blur-sm">
+                    <!-- Official Club Logo inside an Orange square box -->
+                    <div class="w-full h-44 rounded-lg overflow-hidden mb-4 border border-orange-500/40 relative bg-navyPrimary flex items-center justify-center">
+                        <img src="https://placehold.co/400x250/0F172A/F97316?text=Cinematic+Club+CSE" alt="Cinematic Club Logo" class="w-full h-full object-cover transform hover:scale-105 transition-all-custom duration-500" onerror="this.src='https://placehold.co/400x250/1E293B/FFFFFF?text=Cinematic+Club'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-3">
+                            <span class="text-white text-xs font-semibold tracking-wider"><i class="fa-solid fa-film text-accentOrange mr-1"></i> Art of Visual Media</span>
+                        </div>
+                    </div>
+                    <!-- Small tag below -->
+                    <div class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-full border border-slate-700">
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse"></span>
+                        <span class="text-xs font-semibold text-slate-200 tracking-wide uppercase">OFFICIAL CSE CLUB</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. Vision & Objectives Section (2-Column Grid) -->
+    <section id="about" class="py-16 px-4 sm:px-8 bg-offWhiteBg">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+            
+            <!-- Left Column (60% Width -> lg:col-span-7) -->
+            <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-all-custom">
+                <div>
+                    <!-- Badge -->
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+                        VISION &amp; OBJECTIVES
+                    </span>
+                    <h2 class="font-poppins font-bold text-2xl md:text-3xl text-darkSlate mb-6">
+                        About Cinematic Club
+                    </h2>
+                    <div class="space-y-4 text-slate-600 text-sm md:text-base leading-[1.6]">
+                        <p>
+                            The Cinematic Club at SRGI CSE Jhansi serves as an artistic haven for movie enthusiasts, aspiring directors, and media creators. We explore the profound impact of cinema as a cultural medium, bridging analytical critique with hands-on digital production.
+                        </p>
+                        <p>
+                            Through engaging film screenings, masterclasses, screenplay labs, and collaborative short-film projects, we empower engineering scholars to articulate diverse narratives and master modern visual technologies.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-4 border-t border-slate-100 flex items-center gap-4 text-xs font-semibold text-slate-500">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-accentOrange"></i> Media Literacy</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-accentOrange"></i> Creative Production</span>
+                </div>
+            </div>
+
+            <!-- Right Column (40% Width -> lg:col-span-5) -->
+            <div class="lg:col-span-5 bg-navyPrimary text-white p-8 sm:p-10 rounded-[12px] shadow-lg flex flex-col justify-between">
+                <div>
+                    <!-- Badge -->
+                    <span class="inline-block bg-slate-800 text-accentOrange text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4 border border-slate-700">
+                        ACTIVITY HIGHLIGHTS
+                    </span>
+                    <h3 class="font-poppins font-bold text-xl md:text-2xl text-white mb-4">
+                        Empowering Future Achievers
+                    </h3>
+                    <p class="text-slate-300 text-sm leading-[1.6] mb-8 font-inter">
+                        Our student-driven initiatives combine hands-on technical workshops with faculty mentorship, preparing members for competitive media festivals and creative industries.
+                    </p>
+                </div>
+                <!-- Card Footer: 2 columns -->
+                <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-800 text-xs text-slate-400">
+                    <div>
+                        <span class="block text-slate-500 uppercase tracking-wider mb-1 font-semibold">DOMAIN AREA</span>
+                        <span class="text-slate-200 font-medium">Culture &amp; Arts</span>
+                    </div>
+                    <div>
+                        <span class="block text-slate-500 uppercase tracking-wider mb-1 font-semibold">AFFILIATION</span>
+                        <span class="text-slate-200 font-medium">SAC &bull; CSE Jhansi</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. Core Activities Section (3x2 Grid Layout) -->
+    <section class="py-16 px-4 sm:px-8 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="font-poppins font-bold text-2xl md:text-3xl text-darkSlate mb-3">
+                    Key Pillars &amp; Initiatives
+                </h2>
+                <p class="text-slate-600 text-sm md:text-base leading-[1.6]">
+                    Explore our core cinematic disciplines designed to foster film appreciation, technical production craft, and creative exploration.
+                </p>
+            </div>
+
+            <!-- 3x2 Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1 (Screenings & Discussions) -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-1 transition-all-custom flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-orange-50 text-accentOrange flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <h3 class="font-poppins font-bold text-lg text-darkSlate mb-4">
+                            Screenings &amp; Discussions
+                        </h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Curated Screenings</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Moderated Cine-Talks</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Film Review Writing</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-accentOrange">
+                        Appreciation Module
+                    </div>
+                </div>
+
+                <!-- Card 2 (Production & Filmmaking) -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-1 transition-all-custom flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-orange-50 text-accentOrange flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h3 class="font-poppins font-bold text-lg text-darkSlate mb-4">
+                            Production &amp; Filmmaking
+                        </h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Short Films &amp; Documentaries</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Screenplay Labs</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Directorial Mentorship</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-accentOrange">
+                        Creation Module
+                    </div>
+                </div>
+
+                <!-- Card 3 (Workshops & Seminars) -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-1 transition-all-custom flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-orange-50 text-accentOrange flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-microphone-lines"></i>
+                        </div>
+                        <h3 class="font-poppins font-bold text-lg text-darkSlate mb-4">
+                            Workshops &amp; Seminars
+                        </h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Digital Editing &amp; Post</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Cinematography &amp; Lighting</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Sound Design &amp; Film Theory</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-accentOrange">
+                        Technical Module
+                    </div>
+                </div>
+
+                <!-- Card 4 (Trivia & Entertainment) -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-1 transition-all-custom flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-orange-50 text-accentOrange flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h3 class="font-poppins font-bold text-lg text-darkSlate mb-4">
+                            Trivia &amp; Entertainment
+                        </h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Movie Trivia Quizzes</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Character Role-Plays</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Film Marathons</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-accentOrange">
+                        Engagement Module
+                    </div>
+                </div>
+
+                <!-- Card 5 (Industry Interaction) -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-1 transition-all-custom flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-orange-50 text-accentOrange flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h3 class="font-poppins font-bold text-lg text-darkSlate mb-4">
+                            Industry Interaction
+                        </h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Director &amp; Producer Talks</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Studio &amp; Set Visits</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Film Festival Submissions</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-accentOrange">
+                        Professional Module
+                    </div>
+                </div>
+
+                <!-- Card 6 (Themed Nights & Critique) -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-1 transition-all-custom flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-orange-50 text-accentOrange flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+                        <h3 class="font-poppins font-bold text-lg text-darkSlate mb-4">
+                            Themed Nights &amp; Critique
+                        </h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Themed Experiences</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Cinematic Debates</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-accentOrange mt-1 shrink-0"></i>
+                                <span>Film Critic Circles</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-accentOrange">
+                        Critique Module
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. Footer (Bottom Section - 5 Columns) -->
+    <footer class="bg-navyPrimary text-white pt-16 pb-8 px-4 sm:px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+            
+            <!-- Col 1: SRGI Logo + Accreditations -->
+            <div class="lg:col-span-1 flex flex-col gap-4">
+                <div class="font-poppins font-bold text-xl text-white tracking-wider">
+                    SRGI <span class="text-accentOrange text-sm block font-normal">CSE Jhansi</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed font-inter">
+                    Excellence in technical education, fostering innovation, cultural expression, artistic excellence, and professional ethics.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="bg-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded border border-slate-700">AICTE</span>
+                    <span class="bg-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded border border-slate-700">AKTU</span>
+                    <span class="bg-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded border border-slate-700">BTE UP</span>
+                </div>
+            </div>
+
+            <!-- Col 2: Campus Links -->
+            <div class="flex flex-col gap-3">
+                <h4 class="font-poppins font-semibold text-sm text-white uppercase tracking-wider mb-2">Campus Links</h4>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">SRGI Campus</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">CSE Student Clubs</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Location Map</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Infrastructure</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Hostels &amp; Facilities</a>
+            </div>
+
+            <!-- Col 3: About CSE -->
+            <div class="flex flex-col gap-3">
+                <h4 class="font-poppins font-semibold text-sm text-white uppercase tracking-wider mb-2">About CSE</h4>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Chairman's Message</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Director's Message</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Heritage of Excellence</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Educational Philosophy</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Why Choose SRGI</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Departments</a>
+            </div>
+
+            <!-- Col 4: Quick Links -->
+            <div class="flex flex-col gap-3">
+                <h4 class="font-poppins font-semibold text-sm text-white uppercase tracking-wider mb-2">Quick Links</h4>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Admissions 2026</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Training &amp; Placement</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">R&amp;D Cell</a>
+                <a href="#" class="text-xs text-slate-400 hover:text-accentOrange transition-all-custom">Career Opportunities</a>
+            </div>
+
+            <!-- Col 5: Follow Us -->
+            <div class="flex flex-col gap-3">
+                <h4 class="font-poppins font-semibold text-sm text-white uppercase tracking-wider mb-2">Follow Us</h4>
+                <div class="flex items-center gap-3 pt-1">
+                    <a href="#" class="w-9 h-9 rounded-full bg-white text-navyPrimary flex items-center justify-center hover:bg-accentOrange hover:text-white transition-all-custom shadow" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f text-sm"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white text-navyPrimary flex items-center justify-center hover:bg-accentOrange hover:text-white transition-all-custom shadow" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram text-sm"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white text-navyPrimary flex items-center justify-center hover:bg-accentOrange hover:text-white transition-all-custom shadow" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+            <div>
+                &copy; 2026 College of Science &amp; Engineering (CSE), Jhansi. All Rights Reserved.
+            </div>
+            <div>
+                Managed by Act T Connect
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive script for mobile menu toggle & smooth interactions -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

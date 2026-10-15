@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty & Staff Directory - Riverside University</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.9)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .faculty-card {
+            transition: all 0.3s ease;
+        }
+        .faculty-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="bg-[#0a192f] text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-9 h-9 bg-red-600 text-white flex items-center justify-center rounded-lg font-extrabold text-lg">R</div>
+                <div class="flex flex-col">
+                    <span class="text-base font-extrabold text-white tracking-tight leading-tight">Riverside University</span>
+                    <span class="text-[10px] text-slate-400">Learn • Grow • Build Your Future</span>
+                </div>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#" class="hover:text-red-500 transition">Home</a>
+                <a href="#" class="hover:text-red-500 transition">About Us</a>
+                <a href="#" class="hover:text-red-500 transition">Academics</a>
+                <a href="#" class="hover:text-red-500 transition">Admissions</a>
+                <a href="#" class="hover:text-red-500 transition">Campus Life</a>
+                <a href="#" class="hover:text-red-500 transition">Research</a>
+                <a href="#" class="text-red-500 font-bold border-b-2 border-red-500 pb-1">Faculty & Staff</a>
+                <a href="#" class="hover:text-red-500 transition">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-search text-slate-300 cursor-pointer hover:text-red-500"></i>
+                <a href="#" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition">Apply Now &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-bg text-white py-12 px-4 sm:px-8 relative overflow-hidden" data-aos="fade-down">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="max-w-2xl">
+                <div class="flex items-center space-x-2 text-xs text-slate-400 mb-3">
+                    <a href="#" class="hover:text-white">Home</a> <span>&gt;</span>
+                    <span class="text-white font-semibold">Faculty & Staff Directory</span>
+                </div>
+                <div class="text-xs uppercase tracking-wider text-amber-400 font-bold mb-1 bg-white/10 px-3 py-1 rounded-full inline-block backdrop-blur-md">
+                    Academic Excellence & Mentorship
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3">Faculty & Staff Directory</h1>
+                <p class="text-xs sm:text-sm text-slate-300">
+                    Experienced Educators, Academic Mentors & Technical Experts
+                </p>
+            </div>
+            <div class="hidden md:block text-right opacity-80">
+                <div class="text-xl font-extrabold text-amber-400 italic">Great Minds<br>Shape a<br>Better Tomorrow</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- FILTER BUTTONS BAR -->
+        <div class="flex flex-wrap gap-2 mb-8 bg-white p-3 rounded-2xl shadow-sm border border-slate-200" data-aos="fade-up">
+            <button onclick="filterFaculty('all')" class="filter-btn bg-[#0a192f] text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition">All Members</button>
+            <button onclick="filterFaculty('leadership')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-lg transition">Leadership</button>
+            <button onclick="filterFaculty('cse')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-lg transition">Computer Science</button>
+            <button onclick="filterFaculty('eee')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-lg transition">Electrical Engg</button>
+            <button onclick="filterFaculty('mech')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-lg transition">Mechanical Engg</button>
+            <button onclick="filterFaculty('civil')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-lg transition">Civil Engg</button>
+            <button onclick="filterFaculty('others')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-lg transition">Others</button>
+        </div>
+
+        <!-- FACULTY GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="facultyGrid" data-aos="fade-up">
+
+            <!-- Card 1: Dr. Rajesh Kumar -->
+            <div class="faculty-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between" data-category="leadership">
+                <div>
+                    <div class="bg-[#0a192f] text-white p-4 relative">
+                        <span class="absolute top-2 right-2 bg-red-600 text-[9px] font-bold px-2 py-0.5 rounded uppercase">Leadership</span>
+                        <div class="w-20 h-20 bg-slate-800 rounded-xl mx-auto flex items-center justify-center font-bold text-slate-400 text-xs border border-slate-700 mb-2">IMG</div>
+                        <div class="text-center">
+                            <h3 class="font-extrabold text-sm text-white">Dr. Rajesh Kumar</h3>
+                            <p class="text-[11px] text-amber-400 font-medium">Vice Chancellor</p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-1.5 text-[11px] text-slate-600">
+                        <div class="flex justify-between"><span>Qualification</span><span class="font-bold text-slate-800">: Ph.D. (IIT Delhi)</span></div>
+                        <div class="flex justify-between"><span>Experience</span><span class="font-bold text-slate-800">: 20+ Years</span></div>
+                        <div class="flex justify-between"><span>Specialization</span><span class="font-bold text-slate-800">: Interface Learning</span></div>
+                        <div class="flex justify-between"><span>Email ID</span><span class="font-bold text-slate-800 truncate max-w-[130px]">: vc@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Contact No.</span><span class="font-bold text-slate-800">: +91 98765 43210</span></div>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
+                    <a href="#" class="text-xs font-bold text-[#0a192f] hover:text-red-600 transition flex items-center justify-center space-x-1">
+                        <i class="fas fa-user text-[10px]"></i><span>View Profile Details</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Dr. Sneha Patel -->
+            <div class="faculty-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between" data-category="cse">
+                <div>
+                    <div class="bg-[#0a192f] text-white p-4 relative">
+                        <span class="absolute top-2 right-2 bg-blue-600 text-[9px] font-bold px-2 py-0.5 rounded uppercase">CSE</span>
+                        <div class="w-20 h-20 bg-slate-200 rounded-xl mx-auto flex items-center justify-center text-slate-400 text-xl border border-slate-300 mb-2"><i class="fas fa-user"></i></div>
+                        <div class="text-center">
+                            <h3 class="font-extrabold text-sm text-white">Dr. Sneha Patel</h3>
+                            <p class="text-[11px] text-amber-400 font-medium">Dean, Academic Affairs</p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-1.5 text-[11px] text-slate-600">
+                        <div class="flex justify-between"><span>Qualification</span><span class="font-bold text-slate-800">: Ph.D. (IIT Bombay)</span></div>
+                        <div class="flex justify-between"><span>Experience</span><span class="font-bold text-slate-800">: 16+ Years</span></div>
+                        <div class="flex justify-between"><span>Specialization</span><span class="font-bold text-slate-800">: Data Structures & Algor.</span></div>
+                        <div class="flex justify-between"><span>Email ID</span><span class="font-bold text-slate-800 truncate max-w-[130px]">: dean.acad@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Contact No.</span><span class="font-bold text-slate-800">: +91 98765 43211</span></div>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
+                    <a href="#" class="text-xs font-bold text-[#0a192f] hover:text-red-600 transition flex items-center justify-center space-x-1">
+                        <i class="fas fa-user text-[10px]"></i><span>View Profile Details</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: Prof. Amit Sharma -->
+            <div class="faculty-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between" data-category="leadership">
+                <div>
+                    <div class="bg-[#0a192f] text-white p-4 relative">
+                        <span class="absolute top-2 right-2 bg-red-600 text-[9px] font-bold px-2 py-0.5 rounded uppercase">Leadership</span>
+                        <div class="w-20 h-20 bg-slate-800 rounded-xl mx-auto flex items-center justify-center font-bold text-slate-400 text-xs border border-slate-700 mb-2">IMG</div>
+                        <div class="text-center">
+                            <h3 class="font-extrabold text-sm text-white">Prof. Amit Sharma</h3>
+                            <p class="text-[11px] text-amber-400 font-medium">Registrar</p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-1.5 text-[11px] text-slate-600">
+                        <div class="flex justify-between"><span>Qualification</span><span class="font-bold text-slate-800">: M.Tech (IIT Roorkee)</span></div>
+                        <div class="flex justify-between"><span>Experience</span><span class="font-bold text-slate-800">: 18+ Years</span></div>
+                        <div class="flex justify-between"><span>Specialization</span><span class="font-bold text-slate-800">: Higher Education Admin</span></div>
+                        <div class="flex justify-between"><span>Email ID</span><span class="font-bold text-slate-800 truncate max-w-[130px]">: registrar@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Contact No.</span><span class="font-bold text-slate-800">: +91 98765 43212</span></div>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
+                    <a href="#" class="text-xs font-bold text-[#0a192f] hover:text-red-600 transition flex items-center justify-center space-x-1">
+                        <i class="fas fa-user text-[10px]"></i><span>View Profile Details</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4: Dr. Pooja Verma -->
+            <div class="faculty-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between" data-category="mech">
+                <div>
+                    <div class="bg-[#0a192f] text-white p-4 relative">
+                        <span class="absolute top-2 right-2 bg-emerald-600 text-[9px] font-bold px-2 py-0.5 rounded uppercase">ME</span>
+                        <div class="w-20 h-20 bg-slate-200 rounded-xl mx-auto flex items-center justify-center text-slate-400 text-xl border border-slate-300 mb-2"><i class="fas fa-user"></i></div>
+                        <div class="text-center">
+                            <h3 class="font-extrabold text-sm text-white">Dr. Pooja Verma</h3>
+                            <p class="text-[11px] text-amber-400 font-medium">Professor</p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-1.5 text-[11px] text-slate-600">
+                        <div class="flex justify-between"><span>Qualification</span><span class="font-bold text-slate-800">: Ph.D. (IIT Kanpur)</span></div>
+                        <div class="flex justify-between"><span>Experience</span><span class="font-bold text-slate-800">: 14+ Years</span></div>
+                        <div class="flex justify-between"><span>Specialization</span><span class="font-bold text-slate-800">: Thermal Engineering</span></div>
+                        <div class="flex justify-between"><span>Email ID</span><span class="font-bold text-slate-800 truncate max-w-[130px]">: pooja.verma@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Contact No.</span><span class="font-bold text-slate-800">: +91 98765 43213</span></div>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
+                    <a href="#" class="text-xs font-bold text-[#0a192f] hover:text-red-600 transition flex items-center justify-center space-x-1">
+                        <i class="fas fa-user text-[10px]"></i><span>View Profile Details</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 5: Dr. Vikram Singh -->
+            <div class="faculty-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between" data-category="cse">
+                <div>
+                    <div class="bg-[#0a192f] text-white p-4 relative">
+                        <span class="absolute top-2 right-2 bg-blue-600 text-[9px] font-bold px-2 py-0.5 rounded uppercase">CSE</span>
+                        <div class="w-20 h-20 bg-slate-200 rounded-xl mx-auto flex items-center justify-center text-slate-400 text-xl border border-slate-300 mb-2"><i class="fas fa-user"></i></div>
+                        <div class="text-center">
+                            <h3 class="font-extrabold text-sm text-white">Dr. Vikram Singh</h3>
+                            <p class="text-[11px] text-amber-400 font-medium">Associate Professor</p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-1.5 text-[11px] text-slate-600">
+                        <div class="flex justify-between"><span>Qualification</span><span class="font-bold text-slate-800">: Ph.D. (BITS Pilani)</span></div>
+                        <div class="flex justify-between"><span>Experience</span><span class="font-bold text-slate-800">: 12+ Years</span></div>
+                        <div class="flex justify-between"><span>Specialization</span><span class="font-bold text-slate-800">: Web Technologies</span></div>
+                        <div class="flex justify-between"><span>Email ID</span><span class="font-bold text-slate-800 truncate max-w-[130px]">: vikram.singh@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Contact No.</span><span class="font-bold text-slate-800">: +91 98765 43214</span></div>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
+                    <a href="#" class="text-xs font-bold text-[#0a192f] hover:text-red-600 transition flex items-center justify-center space-x-1">
+                        <i class="fas fa-user text-[10px]"></i><span>View Profile Details</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 6: Dr. Anjali Mehta -->
+            <div class="faculty-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between" data-category="eee">
+                <div>
+                    <div class="bg-[#0a192f] text-white p-4 relative">
+                        <span class="absolute top-2 right-2 bg-amber-600 text-[9px] font-bold px-2 py-0.5 rounded uppercase">EEE</span>
+                        <div class="w-20 h-20 bg-slate-200 rounded-xl mx-auto flex items-center justify-center text-slate-400 text-xl border border-slate-300 mb-2"><i class="fas fa-user"></i></div>
+                        <div class="text-center">
+                            <h3 class="font-extrabold text-sm text-white">Dr. Anjali Mehta</h3>
+                            <p class="text-[11px] text-amber-400 font-medium">Assistant Professor</p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-1.5 text-[11px] text-slate-600">
+                        <div class="flex justify-between"><span>Qualification</span><span class="font-bold text-slate-800">: M.Tech (IIT Delhi)</span></div>
+                        <div class="flex justify-between"><span>Experience</span><span class="font-bold text-slate-800">: 7+ Years</span></div>
+                        <div class="flex justify-between"><span>Specialization</span><span class="font-bold text-slate-800">: Power Systems</span></div>
+                        <div class="flex justify-between"><span>Email ID</span><span class="font-bold text-slate-800 truncate max-w-[130px]">: anjali.mehta@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Contact No.</span><span class="font-bold text-slate-800">: +91 98765 43215</span></div>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
+                    <a href="#" class="text-xs font-bold text-[#0a192f] hover:text-red-600 transition flex items-center justify-center space-x-1">
+                        <i class="fas fa-user text-[10px]"></i><span>View Profile Details</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 7: Prof. Rohan Desai -->
+            <div class="faculty-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between" data-category="civil">
+                <div>
+                    <div class="bg-[#0a192f] text-white p-4 relative">
+                        <span class="absolute top-2 right-2 bg-indigo-600 text-[9px] font-bold px-2 py-0.5 rounded uppercase">CE</span>
+                        <div class="w-20 h-20 bg-slate-200 rounded-xl mx-auto flex items-center justify-center text-slate-400 text-xl border border-slate-300 mb-2"><i class="fas fa-user"></i></div>
+                        <div class="text-center">
+                            <h3 class="font-extrabold text-sm text-white">Prof. Rohan Desai</h3>
+                            <p class="text-[11px] text-amber-400 font-medium">Assistant Professor</p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-1.5 text-[11px] text-slate-600">
+                        <div class="flex justify-between"><span>Qualification</span><span class="font-bold text-slate-800">: M.Tech (IIT Bombay)</span></div>
+                        <div class="flex justify-between"><span>Experience</span><span class="font-bold text-slate-800">: 9+ Years</span></div>
+                        <div class="flex justify-between"><span>Specialization</span><span class="font-bold text-slate-800">: Geotechnical Engg.</span></div>
+                        <div class="flex justify-between"><span>Email ID</span><span class="font-bold text-slate-800 truncate max-w-[130px]">: rohan.desai@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Contact No.</span><span class="font-bold text-slate-800">: +91 98765 43216</span></div>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
+                    <a href="#" class="text-xs font-bold text-[#0a192f] hover:text-red-600 transition flex items-center justify-center space-x-1">
+                        <i class="fas fa-user text-[10px]"></i><span>View Profile Details</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 8: Dr. Kavita Iyer -->
+            <div class="faculty-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between" data-category="mech">
+                <div>
+                    <div class="bg-[#0a192f] text-white p-4 relative">
+                        <span class="absolute top-2 right-2 bg-emerald-600 text-[9px] font-bold px-2 py-0.5 rounded uppercase">ME</span>
+                        <div class="w-20 h-20 bg-slate-200 rounded-xl mx-auto flex items-center justify-center text-slate-400 text-xl border border-slate-300 mb-2"><i class="fas fa-user"></i></div>
+                        <div class="text-center">
+                            <h3 class="font-extrabold text-sm text-white">Dr. Kavita Iyer</h3>
+                            <p class="text-[11px] text-amber-400 font-medium">Assistant Professor</p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-1.5 text-[11px] text-slate-600">
+                        <div class="flex justify-between"><span>Qualification</span><span class="font-bold text-slate-800">: Ph.D. (IIT Madras)</span></div>
+                        <div class="flex justify-between"><span>Experience</span><span class="font-bold text-slate-800">: 8+ Years</span></div>
+                        <div class="flex justify-between"><span>Specialization</span><span class="font-bold text-slate-800">: Manufacturing Systems</span></div>
+                        <div class="flex justify-between"><span>Email ID</span><span class="font-bold text-slate-800 truncate max-w-[130px]">: kavita.iyer@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Contact No.</span><span class="font-bold text-slate-800">: +91 98765 43217</span></div>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
+                    <a href="#" class="text-xs font-bold text-[#0a192f] hover:text-red-600 transition flex items-center justify-center space-x-1">
+                        <i class="fas fa-user text-[10px]"></i><span>View Profile Details</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0a192f] text-slate-300 text-xs pt-12 pb-6 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+            <div>
+                <div class="flex items-center space-x-2 mb-2">
+                    <div class="w-7 h-7 bg-red-600 text-white flex items-center justify-center rounded font-bold text-xs">R</div>
+                    <span class="font-bold text-white text-sm">Riverside University</span>
+                </div>
+                <p class="text-[11px] text-slate-400">Learn • Grow • Build Your Future.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-2">Quick Links</h4>
+                <ul class="space-y-1 text-slate-400 text-[11px]">
+                    <li><a href="#" class="hover:text-white">Home</a></li>
+                    <li><a href="#" class="hover:text-white">About Us</a></li>
+                    <li><a href="#" class="hover:text-white">Academics</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-2">Accreditations</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-800 px-2 py-1 rounded text-[10px]">NAAC A+</span>
+                    <span class="bg-slate-800 px-2 py-1 rounded text-[10px]">UGC</span>
+                    <span class="bg-slate-800 px-2 py-1 rounded text-[10px]">AICTE</span>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-2">Follow Us</h4>
+                <div class="flex space-x-3 text-slate-400 text-sm mt-1">
+                    <a href="#" class="hover:text-red-500"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-red-500"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-red-500"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 flex flex-col sm:flex-row justify-between text-[10px] text-slate-500">
+            <div>© 2025 Riverside University. All rights reserved.</div>
+            <div class="space-x-3 mt-2 sm:mt-0">
+                <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+                <a href="#" class="hover:text-slate-400">Terms & Conditions</a>
+                <a href="#" class="hover:text-slate-400">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS & FILTER SCRIPT -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        function filterFaculty(category) {
+            const cards = document.querySelectorAll('.faculty-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-[#0a192f]', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            event.target.classList.remove('bg-slate-100', 'text-slate-700');
+            event.target.classList.add('bg-[#0a192f]', 'text-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

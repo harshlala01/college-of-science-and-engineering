@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undergraduate Courses (B.Tech) - Riverside University</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.9)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .program-card {
+            transition: all 0.3s ease;
+        }
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="bg-[#0a192f] text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-9 h-9 bg-red-600 text-white flex items-center justify-center rounded-lg font-extrabold text-lg">R</div>
+                <div class="flex flex-col">
+                    <span class="text-base font-extrabold text-white tracking-tight leading-tight">Riverside University</span>
+                    <span class="text-[10px] text-slate-400">Learn • Grow • Build Your Future</span>
+                </div>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#" class="hover:text-red-500 transition">Home</a>
+                <a href="#" class="hover:text-red-500 transition">About Us</a>
+                <a href="#" class="text-red-500 font-bold border-b-2 border-red-500 pb-1">Academics</a>
+                <a href="#" class="hover:text-red-500 transition">Admissions</a>
+                <a href="#" class="hover:text-red-500 transition">Campus Life</a>
+                <a href="#" class="hover:text-red-500 transition">Research</a>
+                <a href="#" class="hover:text-red-500 transition">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-search text-slate-300 cursor-pointer hover:text-red-500"></i>
+                <a href="#" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition">Apply Now &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-bg text-white py-12 px-4 sm:px-8 relative overflow-hidden" data-aos="fade-down">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="max-w-2xl">
+                <div class="flex items-center space-x-2 text-xs text-slate-400 mb-3">
+                    <a href="#" class="hover:text-white">Home</a> <span>&gt;</span>
+                    <a href="#" class="hover:text-white">Academics</a> <span>&gt;</span>
+                    <a href="#" class="hover:text-white">Undergraduate Courses</a> <span>&gt;</span>
+                    <span class="text-white font-semibold">B.Tech</span>
+                </div>
+                <div class="text-xs uppercase tracking-wider text-amber-400 font-bold mb-1">
+                    <i class="fas fa-gear mr-1"></i> Engineering - Undergraduate
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">Undergraduate Courses (B.Tech)</h1>
+                <div class="inline-flex items-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-xs font-semibold">
+                    <i class="fas fa-graduation-cap mr-2 text-amber-400"></i> 4-Year Engineering Degree Programmes
+                </div>
+            </div>
+            <div class="hidden md:block text-right opacity-80">
+                <div class="text-2xl font-extrabold text-amber-400 italic">Innovate<br>Build<br>Lead</div>
+                <div class="text-xs text-slate-300">for a Better Tomorrow</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- LEFT COLUMN: PROGRAM INFO -->
+            <div class="lg:col-span-8 space-y-8" data-aos="fade-up">
+                
+                <!-- Overview -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-extrabold text-[#0a192f] mb-2">Bachelor of Technology (B.Tech)</h2>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Our B.Tech program is designed to build strong technical foundations, foster innovation, and prepare students for successful careers in a rapidly evolving global environment.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
+                        <!-- Program Aims -->
+                        <div>
+                            <div class="flex items-center space-x-2 text-red-600 font-bold text-sm mb-3">
+                                <i class="fas fa-bullseye"></i>
+                                <span>Program Aims</span>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-600">
+                                <li class="flex items-start space-x-2"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Provide industry-relevant and future-ready curriculum</span></li>
+                                <li class="flex items-start space-x-2"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Develop problem-solving and critical thinking skills</span></li>
+                                <li class="flex items-start space-x-2"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Encourage innovation, research and entrepreneurship</span></li>
+                                <li class="flex items-start space-x-2"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Prepare students for global career opportunities</span></li>
+                                <li class="flex items-start space-x-2"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Build ethical, responsible and socially conscious engineers</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Core Subjects -->
+                        <div>
+                            <div class="flex items-center space-x-2 text-red-600 font-bold text-sm mb-3">
+                                <i class="fas fa-book-open"></i>
+                                <span>Core Subjects</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-2 text-xs text-slate-600">
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Engineering Mathematics</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Computer Systems & Networks</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Programming & Data Structures</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>AI, Data Science & Analytics</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Digital Electronics</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Communication Skills</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Engineering Physics & Chemistry</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Project-Based Learning</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Design & Engineering Practice</span></div>
+                                <div class="flex items-start space-x-1.5"><i class="fas fa-check-circle text-red-500 mt-0.5"></i><span>Industry Internships & Training</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: APPLY NOW FORM -->
+            <div class="lg:col-span-4" data-aos="fade-left">
+                <div class="bg-[#0a192f] text-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-lg font-extrabold mb-1">Apply Now for B.Tech</h3>
+                    <p class="text-xs text-slate-300 mb-4">Take the first step towards a brighter future</p>
+
+                    <form onsubmit="event.preventDefault(); alert('Application Submitted Successfully!');" class="space-y-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">Full Name *</label>
+                            <input type="text" placeholder="Enter your full name" required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">Email Address *</label>
+                            <input type="email" placeholder="Enter your email address" required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-300 mb-1">Mobile Number *</label>
+                                <input type="tel" placeholder="Enter 10 digit number" required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-300 mb-1">State *</label>
+                                <select required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 focus:outline-none focus:border-red-500">
+                                    <option value="">Select state</option>
+                                    <option>Karnataka</option>
+                                    <option>Maharashtra</option>
+                                    <option>Delhi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-300 mb-1">City *</label>
+                                <select required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 focus:outline-none focus:border-red-500">
+                                    <option value="">Select city</option>
+                                    <option>Bangalore</option>
+                                    <option>Mumbai</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-300 mb-1">Interested Course *</label>
+                                <input type="text" value="B.Tech" readonly class="w-full text-xs px-3 py-2 rounded-lg bg-slate-800/50 border border-slate-700 text-slate-400">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-300 mb-1">Specialization *</label>
+                                <select required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 focus:outline-none focus:border-red-500">
+                                    <option value="">Select specialization</option>
+                                    <option>Computer Science (CSE)</option>
+                                    <option>AI & Machine Learning</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-300 mb-1">3 + 7 = ? *</label>
+                                <input type="text" placeholder="Enter answer" required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-2.5 rounded-lg shadow transition mt-2">
+                            Apply Now &rarr;
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- B.TECH PROGRAMMES GRID -->
+        <div class="mt-12" data-aos="fade-up">
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-[#0a192f]">Our B.Tech Programmes</h2>
+                </div>
+                <div class="text-right">
+                    <span class="text-xs font-bold text-red-600 uppercase bg-red-50 px-3 py-1 rounded-full">
+                        <i class="fas fa-gear mr-1"></i> 9 Engineering Specializations
+                    </span>
+                    <p class="text-[11px] text-slate-500 mt-1">Choose your path to a successful career</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                
+                <!-- Card 1 -->
+                <div id="program-cse" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3 flex justify-between items-center">
+                        <h3 class="font-bold text-xs">B.Tech in Computer Science & Engineering (CSE)</h3>
+                        <a href="club-detail.html?course=cse" class="text-xs hover:text-red-400">&rarr;</a>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-CSE</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                        <div class="flex justify-between"><span>Location</span><span class="font-bold text-slate-800">: Main Campus</span></div>
+                        <div class="flex justify-between"><span>Email</span><span class="font-bold text-slate-800">: cse@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Specializations</span><span class="font-bold text-slate-800">: AI, ML, Software Engineering</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div id="program-aiml" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3 flex justify-between items-center">
+                        <h3 class="font-bold text-xs">B.Tech in Artificial Intelligence & Machine Learning (AIML)</h3>
+                        <a href="club-detail.html?course=aiml" class="text-xs hover:text-red-400">&rarr;</a>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-AIML</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                        <div class="flex justify-between"><span>Location</span><span class="font-bold text-slate-800">: Main Campus</span></div>
+                        <div class="flex justify-between"><span>Email</span><span class="font-bold text-slate-800">: aiml@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Specializations</span><span class="font-bold text-slate-800">: Machine Learning, Deep Learning</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div id="program-ds" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3 flex justify-between items-center">
+                        <h3 class="font-bold text-xs">B.Tech in Data Science & Analytics (DS)</h3>
+                        <a href="club-detail.html?course=ds" class="text-xs hover:text-red-400">&rarr;</a>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-DS</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                        <div class="flex justify-between"><span>Location</span><span class="font-bold text-slate-800">: Main Campus</span></div>
+                        <div class="flex justify-between"><span>Email</span><span class="font-bold text-slate-800">: ds@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Specializations</span><span class="font-bold text-slate-800">: Data Analytics, Big Data</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div id="program-cyber-security" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3 flex justify-between items-center">
+                        <h3 class="font-bold text-xs">B.Tech in Cyber Security (CS)</h3>
+                        <a href="club-detail.html?course=cs" class="text-xs hover:text-red-400">&rarr;</a>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-CS</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                        <div class="flex justify-between"><span>Location</span><span class="font-bold text-slate-800">: Main Campus</span></div>
+                        <div class="flex justify-between"><span>Email</span><span class="font-bold text-slate-800">: cybersecurity@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Specializations</span><span class="font-bold text-slate-800">: Network Security, Ethical Hacking</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div id="program-iot" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3 flex justify-between items-center">
+                        <h3 class="font-bold text-xs">B.Tech in Internet of Things (IoT)</h3>
+                        <a href="club-detail.html?course=iot" class="text-xs hover:text-red-400">&rarr;</a>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-IOT</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                        <div class="flex justify-between"><span>Location</span><span class="font-bold text-slate-800">: Main Campus</span></div>
+                        <div class="flex justify-between"><span>Email</span><span class="font-bold text-slate-800">: iot@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Specializations</span><span class="font-bold text-slate-800">: IoT, Embedded Systems</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div id="program-ee" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3 flex justify-between items-center">
+                        <h3 class="font-bold text-xs">B.Tech in Electronics & Electrical Engineering (EEE)</h3>
+                        <a href="club-detail.html?course=eee" class="text-xs hover:text-red-400">&rarr;</a>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-EEE</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                        <div class="flex justify-between"><span>Location</span><span class="font-bold text-slate-800">: Main Campus</span></div>
+                        <div class="flex justify-between"><span>Email</span><span class="font-bold text-slate-800">: eee@riverside.edu.in</span></div>
+                        <div class="flex justify-between"><span>Specializations</span><span class="font-bold text-slate-800">: VLSI, Power Systems</span></div>
+                    </div>
+                </div>
+
+                <div id="program-cst" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3">
+                        <h3 class="font-bold text-xs">B.Tech in Computer Science & Technology (CST)</h3>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-CST</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                    </div>
+                </div>
+
+                <div id="program-me" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3">
+                        <h3 class="font-bold text-xs">B.Tech in Mechanical Engineering (ME)</h3>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-ME</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                    </div>
+                </div>
+
+                <div id="program-ce" class="program-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
+                    <div class="bg-[#0a192f] text-white p-3 -m-4 mb-3">
+                        <h3 class="font-bold text-xs">B.Tech in Civil Engineering (CE)</h3>
+                    </div>
+                    <div class="space-y-1 text-[11px] text-slate-600 mt-4">
+                        <div class="flex justify-between"><span>Program Code</span><span class="font-bold text-slate-800">: BTECH-CE</span></div>
+                        <div class="flex justify-between"><span>Credential Type</span><span class="font-bold text-slate-800">: B.Tech (4 Years)</span></div>
+                        <div class="flex justify-between"><span>School</span><span class="font-bold text-slate-800">: School of Engineering</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CONTACT US SECTION WITH MAP -->
+        <section class="mt-16 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200" data-aos="fade-up">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <div class="lg:col-span-4 space-y-4">
+                    <div>
+                        <div class="text-[11px] font-bold text-slate-500 uppercase">GET IN TOUCH</div>
+                        <h2 class="text-2xl font-extrabold text-[#0a192f]">Contact Us</h2>
+                        <p class="text-xs text-slate-500">Have questions about admissions, courses or campus life? We're here to help.</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 bg-slate-50 p-3 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <div class="font-bold text-xs">Our Address</div>
+                                <div class="text-[11px] text-slate-500">Riverside University, Green Valley, Bangalore - 560001</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-slate-50 p-3 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <div class="font-bold text-xs">Call Us</div>
+                                <div class="text-[11px] text-slate-500">+91 98765 43210 (Mon - Fri, 9:00 AM - 6:00 PM)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-slate-50 p-3 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <div class="font-bold text-xs">Email Us</div>
+                                <div class="text-[11px] text-slate-500">info@riversideuniversity.edu.in</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <form onsubmit="event.preventDefault(); alert('Message sent!');" class="space-y-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Full Name *</label>
+                            <input type="text" placeholder="Enter your name" required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-50 border border-slate-200">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Email Address *</label>
+                            <input type="email" placeholder="Enter your email" required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-50 border border-slate-200">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Mobile Number *</label>
+                            <input type="tel" placeholder="Enter your mobile number" required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-50 border border-slate-200">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Message *</label>
+                            <textarea placeholder="How can we help you?" rows="2" required class="w-full text-xs px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-2 rounded-lg shadow transition">
+                            Send Message &rarr;
+                        </button>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <div class="h-full rounded-xl overflow-hidden border border-slate-200 min-h-[220px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.803730302302!2d77.64115431482143!3d12.919783990890072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU1JzExLjIiTiA3N8KwMzgnMzYu" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0a192f] text-slate-300 text-xs pt-10 pb-6 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+            <div>
+                <div class="flex items-center space-x-2 mb-2">
+                    <div class="w-7 h-7 bg-red-600 text-white flex items-center justify-center rounded font-bold text-xs">R</div>
+                    <span class="font-bold text-white text-sm">Riverside University</span>
+                </div>
+                <p class="text-[11px] text-slate-400">Learn • Grow • Build Your Future.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-2">Quick Links</h4>
+                <ul class="space-y-1 text-slate-400 text-[11px]">
+                    <li><a href="#" class="hover:text-white">Home</a></li>
+                    <li><a href="#" class="hover:text-white">About Us</a></li>
+                    <li><a href="#" class="hover:text-white">Academics</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-2">Campus Life</h4>
+                <ul class="space-y-1 text-slate-400 text-[11px]">
+                    <li><a href="#" class="hover:text-white">Student Clubs</a></li>
+                    <li><a href="#" class="hover:text-white">Sports & Recreation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-2">Follow Us</h4>
+                <div class="flex space-x-3 text-slate-400 text-sm mt-1">
+                    <a href="#" class="hover:text-red-500"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-red-500"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-red-500"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 flex flex-col sm:flex-row justify-between text-[10px] text-slate-500">
+            <div>© 2025 Riverside University. All rights reserved.</div>
+            <div class="space-x-3 mt-2 sm:mt-0">
+                <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+                <a href="#" class="hover:text-slate-400">Terms & Conditions</a>
+                <a href="#" class="hover:text-slate-400">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>

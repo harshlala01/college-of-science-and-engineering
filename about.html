@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - ABC Engineering & Technology Institute</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation Library CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ABOUT US HERO BACKGROUND WITH GRADIENT & IMAGE OVERLAY */
+    .about-hero-bg {
+      background: linear-gradient(90deg, #071931 0%, #0a2540 50%, rgba(10, 37, 64, 0.75) 80%, rgba(10, 37, 64, 0.4) 100%), 
+                  url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+.top-bar { background: var(--navy); color: var(--white); font-size: 0.8rem; padding: 10px 0; }
+.top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 16px; }
+.top-bar-left span { display: flex; align-items: center; gap: 6px; }
+.top-bar-left i, .top-bar-right i { color: var(--gold); }
+.top-bar-right a { font-size: 0.8rem; }
+.top-bar-right a:hover { color: var(--gold); }
+.top-bar-right .btn-gold { padding: 6px 14px; font-size: 0.7rem; }
+    /* LEADERSHIP QUOTE BANNER BACKGROUND */
+    .quote-banner-bg {
+      background: linear-gradient(135deg, rgba(7, 25, 49, 0.95) 0%, rgba(10, 37, 64, 0.95) 100%), 
+                  url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* CTA BANNER BACKGROUND */
+    .cta-banner-bg {
+      background: linear-gradient(90deg, #051120 0%, #0a2540 60%, rgba(10, 37, 64, 0.8) 100%), 
+                  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .gold-btn {
+      background: linear-gradient(180deg, #e3a833 0%, #c98b18 100%);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .gold-btn:hover {
+      background: linear-gradient(180deg, #f0b742 0%, #d89921 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 139, 24, 0.4);
+    }
+
+    .card-animated {
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card-animated:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -10px rgba(10, 37, 64, 0.12);
+      border-color: #e3a833;
+    }
+    .card-animated:hover .card-icon {
+      transform: rotate(6deg) scale(1.1);
+      background-color: #e3a833;
+      color: #071931;
+    }
+    .card-icon {
+      transition: all 0.3s ease;
+    }
+  </style>
+  <link rel="stylesheet" href="site-nav.css">
+  <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- TOP BAR -->
+  <div class="bg-[#051120] text-gray-300 text-xs py-2 px-4 sm:px-8 flex flex-wrap justify-between items-center border-b border-gray-800">
+    <div class="flex items-center space-x-6">
+      <a href="tel:+917700303000" class="hover:text-yellow-400 transition flex items-center space-x-2">
+        <i class="fas fa-phone-alt text-yellow-500"></i>
+        <span>+91-7700-300-300</span>
+      </a>
+      <!-- <a href="mailto:info@abc.edu.in" class="hover:text-yellow-400 transition flex items-center space-x-2">
+        <i class="fas fa-envelope text-yellow-500"></i> -->
+        <!-- <span>info@abc.edu.in</span> -->
+         <a href="contact.html"><span><i class="fas fa-map-marker-alt"></i> NH-75, Gwalior Road, Jhansi (U.P.) - 284419</span></a>
+      
+    </div>
+    <div class="top-bar-right">
+      <a href="ranking.html">NIRF</a><a href="internal.html">IQAC</a><a href="career.html">Careers</a><a href="alumni.html">Alumni</a><a href="download.html">Downloads</a><a href="erp_portal.html">ERP Login</a>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+      
+      <!-- LOGO -->
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <img src="images/logo.png" alt="College Logo" class="h-12 w-auto object-contain transition transform group-hover:scale-105 duration-300">
+        <div class="flex flex-col">
+          <span class="text-lg font-extrabold text-[#0a2540] tracking-tight leading-tight">ABC</span>
+          <span class="text-xs font-bold text-gray-800 tracking-wide">Engineering & Technology Institute</span>
+          <span class="text-[10px] text-gray-500 font-medium italic">Learn | Innovate | Lead</span>
+        </div>
+      </a>
+
+      <!-- DESKTOP MENU -->
+      <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-gray-700">
+        <a href="index.html" class="hover:text-yellow-600 transition">Home</a>
+        <a href="about.html" class="text-yellow-600 font-bold border-b-2 border-yellow-500 pb-1">About Us</a>
+        <a href="academics.html" class="hover:text-yellow-600 transition">Academics</a>
+        <a href="admission.html" class="hover:text-yellow-600 transition">Admissions</a>
+        <a href="rd.html" class="hover:text-yellow-600 transition">R&D</a>
+        <a href="placements.html" class="hover:text-yellow-600 transition">Placements</a>
+        <a href="achievement.html" class="hover:text-yellow-600 transition">Achievements</a>
+        <a href="contact.html" class="hover:text-yellow-600 transition">Contact</a>
+      </nav>
+
+      <div>
+        <a href="#" class="gold-btn text-white text-xs font-semibold px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-md">
+          <span>Apply Now</span>
+          <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT US HERO SECTION WITH BACKGROUND IMAGE -->
+  <section class="relative about-hero-bg text-white overflow-hidden py-16" data-aos="fade-down">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex items-center space-x-2 text-xs text-gray-300 mb-3">
+        <a href="index.html" class="hover:text-yellow-400 flex items-center space-x-1">
+          <i class="fas fa-arrow-left text-[10px]"></i>
+          <span>Home</span>
+        </a>
+        <span>&gt;</span>
+        <span class="text-white font-medium">About Us</span>
+      </div>
+
+      <div class="inline-block text-xs uppercase tracking-widest text-yellow-400 font-semibold mb-2 border-b border-yellow-400 pb-0.5">
+        INSTITUTE PROFILE
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-2">
+        About Us
+      </h1>
+      <p class="text-xs sm:text-sm text-gray-300 font-light mb-6 max-w-2xl">
+        Empowering young minds, driving technological discovery, and shaping tomorrow's engineering leaders.
+      </p>
+
+      <!-- Sub Navigation Pills inside Hero Header -->
+      <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-700/60">
+        <a href="#overview" class="bg-yellow-500 text-gray-900 font-bold text-xs px-4 py-1.5 rounded-full shadow hover:bg-yellow-400 transition">Overview</a>
+        <a href="#vision" class="bg-slate-800/80 hover:bg-slate-700 text-gray-300 font-medium text-xs px-4 py-1.5 rounded-full transition">Vision & Mission</a>
+        <a href="#facilities" class="bg-slate-800/80 hover:bg-slate-700 text-gray-300 font-medium text-xs px-4 py-1.5 rounded-full transition">World-Class Facilities</a>
+        <a href="#why-choose" class="bg-slate-800/80 hover:bg-slate-700 text-gray-300 font-medium text-xs px-4 py-1.5 rounded-full transition">Why Choose ABC</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTITUTE OVERVIEW SECTION -->
+  <section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-12" data-aos="fade-up">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-4">
+          <span class="text-xs font-bold text-yellow-600 uppercase tracking-widest border-b-2 border-yellow-500 pb-0.5">ESTABLISHED FOR EXCELLENCE</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0a2540]">About ABC Engineering & Technology Institute</h2>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            ABC Engineering & Technology Institute is a premier technical institution committed to delivering world-class engineering education, fostering path-breaking research, and cultivating innovative leadership. Located in Jhansi, our 80-acre lush green campus provides an enriching academic environment supported by ultra-modern laboratories, smart classrooms, and active industry partnerships.
+          </p>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            We focus on holistic education that combines strong theoretical fundamentals with hands-on practical execution, preparing our graduates to excel in global engineering and corporate environments.
+          </p>
+
+          <!-- Key Metrics Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
+            <div class="bg-gray-50 border border-gray-200/80 rounded-xl p-3 text-center card-animated">
+              <div class="text-lg font-extrabold text-yellow-600">80+</div>
+              <div class="text-[10px] text-gray-500 font-medium">Acres Campus</div>
+            </div>
+            <div class="bg-gray-50 border border-gray-200/80 rounded-xl p-3 text-center card-animated">
+              <div class="text-lg font-extrabold text-yellow-600">95%</div>
+              <div class="text-[10px] text-gray-500 font-medium">Placement Rate</div>
+            </div>
+            <div class="bg-gray-50 border border-gray-200/80 rounded-xl p-3 text-center card-animated">
+              <div class="text-lg font-extrabold text-yellow-600">350+</div>
+              <div class="text-[10px] text-gray-500 font-medium">Recruiters</div>
+            </div>
+            <div class="bg-gray-50 border border-gray-200/80 rounded-xl p-3 text-center card-animated">
+              <div class="text-lg font-extrabold text-yellow-600">5000+</div>
+              <div class="text-[10px] text-gray-500 font-medium">Active Students</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 rounded-2xl overflow-hidden shadow-md relative group">
+          <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="Institute Main Building" class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0a2540] to-transparent p-4 text-white text-xs font-semibold">
+            Main Academic Block & Innovation Center
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & MISSION CARDS SECTION -->
+  <section id="vision" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm card-animated" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon w-12 h-12 rounded-full bg-[#0a2540] text-yellow-400 flex items-center justify-center text-lg mb-4 shadow">
+          <i class="fas fa-eye"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#0a2540] mb-2">Our Vision</h3>
+        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+          To emerge as a globally acclaimed seat of learning in engineering, technology, and applied research, empowering students with cutting-edge skills, ethical values, and an entrepreneurial mindset to address societal challenges.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm card-animated" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon w-12 h-12 rounded-full bg-[#0a2540] text-yellow-400 flex items-center justify-center text-lg mb-4 shadow">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#0a2540] mb-2">Our Mission</h3>
+        <ul class="space-y-2 text-xs sm:text-sm text-gray-600">
+          <li class="flex items-start space-x-2"><i class="fas fa-check text-yellow-500 mt-0.5"></i><span>Deliver industry-aligned curriculum enriched with hands-on lab experiments and live projects.</span></li>
+          <li class="flex items-start space-x-2"><i class="fas fa-check text-yellow-500 mt-0.5"></i><span>Promote multidisciplinary research, intellectual property generation, and startup incubation.</span></li>
+          <li class="flex items-start space-x-2"><i class="fas fa-check text-yellow-500 mt-0.5"></i><span>Cultivate professional ethics, leadership qualities, and lifelong learning capabilities.</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WORLD-CLASS INFRASTRUCTURE & FACILITIES (6 CARDS) -->
+  <section id="facilities" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-12">
+    <div class="text-center mb-8" data-aos="fade-up">
+      <span class="text-xs font-bold text-yellow-600 uppercase tracking-widest border-b-2 border-yellow-500 pb-0.5">INFRASTRUCTURE</span>
+      <h2 class="text-2xl font-bold text-[#0a2540] mt-2">World-Class Infrastructure & Facilities</h2>
+      <p class="text-xs text-gray-500 mt-1">Designed to support learning, innovation, and holistic student life</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Card 1 -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-animated" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-44 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Advanced Engineering Labs" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-[#0a2540] mb-1">Advanced Engineering Labs</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Equipped with industry-standard hardware, IoT setups, and specialized software suites.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-animated" data-aos="fade-up" data-aos-delay="200">
+        <div class="h-44 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80" alt="Digital Central Library" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-[#0a2540] mb-1">Digital Central Library</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Housing over 50,000+ volumes, IEEE e-journals, and quiet research reading spaces.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-animated" data-aos="fade-up" data-aos-delay="300">
+        <div class="h-44 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Smart Classrooms & Auditoriums" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-[#0a2540] mb-1">Smart Classrooms & Auditoriums</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Air-conditioned lecture halls featuring interactive boards and multimedia audio setups.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-animated" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-44 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Innovation & Incubation Center" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-[#0a2540] mb-1">Innovation & Incubation Hub</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Dedicated startup spaces providing seed support, prototyping tools, and patent guidance.</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-animated" data-aos="fade-up" data-aos-delay="200">
+        <div class="h-44 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="High-Speed Computing Center" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-[#0a2540] mb-1">High-Speed Computing Center</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">1 Gbps fiber connectivity with 500+ high-end workstations and AI cloud servers.</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-animated" data-aos="fade-up" data-aos-delay="300">
+        <div class="h-44 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Hostels & Sports Complex" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-[#0a2540] mb-1">Hostels & Sports Complex</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">In-campus modern residences with hygienic dining, indoor games, and outdoor grounds.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LEADERSHIP QUOTE BANNER WITH BACKGROUND IMAGE -->
+  <section class="quote-banner-bg text-white py-14 my-12" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <i class="fas fa-quote-left text-3xl text-yellow-400 mb-4 block"></i>
+      <blockquote class="text-sm sm:text-lg font-medium leading-relaxed italic mb-6">
+        "Technical education is not merely about learning algorithms and formulas, but developing a spirit of inquiry, empathy, and constructive problem solving. At ABC, we nurture engineers who build a smarter, more sustainable world."
+      </blockquote>
+      <div class="font-bold text-yellow-400 text-sm">Dr. R. K. Sharma</div>
+      <div class="text-xs text-gray-300">Director & Principal, ABC Engineering & Technology Institute</div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE ABC SECTION -->
+  <section id="why-choose" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-12">
+    <div class="text-center mb-8" data-aos="fade-up">
+      <span class="text-xs font-bold text-yellow-600 uppercase tracking-widest border-b-2 border-yellow-500 pb-0.5">ADVANTAGES</span>
+      <h2 class="text-2xl font-bold text-[#0a2540] mt-2">Why Choose ABC Engineering & Technology Institute?</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm card-animated flex space-x-4 items-start" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex-shrink-0 flex items-center justify-center text-sm shadow">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold text-[#0a2540] mb-1">AICTE & AKTU Approved</h3>
+          <p class="text-[11px] text-gray-600">Fully accredited degree programs ensuring national recognition and quality standards.</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm card-animated flex space-x-4 items-start" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex-shrink-0 flex items-center justify-center text-sm shadow">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold text-[#0a2540] mb-1">95% Placement Record</h3>
+          <p class="text-[11px] text-gray-600">Top MNC recruiters including TCS, Wipro, Infosys, and L&T visiting annually.</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm card-animated flex space-x-4 items-start" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-icon w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex-shrink-0 flex items-center justify-center text-sm shadow">
+          <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold text-[#0a2540] mb-1">Experienced Faculty</h3>
+          <p class="text-[11px] text-gray-600">Professors with PhDs from premier IITs/NITs bringing deep research exposure.</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm card-animated flex space-x-4 items-start" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex-shrink-0 flex items-center justify-center text-sm shadow">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold text-[#0a2540] mb-1">Industry MoUs</h3>
+          <p class="text-[11px] text-gray-600">MoUs with tech majors for certified internships and industrial training.</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm card-animated flex space-x-4 items-start" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex-shrink-0 flex items-center justify-center text-sm shadow">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold text-[#0a2540] mb-1">Active R&D Cell</h3>
+          <p class="text-[11px] text-gray-600">Over 120+ published research papers and active student patent applications.</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm card-animated flex space-x-4 items-start" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-icon w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex-shrink-0 flex items-center justify-center text-sm shadow">
+          <i class="fas fa-globe"></i>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold text-[#0a2540] mb-1">Global Alumni Network</h3>
+          <p class="text-[11px] text-gray-600">5000+ alumni leading innovation across India, US, Europe, and Middle East.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA ACTION BANNER -->
+  <section class="cta-banner-bg text-white py-12 my-12" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Ready to Start Your Engineering Journey?</h2>
+      <p class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto font-light">
+        Admissions are now open for B.Tech, M.Tech, and Diploma programs for session 2026-27.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 pt-2">
+        <a href="admission.html" class="gold-btn text-white text-xs font-bold px-6 py-3 rounded-full shadow-lg">
+          Apply Online 2026-27
+        </a>
+        <a href="contact.html" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white text-xs font-bold px-6 py-3 rounded-full transition">
+          Campus Visit & Tour
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET IN TOUCH & ENQUIRY FORM -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16" data-aos="fade-up">
+    <div class="mb-6">
+      <span class="text-xs font-bold text-yellow-600 uppercase tracking-widest border-b-2 border-yellow-500 pb-0.5">GET IN TOUCH</span>
+      <h2 class="text-2xl font-extrabold text-[#0a2540] mt-2">Get In Touch With Us</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Left Info Cards -->
+      <div class="lg:col-span-5 space-y-4">
+        <div class="bg-white p-5 rounded-xl border border-gray-200/70 shadow-sm flex space-x-4 items-start card-animated">
+          <div class="w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-[#0a2540] mb-1">Campus Address</div>
+            <div class="text-xs text-gray-600 leading-relaxed">
+              ABC Engineering & Technology Institute<br>
+              NH-75, Jhansi-Gwalior Road, Karari, Jhansi (U.P.) - 284419
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-gray-200/70 shadow-sm flex space-x-4 items-start card-animated">
+          <div class="w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-[#0a2540] mb-1">Helpline Numbers</div>
+            <div class="text-xs text-gray-600">+91-7700-300-300 | 1800-890-0272</div>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-gray-200/70 shadow-sm flex space-x-4 items-start card-animated">
+          <div class="w-10 h-10 rounded-full bg-[#0a2540] text-yellow-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-[#0a2540] mb-1">Email Support</div>
+            <div class="text-xs text-gray-600">info@abc.edu.in | admissions@abc.edu.in</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Form -->
+      <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-xl border border-gray-200/70 shadow-sm">
+        <form id="aboutContactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1">Full Name *</label>
+              <input type="text" required placeholder="Enter your full name" class="w-full text-xs px-3 py-2.5 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 bg-gray-50/50">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1">Phone Number *</label>
+              <input type="tel" required placeholder="Enter your phone number" class="w-full text-xs px-3 py-2.5 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 bg-gray-50/50">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">Message / Query *</label>
+            <textarea rows="4" required placeholder="Type your message here..." class="w-full text-xs px-3 py-2.5 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 bg-gray-50/50"></textarea>
+          </div>
+          <button type="submit" class="w-full gold-btn text-white text-xs font-bold py-3 rounded-md flex items-center justify-center space-x-2 shadow">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane text-xs"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE GOOGLE MAP -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16" data-aos="fade-up">
+    <div class="rounded-xl overflow-hidden shadow-sm border border-gray-200 h-72 w-full relative">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14413.250482594412!2d78.5800!3d25.4500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDI3JzAwLjAiTiA3OMKwMzUnMDcuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#051120] text-gray-300 text-xs pt-12 pb-6 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-8 border-b border-gray-800">
+      
+      <div class="lg:col-span-1 space-y-3">
+        <div class="flex items-center space-x-3">
+          <img src="images/logo.png" alt="College Logo" class="h-10 w-auto">
+          <div>
+            <div class="font-extrabold text-white text-sm">ABC</div>
+            <div class="text-[10px] text-gray-400">Engineering & Tech</div>
+          </div>
+        </div>
+        <p class="text-[11px] text-gray-400 leading-relaxed">
+          ABC Engineering & Technology Institute is a premier technical institute committed to providing quality education and fostering innovation.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs">Accreditations</h4>
+        <ul class="space-y-2 text-[11px] text-gray-400">
+          <li><a href="#" class="hover:text-yellow-400 transition">&rsaquo; AICTE Approved</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition">&rsaquo; Affiliated to AKTU</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition">&rsaquo; Affiliated to BTE UP</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs">Campus</h4>
+        <ul class="space-y-2 text-[11px] text-gray-400">
+          <li><a href="#" class="hover:text-yellow-400 transition">&rsaquo; SRGI Campus</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition">&rsaquo; Student Clubs</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition">&rsaquo; Infrastructure</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs">About Us</h4>
+        <ul class="space-y-2 text-[11px] text-gray-400">
+          <li><a href="about.html" class="hover:text-yellow-400 transition">&rsaquo; Overview</a></li>
+          <li><a href="#vision" class="hover:text-yellow-400 transition">&rsaquo; Vision & Mission</a></li>
+          <li><a href="#facilities" class="hover:text-yellow-400 transition">&rsaquo; Infrastructure</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs">Quick Links</h4>
+        <ul class="space-y-2 text-[11px] text-gray-400">
+          <li><a href="admission.html" class="hover:text-yellow-400 transition">&rsaquo; Admissions</a></li>
+          <li><a href="placements.html" class="hover:text-yellow-400 transition">&rsaquo; Placements</a></li>
+          <li><a href="contact.html" class="hover:text-yellow-400 transition">&rsaquo; Contact Us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 flex flex-col sm:flex-row justify-between items-center text-[10px] text-gray-500">
+      <div>© 2025 ABC Engineering & Technology Institute. All rights reserved.</div>
+      <div class="flex space-x-4 mt-2 sm:mt-0">
+        <a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a>
+        <span>|</span>
+        <a href="#" class="hover:text-yellow-400 transition">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS ANIMATION SCRIPT -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out'
+    });
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert("Thank you! Your query has been submitted successfully.");
+      document.getElementById("aboutContactForm").reset();
+    }
+  </script>
+</body>
+</html>

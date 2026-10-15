@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Development (R&D) Cell - ABC Engineering & Technology Institute</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navyPrimary: '#081b33',
+                        navyDark: '#051122',
+                        accentGold: '#eab308',
+                        buttonGold: '#f59e0b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+      .top-bar { background: var(--navy); color: var(--white); font-size: 0.8rem; padding: 10px 0; }
+.top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 16px; }
+.top-bar-left span { display: flex; align-items: center; gap: 6px; }
+.top-bar-left i, .top-bar-right i { color: var(--gold); }
+.top-bar-right a { font-size: 0.8rem; }
+.top-bar-right a:hover { color: var(--gold); }
+.top-bar-right .btn-gold { padding: 6px 14px; font-size: 0.7rem; }
+        .gold-gradient {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #f0b12b 0%, #d97706 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+            box-shadow: 0 6px 20px rgba(234, 179, 8, 0.35);
+            transform: translateY(-1px);
+        }
+        /* Sunburst effect in header */
+        .sunburst-glow {
+            background: radial-gradient(circle, rgba(251,191,36,0.25) 0%, rgba(245,158,11,0.1) 40%, rgba(5,17,34,0) 70%);
+        }
+        /* Hover card animations */
+        .focus-card {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .focus-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 30px -10px rgba(8, 27, 51, 0.12);
+        }
+        .focus-card:hover .icon-box {
+            transform: scale(1.08);
+            background-color: #081b33;
+            color: #fbbf24;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #051122;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+    </style>
+  <link rel="stylesheet" href="site-nav.css">
+  <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-[#f2f5f9] text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Top Utility Bar (Dark Header Bar) -->
+    <div class="bg-[#030b18] text-white py-2 px-4 sm:px-8 border-b border-white/10 text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <!-- Contact Info -->
+            <div class="flex items-center gap-6 flex-wrap justify-center sm:justify-start">
+                <a href="tel:+917700300300" class="flex items-center gap-2 hover:text-accentGold transition-colors">
+                    <span class="text-accentGold"><i class="fa-solid fa-phone"></i></span>
+                    <span class="font-medium">+91-7700-300-300</span>
+                </a>
+                <span class="text-gray-600">|</span>
+                <a href="contact.html"><span><i class="fas fa-map-marker-alt"></i> NH-75, Gwalior Road, Jhansi (U.P.) - 284419</span></a>
+            </div>
+            <!-- Social Icons & Apply Button -->
+            <!-- <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2.5 text-gray-300">
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <a href="#contact-section" class="btn-gold text-navyDark font-bold px-4 py-1.5 rounded-full text-xs shadow-md inline-flex items-center gap-1.5">
+                    <span>Apply Now</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div> -->
+            <div class="top-bar-right">
+      <a href="ranking.html" >NIRF</a><a href="internal.html">IQAC</a><a href="career.html">Careers</a><a href="alumni.html">Alumni</a><a href="download.html">Downloads</a><a href="erp_portal.html" class="btn-gold text-navyDark font-bold px-4 py-1.5 rounded-full text-xs shadow-md inline-flex items-center gap-1.5">ERP Login</a>
+    </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar (Clean White Menu Bar as requested) -->
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100 text-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md p-1 border-2 border-accentGold group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full rounded-full bg-[#051122] flex items-center justify-center text-accentGold font-black text-xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-black tracking-wide text-navyPrimary leading-tight">ABC</h1>
+                    <p class="text-[9px] text-gray-600 font-semibold uppercase tracking-wider">Engineering & Technology Institute</p>
+                    <p class="text-[8px] text-amber-600 tracking-widest font-bold">Learn | Innovate | Lead</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links (High Contrast Dark Text on White Header) -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-gray-700">
+                <a href="index.html" class="hover:text-amber-600 transition-colors">Home</a>
+                <a href="about.html" class="hover:text-amber-600 transition-colors">About Us</a>
+                <a href="academics.html" class="hover:text-amber-600 transition-colors">Academics</a>
+                <a href="admission.html" class="hover:text-amber-600 transition-colors">Admissions</a>
+                <a href="rd.html" class="text-amber-600 font-bold border-b-2 border-amber-500 pb-1">R&D</a>
+                <a href="placements.html" class="hover:text-amber-600 transition-colors">Placement</a>
+                <a href="life.html" class="hover:text-amber-600 transition-colors">Life at ABC</a>
+                <a href="achievement.html" class="hover:text-amber-600 transition-colors">Achievements</a>
+                <a href="contact.html" class="hover:text-amber-600 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Apply Now Button & Mobile Menu Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="#contact-section" class="hidden sm:inline-flex btn-gold text-navyDark font-extrabold px-5 py-2 rounded-full text-xs shadow-md items-center gap-2">
+                    <span>Apply Now</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <button id="menu-btn" class="lg:hidden text-navyPrimary text-2xl focus:outline-none hover:text-amber-600">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3 shadow-xl">
+            <a href="index.html" class="block hover:text-amber-600 py-1 text-sm font-semibold text-gray-700">Home</a>
+            <a href="about.html" class="block hover:text-amber-600 py-1 text-sm font-semibold text-gray-700">About Us</a>
+            <a href="academics.html" class="block hover:text-amber-600 py-1 text-sm font-semibold text-gray-700">Academics</a>
+            <a href="admission.html" class="block hover:text-amber-600 py-1 text-sm font-semibold text-gray-700">Admissions</a>
+            <a href="rd.html" class="block text-amber-600 font-bold py-1 text-sm">R&D</a>
+            <a href="placements.html" class="block hover:text-amber-600 py-1 text-sm font-semibold text-gray-700">Placement</a>
+            <a href="life.html" class="block hover:text-amber-600 py-1 text-sm font-semibold text-gray-700">Life at ABC</a>
+            <a href="achievement.html" class="block hover:text-amber-600 py-1 text-sm font-semibold text-gray-700">Achievements</a>
+            <a href="contact.html" class="block hover:text-amber-600 py-1 text-sm font-semibold text-gray-700">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Header Banner Section (Matching Exact Research Image Layout) -->
+    <section class="relative bg-[#051122] text-white overflow-hidden min-h-[380px] flex items-center">
+        <!-- Right side Laboratory / Research Facility Background Image -->
+        <div class="absolute right-0 top-0 bottom-0 w-full lg:w-[60%] bg-cover bg-center z-0 opacity-80" 
+             style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80');">
+            <!-- Smooth Blue Gradient Overlay blending into background -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#051122] via-[#051122]/85 to-transparent"></div>
+            <!-- Top Right Sunlight Glow -->
+            <div class="absolute top-0 right-0 w-96 h-96 sunburst-glow pointer-events-none"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 relative z-10 w-full" data-aos="fade-right" data-aos-duration="800">
+            <!-- Breadcrumb -->
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-300 mb-6">
+                <a href="index.html" class="hover:text-accentGold flex items-center gap-1.5"><i class="fa-solid fa-arrow-left text-accentGold text-xs"></i> Home</a>
+                <span><i class="fa-solid fa-chevron-right text-[10px] text-gray-500"></i></span>
+                <span class="text-white font-medium">R&D</span>
+            </div>
+
+            <!-- Header Titles -->
+            <div class="max-w-xl">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-accentGold font-bold text-xs sm:text-sm tracking-widest uppercase">RESEARCH & INNOVATION</span>
+                    <span class="w-12 h-[2px] bg-accentGold"></span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-4 text-white leading-tight">
+                    Research & Development (R&D) Cell
+                </h1>
+                <p class="text-gray-200 text-xs sm:text-sm leading-relaxed font-normal">
+                    Fostering innovation, driving discovery, and shaping the future of engineering research.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE THRUST AREAS / R&D Focus Areas Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-8 -mt-8 relative z-20 mb-16">
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-gray-100" data-aos="fade-up" data-aos-duration="900">
+            
+            <!-- Section Title -->
+            <div class="mb-8">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="w-6 h-[3px] bg-accentGold rounded-full"></span>
+                    <span class="text-amber-600 font-extrabold text-xs tracking-wider uppercase">CORE THRUST AREAS</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-black text-gray-900">R&D Focus Areas</h2>
+            </div>
+
+            <!-- 5 Cards Grid Layout (Matching exact 5 items in image) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+                
+                <!-- Card 1: Active Projects -->
+                <div class="bg-white rounded-2xl p-5 border border-gray-200/90 focus-card flex flex-col justify-between h-full relative overflow-hidden group">
+                    <div>
+                        <!-- Icon Box (Dark Circle with Gold Icon) -->
+                        <div class="w-12 h-12 rounded-full bg-[#081b33] text-accentGold flex items-center justify-center text-xl mb-4 icon-box transition-all shadow-md">
+                            <i class="fa-solid fa-atom"></i>
+                        </div>
+                        <h3 class="font-extrabold text-gray-900 text-sm mb-2 group-hover:text-navyPrimary transition-colors">Active Projects</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed font-medium">
+                            45+ ongoing research projects funded by DST, AICTE, SERB, and industry partners.
+                        </p>
+                    </div>
+                    <div class="w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full mt-6 opacity-80"></div>
+                </div>
+
+                <!-- Card 2: Faculty Development Programmes -->
+                <div class="bg-white rounded-2xl p-5 border border-gray-200/90 focus-card flex flex-col justify-between h-full relative overflow-hidden group">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-[#081b33] text-accentGold flex items-center justify-center text-xl mb-4 icon-box transition-all shadow-md">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <h3 class="font-extrabold text-gray-900 text-sm mb-2 group-hover:text-navyPrimary transition-colors">Faculty Development Programmes (FDPs)</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed font-medium">
+                            30+ FDPs conducted for faculty upskilling in AI, IoT, Robotics, and Data Science.
+                        </p>
+                    </div>
+                    <div class="w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full mt-6 opacity-80"></div>
+                </div>
+
+                <!-- Card 3: Publications -->
+                <div class="bg-white rounded-2xl p-5 border border-gray-200/90 focus-card flex flex-col justify-between h-full relative overflow-hidden group">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-[#081b33] text-accentGold flex items-center justify-center text-xl mb-4 icon-box transition-all shadow-md">
+                            <i class="fa-solid fa-newspaper"></i>
+                        </div>
+                        <h3 class="font-extrabold text-gray-900 text-sm mb-2 group-hover:text-navyPrimary transition-colors">Publications</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed font-medium">
+                            120+ research papers published in Scopus, IEEE, Springer, and Web of Science journals.
+                        </p>
+                    </div>
+                    <div class="w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full mt-6 opacity-80"></div>
+                </div>
+
+                <!-- Card 4: Research Events -->
+                <div class="bg-white rounded-2xl p-5 border border-gray-200/90 focus-card flex flex-col justify-between h-full relative overflow-hidden group">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-[#081b33] text-accentGold flex items-center justify-center text-xl mb-4 icon-box transition-all shadow-md">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <h3 class="font-extrabold text-gray-900 text-sm mb-2 group-hover:text-navyPrimary transition-colors">Research Events</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed font-medium">
+                            50+ conferences, seminars, and workshops organized annually.
+                        </p>
+                    </div>
+                    <div class="w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full mt-6 opacity-80"></div>
+                </div>
+
+                <!-- Card 5: Patents & IPR -->
+                <div class="bg-white rounded-2xl p-5 border border-gray-200/90 focus-card flex flex-col justify-between h-full relative overflow-hidden group">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-[#081b33] text-accentGold flex items-center justify-center text-xl mb-4 icon-box transition-all shadow-md">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="font-extrabold text-gray-900 text-sm mb-2 group-hover:text-navyPrimary transition-colors">Patents & IPR</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed font-medium">
+                            18 patents filed, 5 granted, in areas of AI, IoT, and Renewable Energy.
+                        </p>
+                    </div>
+                    <div class="w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full mt-6 opacity-80"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT US & MESSAGE FORM SECTION -->
+    <section id="contact-section" class="max-w-7xl mx-auto px-4 sm:px-8 mb-16" data-aos="fade-up">
+        <div class="mb-6">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="w-6 h-[3px] bg-accentGold rounded-full"></span>
+                <span class="text-amber-600 font-extrabold text-xs tracking-wider uppercase">GET IN TOUCH</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-gray-900">Contact Us</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Info Stack (Address, Phone Call, Email Us) -->
+            <div class="lg:col-span-5 space-y-4">
+                
+                <!-- Address Card -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200/80 flex items-center gap-4 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-full bg-[#081b33] text-accentGold flex items-center justify-center text-lg shrink-0 shadow-sm">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-gray-900 text-sm sm:text-base">Address</h3>
+                        <p class="text-gray-600 text-xs mt-0.5 font-medium leading-relaxed">NH-75, Jhansi-Gwalior Road, Karari, Jhansi (U.P.) - 284419</p>
+                    </div>
+                </div>
+
+                <!-- Phone Call Card -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200/80 flex items-center gap-4 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-full bg-[#081b33] text-accentGold flex items-center justify-center text-lg shrink-0 shadow-sm">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-gray-900 text-sm sm:text-base">Phone Call</h3>
+                        <p class="text-gray-800 font-bold text-xs mt-0.5">+91-7700-300-300</p>
+                        <p class="text-gray-500 text-[11px] font-medium">(Mon - Sat, 9:00 AM - 5:00 PM)</p>
+                    </div>
+                </div>
+
+                <!-- Email Us Card -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200/80 flex items-center gap-4 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-full bg-[#081b33] text-accentGold flex items-center justify-center text-lg shrink-0 shadow-sm">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-gray-900 text-sm sm:text-base">Email Us</h3>
+                        <p class="text-gray-800 font-semibold text-xs mt-0.5">info@abc.edu.in</p>
+                        <p class="text-gray-500 text-[11px] font-medium">(For general queries)</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Message Form -->
+            <div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200/80">
+                <div class="mb-5">
+                    <h3 class="text-lg sm:text-xl font-black text-gray-900">Send Us a Message</h3>
+                    <div class="w-10 h-1 bg-accentGold rounded-full mt-1"></div>
+                </div>
+
+                <form id="rdMessageForm" onsubmit="submitForm(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Full Name *</label>
+                            <input type="text" required placeholder="Enter your full name" 
+                                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 text-xs sm:text-sm bg-gray-50/50">
+                        </div>
+                        <!-- Phone Number -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Phone Number *</label>
+                            <input type="tel" required placeholder="Enter your phone number" 
+                                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 text-xs sm:text-sm bg-gray-50/50">
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Message / Query *</label>
+                        <textarea rows="4" required placeholder="Type your message here..." 
+                            class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 text-xs sm:text-sm bg-gray-50/50 resize-none"></textarea>
+                    </div>
+
+                    <!-- Alert Box -->
+                    <div id="formToast" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+                        <span>Thank you! Your research query has been sent successfully.</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full btn-gold text-white font-bold py-3 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm cursor-pointer">
+                        <span>Send Message</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FULL WIDTH MAP CONTAINER SECTION -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-8 mb-16" data-aos="fade-up">
+        <div class="relative w-full h-[320px] sm:h-[380px] rounded-2xl overflow-hidden shadow-md border border-gray-200 bg-[#e5e3df]">
+            <!-- Google Map Iframe Integration for Jhansi -->
+            <iframe 
+                title="ABC Institute Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.208754215904!2d78.53200!3d25.43100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39777123456789ab%3A0x123456789abcdef!2sJhansi%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                class="w-full h-full border-0 grayscale-[20%] contrast-[1.05]" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+
+            <!-- Overlay Floating Card (Matching Screenshot design) -->
+            <div class="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-xl shadow-xl border border-gray-200 max-w-[260px]">
+                <div class="font-extrabold text-xs text-gray-900 leading-tight">ABC Engineering & Technology Institute</div>
+                <div class="text-[10px] text-gray-500 mt-1">NH-75, Jhansi-Gwalior Road, Karari, Jhansi (U.P.) - 284419</div>
+                <div class="flex items-center gap-1.5 text-[11px] mt-2">
+                    <span class="font-bold text-gray-800">4.5</span>
+                    <span class="text-amber-500 text-[10px] flex">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </span>
+                    <span class="text-blue-600 underline text-[10px] font-medium cursor-pointer">(1,248 reviews)</span>
+                </div>
+                <a href="https://maps.google.com" target="_blank" class="text-[10px] text-blue-600 font-bold hover:underline mt-1.5 block">View larger map</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION (Exact Replica) -->
+    <footer class="bg-[#051122] text-white pt-14 pb-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-white/10">
+                
+                <!-- Col 1: Institute Info -->
+                <div class="lg:col-span-1 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center p-1 border border-accentGold">
+                            <div class="w-full h-full rounded-full bg-navyDark flex items-center justify-center text-accentGold font-bold text-sm">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="text-base font-extrabold text-white leading-tight">ABC</h2>
+                            <p class="text-[8px] text-gray-300 uppercase">Engineering & Technology Institute</p>
+                            <p class="text-[7px] text-accentGold font-semibold">Learn | Innovate | Lead</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        ABC Engineering & Technology Institute is a premier technical institute committed to providing quality education, fostering innovation and developing skilled engineers for a better tomorrow.
+                    </p>
+                    <div class="flex items-center gap-2.5 pt-1">
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Accreditations -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-white border-l-2 border-accentGold pl-2">Accreditations</h3>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><span class="text-accentGold"><i class="fa-solid fa-circle-check text-[10px]"></i></span> AICTE Approved</li>
+                        <li class="flex items-center gap-2"><span class="text-accentGold"><i class="fa-solid fa-circle-check text-[10px]"></i></span> Affiliated to AKTU</li>
+                        <li class="flex items-center gap-2"><span class="text-accentGold"><i class="fa-solid fa-circle-check text-[10px]"></i></span> Affiliated to BTE UP</li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Campus -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-white border-l-2 border-accentGold pl-2">Campus</h3>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> SRGI Campus</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> CSE Student Clubs (29+)</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Location Map</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Infrastructure</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Hostels & Facilities</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: About CSE -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-white border-l-2 border-accentGold pl-2">About CSE</h3>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Chairman's Message</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Director's Message</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Heritage of Excellence</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Educational Philosophy</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Why Choose ABC</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Departments</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 5: Quick Links -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-white border-l-2 border-accentGold pl-2">Quick Links</h3>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Admissions 2026</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Training & Placement</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> R&D Cell</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Career Opportunities</a></li>
+                    </ul>
+                    <div class="pt-2">
+                        <p class="text-xs font-bold text-white mb-2">Follow Us</p>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright Bar -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-400 gap-3">
+                <p>© 2025 ABC Engineering & Technology Institute. All Rights Reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-accentGold transition-colors">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-accentGold transition-colors">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/917700300300" target="_blank" class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-all transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="fixed bottom-6 right-6 z-50 w-10 h-10 bg-accentGold hover:bg-amber-400 text-navyDark rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-105 font-bold">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Initialize AOS animations
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                easing: 'ease-out-cubic'
+            });
+        });
+
+        // Form Submit Handler
+        function submitForm(e) {
+            e.preventDefault();
+            const toast = document.getElementById('formToast');
+            toast.classList.remove('hidden');
+            document.getElementById('rdMessageForm').reset();
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

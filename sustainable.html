@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sustainable Agriculture Club | College of Science & Engineering (CSE), Jhansi</title>
+  
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* CSS RESET & VARIABLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-organic-cream: #F7F9F6;
+      --bg-card-white: #FFFFFF;
+      --bg-forest-green: #064E3B;
+      --bg-forest-secondary: #022C22;
+      --accent-green: #22C55E;
+      --accent-green-hover: #16A34A;
+      --accent-amber: #F59E0B;
+      --accent-amber-hover: #D97706;
+      --text-forest: #064E3B;
+      --text-muted: #4B5563;
+      --text-white: #FFFFFF;
+      --text-light-muted: #9CA3AF;
+      --border-color: #D1D5DB;
+      --border-green-light: #A7F3D0;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-organic-cream);
+      color: var(--text-forest);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background-color: var(--bg-forest-green);
+      color: var(--text-light-muted);
+      font-size: 13px;
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .top-bar-left span {
+      margin-right: 20px;
+    }
+
+    .top-bar-left i {
+      color: var(--accent-amber);
+      margin-right: 6px;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .top-bar-right a:hover {
+      color: var(--text-white);
+    }
+
+    .btn-erp {
+      background-color: var(--accent-amber);
+      color: var(--bg-forest-secondary) !important;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .btn-erp:hover {
+      background-color: var(--accent-amber-hover);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+    }
+
+    /* MAIN NAV */
+    .main-nav {
+      background-color: var(--bg-organic-cream);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-green-light);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-box {
+      width: 42px;
+      height: 42px;
+      background: var(--bg-forest-green);
+      color: var(--accent-amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 20px;
+      border-bottom: 3px solid var(--accent-green);
+    }
+
+    .logo-text h1 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--text-forest);
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-forest);
+      position: relative;
+    }
+
+    .nav-links a.active {
+      color: var(--accent-green);
+      font-weight: 700;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-green);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-green);
+    }
+
+    .btn-apply {
+      background-color: var(--accent-amber);
+      color: var(--bg-forest-secondary);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .btn-apply:hover {
+      background-color: var(--accent-amber-hover);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    /* HERO SECTION - SPLIT SCREEN (50% LEFT / 50% RIGHT) */
+    .hero {
+      display: flex;
+      min-height: 480px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-split-left {
+      width: 50%;
+      background: linear-gradient(135deg, var(--bg-forest-green) 0%, var(--bg-forest-secondary) 100%);
+      color: var(--text-white);
+      padding: 80px 6% 80px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-split-right {
+      width: 50%;
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      padding: 80px 8% 80px 6%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Subtle abstract organic pattern overlay for right hero */
+    .hero-split-right::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.18) 0%, transparent 70%),
+                  linear-gradient(45deg, rgba(255,255,255,0.06) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.06) 75%);
+      background-size: 100% 100%, 40px 40px;
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--text-light-muted);
+      margin-bottom: 20px;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-amber {
+      background-color: var(--accent-amber);
+      color: var(--bg-forest-secondary);
+    }
+
+    .badge-slate {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--accent-amber);
+    }
+
+    .hero-split-left h1 {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--text-white);
+    }
+
+    .hero-split-left p {
+      font-size: 16px;
+      color: var(--text-light-muted);
+      max-width: 540px;
+      line-height: 1.6;
+    }
+
+    .hero-logo-box {
+      width: 120px;
+      height: 120px;
+      background-color: #064E3B;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-green);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: float 4s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-logo-box i {
+      font-size: 52px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .official-tag {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dot-amber {
+      width: 9px;
+      height: 9px;
+      background-color: var(--accent-amber);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-amber);
+    }
+
+    /* VISION & OBJECTIVES SECTION */
+    .vision-section {
+      padding: 90px 5%;
+      background-color: var(--bg-organic-cream);
+    }
+
+    .vision-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.6fr 0.4fr;
+      gap: 50px;
+      align-items: flex-start;
+    }
+
+    .pill-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background-color: #D1FAE5;
+      color: #065F46;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .vision-left h2 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      color: var(--text-forest);
+      margin-bottom: 24px;
+    }
+
+    .vision-left p {
+      color: var(--text-forest);
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .vision-card {
+      background-color: var(--bg-forest-green);
+      color: var(--text-white);
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-top: 3px solid var(--accent-amber);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      transition: var(--transition);
+    }
+
+    .vision-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(6, 78, 59, 0.25);
+    }
+
+    .card-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-amber);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .vision-card h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .vision-card p {
+      font-size: 14px;
+      color: var(--text-light-muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .card-footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-col-card span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-light-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col-card strong {
+      font-size: 13px;
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    /* CORE ACTIVITIES SECTION - MAGAZINE EDITORIAL LAYOUT */
+    .activities-section {
+      padding: 90px 5%;
+      background-color: var(--bg-organic-cream);
+      border-top: 1px solid var(--border-green-light);
+    }
+
+    .activities-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: 34px;
+      color: var(--text-forest);
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-forest);
+      font-size: 16px;
+    }
+
+    /* EDITORIAL FEATURED ROW (TOP) */
+    .editorial-featured-row {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    /* EDITORIAL GRID ROW (BOTTOM) */
+    .editorial-grid-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .editorial-card {
+      background-color: var(--bg-card-white);
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid var(--border-green-light);
+      border-left: 4px solid var(--accent-green);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .editorial-card:hover {
+      transform: translateY(-4px);
+      border-left-color: var(--accent-amber);
+      box-shadow: 0 12px 24px rgba(34, 197, 94, 0.15);
+    }
+
+    .card-meta {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-green);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background-color: #D1FAE5;
+      color: var(--accent-green);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 18px;
+      transition: var(--transition);
+    }
+
+    .editorial-card:hover .card-icon {
+      background-color: var(--accent-green);
+      color: var(--text-white);
+      transform: scale(1.08) rotate(-4deg);
+    }
+
+    .editorial-card h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      color: var(--text-forest);
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .editorial-card p.description {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-forest);
+    }
+
+    .bullet-list i {
+      color: var(--accent-green);
+      font-size: 14px;
+      margin-top: 3px;
+    }
+
+    /* FEATURED CARD SPECIFIC EXTENSIONS */
+    .featured-card {
+      padding: 40px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F3F9F4 100%);
+    }
+
+    .featured-card h3 {
+      font-size: 26px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--bg-forest-green);
+      color: var(--text-light-muted);
+      padding: 70px 5% 0 5%;
+      font-size: 14px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      color: var(--text-white);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-amber);
+      padding-left: 4px;
+    }
+
+    .accreditations {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .accreditation-item {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-white);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      background-color: var(--text-white);
+      color: var(--bg-forest-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--accent-green);
+      color: var(--text-white);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 25px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    /* ANIMATION UTILITIES */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-split-left, .hero-split-right {
+        width: 100%;
+        padding: 60px 5%;
+      }
+
+      .vision-container,
+      .editorial-featured-row {
+        grid-template-columns: 1fr;
+      }
+
+      .editorial-grid-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar-left, .top-bar-right {
+        display: none;
+      }
+      .top-bar {
+        justify-content: center;
+      }
+
+      .main-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero-split-left h1 {
+        font-size: 36px;
+      }
+
+      .editorial-grid-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span><i class="fa-solid fa-phone"></i> 1800-123-4567 (Toll Free)</span>
+      <span><i class="fa-solid fa-location-dot"></i> Jhansi, Uttar Pradesh</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#">NIRF</a>
+      <a href="#">IQAC</a>
+      <a href="#">Careers</a>
+      <a href="#">Alumni</a>
+      <a href="#">Downloads</a>
+      <a href="#" class="btn-erp">ERP Login</a>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION BAR -->
+  <nav class="main-nav">
+    <div class="logo">
+      <div class="logo-box">C</div>
+      <div class="logo-text">
+        <h1>CSE JHANSI</h1>
+        <span>COLLEGE OF SCIENCE & ENGINEERING</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Academics</a>
+      <a href="#">Admissions</a>
+      <a href="#">R&D</a>
+      <a href="#">Placement</a>
+      <a href="#" class="active">Life at SRGI</a>
+      <a href="#">Achievements</a>
+      <a href="#">Contact</a>
+    </div>
+    <a href="#" class="btn-apply">APPLY NOW</a>
+  </nav>
+
+  <!-- HERO SECTION (SPLIT SCREEN LAYOUT) -->
+  <section class="hero">
+    <!-- LEFT 50%: DEEP FOREST GREEN BACKGROUND -->
+    <div class="hero-split-left fade-in-left">
+      <div class="breadcrumb">Home > Student Clubs > Sustainable Agriculture Club</div>
+      <div class="badge-group">
+        <span class="badge badge-amber">STUDENT ACTIVITY CENTER (SAC)</span>
+        <span class="badge badge-slate">Social & Media</span>
+      </div>
+      <h1>Sustainable Agriculture Club</h1>
+      <p>Pioneering eco-friendly farming practices, organic cultivation, soil health restoration, and smart agricultural innovation across campus.</p>
+    </div>
+
+    <!-- RIGHT 50%: FRESH GREEN BACKGROUND -->
+    <div class="hero-split-right fade-up">
+      <div class="hero-logo-box">
+        <i class="fa-solid fa-seedling"></i>
+      </div>
+      <div class="official-tag">
+        <span class="dot-amber"></span>
+        OFFICIAL CSE CLUB
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & OBJECTIVES SECTION -->
+  <section class="vision-section">
+    <div class="vision-container">
+      <div class="vision-left fade-up">
+        <span class="pill-badge">VISION & OBJECTIVES</span>
+        <h2>About Sustainable Agriculture Club</h2>
+        <p>The Sustainable Agriculture Club serves as an ecological incubator dedicated to promoting organic farming, water conservation, precision agritech, and sustainable food systems within the academic community.</p>
+        <p>Through hands-on vermicomposting labs, hydroponic setups, soil testing workshops, and local farmer outreach programs, members champion green agricultural practices that protect the planet and ensure long-term food security.</p>
+      </div>
+      <div class="vision-card fade-up">
+        <span class="card-badge">ACTIVITY HIGHLIGHTS</span>
+        <h3>Empowering Future Achievers</h3>
+        <p>Hands-on participation in organic farm management, smart greenhouse tech, and eco-innovation research.</p>
+        <div class="card-footer-grid">
+          <div class="footer-col-card">
+            <span>DOMAIN AREA</span>
+            <strong>Social & Media</strong>
+          </div>
+          <div class="footer-col-card">
+            <span>AFFILIATION</span>
+            <strong>SAC • CSE Jhansi</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE ACTIVITIES SECTION (MAGAZINE EDITORIAL LAYOUT) -->
+  <section class="activities-section">
+    <div class="activities-container">
+      <div class="section-header fade-up">
+        <h2>Key Pillars & Initiatives</h2>
+        <p>A magazine-style editorial framework curated for organic farming mastery and agricultural innovation.</p>
+      </div>
+      
+      <!-- TOP FEATURED ROW -->
+      <div class="editorial-featured-row">
+        <!-- FEATURED CARD 1 (COVER STORY) -->
+        <div class="editorial-card featured-card fade-up">
+          <div>
+            <div class="card-meta">COVER STORY • PILLAR 01</div>
+            <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
+            <h3>Organic Farming & Composting</h3>
+            <p class="description">Intensive hands-on training in chemical-free cultivation, natural pest repellents, and soil regeneration.</p>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Training in organic farming methods & vermicomposting</li>
+            <li><i class="fa-solid fa-circle-check"></i> Bio-fertilizers & zero-budget natural farming practices</li>
+          </ul>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="editorial-card fade-up">
+          <div>
+            <div class="card-meta">INNOVATION • PILLAR 02</div>
+            <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+            <h3>Hydroponics & Precision Agritech</h3>
+            <p class="description">Exploring modern smart-farming techniques and automated resource management.</p>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Soilless hydroponics & drip irrigation workshops</li>
+            <li><i class="fa-solid fa-circle-check"></i> IoT sensors & smart greenhouse management</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- BOTTOM GRID ROW -->
+      <div class="editorial-grid-row">
+        <!-- CARD 3 -->
+        <div class="editorial-card fade-up">
+          <div>
+            <div class="card-meta">PILLAR 03</div>
+            <div class="card-icon"><i class="fa-solid fa-droplet"></i></div>
+            <h3>Soil Health & Water Conservation</h3>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Soil testing camps & watershed management</li>
+            <li><i class="fa-solid fa-circle-check"></i> Rainwater harvesting & crop rotation strategies</li>
+          </ul>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="editorial-card fade-up">
+          <div>
+            <div class="card-meta">PILLAR 04</div>
+            <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
+            <h3>Botanical Garden & Nursery</h3>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Maintaining campus botanical gardens</li>
+            <li><i class="fa-solid fa-circle-check"></i> Medicinal plant nurseries, seed banks & terrace farming</li>
+          </ul>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="editorial-card fade-up">
+          <div>
+            <div class="card-meta">PILLAR 05</div>
+            <div class="card-icon"><i class="fa-solid fa-users-rectangle"></i></div>
+            <h3>Farmers Outreach & Workshops</h3>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Awareness workshops for local farmers</li>
+            <li><i class="fa-solid fa-circle-check"></i> Sustainable crop yields & biological pest control</li>
+          </ul>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="editorial-card fade-up">
+          <div>
+            <div class="card-meta">PILLAR 06</div>
+            <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <h3>Agri-Innovation & Research</h3>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Student-led research in climate-resilient crops</li>
+            <li><i class="fa-solid fa-circle-check"></i> Post-harvest processing & sustainable supply chains</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 15px;">
+          <div class="logo-box">C</div>
+          <div class="logo-text">
+            <h1 style="color: white;">CSE JHANSI</h1>
+            <span>SRGI CAMPUS</span>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin-bottom: 15px;">Premier institution dedicated to academic brilliance, innovation, and holistic student development.</p>
+        <div class="accreditations">
+          <div class="accreditation-item">AICTE</div>
+          <div class="accreditation-item">AKTU</div>
+          <div class="accreditation-item">BTE</div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Campus Links</h4>
+        <div class="footer-links">
+          <a href="#">SRGI Campus</a>
+          <a href="#">CSE Student Clubs</a>
+          <a href="#">Location Map</a>
+          <a href="#">Infrastructure</a>
+          <a href="#">Hostels & Facilities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>About CSE</h4>
+        <div class="footer-links">
+          <a href="#">Chairman's Message</a>
+          <a href="#">Director's Message</a>
+          <a href="#">Heritage of Excellence</a>
+          <a href="#">Educational Philosophy</a>
+          <a href="#">Why Choose SRGI</a>
+          <a href="#">Departments</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="#">Admissions 2026</a>
+          <a href="#">Training & Placement</a>
+          <a href="#">R&D Cell</a>
+          <a href="#">Career Opportunities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons" style="margin-top: 10px;">
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 College of Science & Engineering (CSE), Jhansi. All Rights Reserved.</div>
+      <div>Managed by Act T Connect</div>
+    </div>
+  </footer>
+
+  <!-- INTERSECTION OBSERVER SCRIPT FOR ANIMATIONS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll(".fade-up, .fade-in-left").forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

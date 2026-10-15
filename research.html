@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research & Analytics Club | College of Science & Engineering (CSE), Jhansi</title>
+  
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* CSS RESET & VARIABLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-deep-slate: #0F172A;
+      --bg-dark-slate: #1E293B;
+      --bg-card-glass: rgba(30, 41, 59, 0.7);
+      --accent-electric-blue: #3B82F6;
+      --accent-electric-hover: #2563EB;
+      --accent-bright-cyan: #06B6D4;
+      --border-slate-subtle: #334155;
+      --border-blue-glow: rgba(59, 130, 246, 0.4);
+      --text-white: #FFFFFF;
+      --text-light-grey: #94A3B8;
+      --text-muted: #64748B;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-deep-slate);
+      color: var(--text-light-grey);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background-color: var(--bg-deep-slate);
+      color: var(--text-light-grey);
+      font-size: 13px;
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+    }
+
+    .top-bar-left span {
+      margin-right: 20px;
+    }
+
+    .top-bar-left i {
+      color: var(--accent-electric-blue);
+      margin-right: 6px;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .top-bar-right a:hover {
+      color: var(--text-white);
+    }
+
+    .btn-erp {
+      background-color: var(--accent-electric-blue);
+      color: var(--text-white) !important;
+      padding: 5px 14px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-erp:hover {
+      background-color: var(--accent-electric-hover);
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+    }
+
+    /* MAIN NAV */
+    .main-nav {
+      background-color: var(--bg-dark-slate);
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-slate-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .main-nav.scrolled {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(59, 130, 246, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-box {
+      width: 42px;
+      height: 42px;
+      background: var(--bg-deep-slate);
+      color: var(--accent-bright-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 22px;
+      border: 1px solid var(--accent-electric-blue);
+    }
+
+    .logo-text h1 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: var(--text-white);
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: var(--text-light-grey);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-light-grey);
+      position: relative;
+    }
+
+    .nav-links a.active {
+      color: var(--accent-electric-blue);
+      font-weight: 600;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-electric-blue);
+      box-shadow: 0 0 8px var(--accent-electric-blue);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-white);
+    }
+
+    .btn-apply {
+      background-color: var(--accent-electric-blue);
+      color: var(--text-white);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-apply:hover {
+      background-color: var(--accent-electric-hover);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: var(--text-white);
+      padding: 90px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background Pattern Lines */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(51, 65, 85, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(51, 65, 85, 0.15) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--text-light-grey);
+      margin-bottom: 20px;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-blue {
+      background-color: var(--accent-electric-blue);
+      color: var(--text-white);
+    }
+
+    .badge-dark-slate {
+      background-color: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-blue-glow);
+      color: var(--accent-bright-cyan);
+    }
+
+    .hero-text h1 {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--text-white);
+      letter-spacing: -1px;
+    }
+
+    .hero-text p {
+      font-size: 16px;
+      color: var(--text-light-grey);
+      max-width: 580px;
+      line-height: 1.6;
+    }
+
+    .hero-image-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-card {
+      background: var(--bg-card-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-blue-glow);
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      animation: animate-float 5s ease-in-out infinite;
+    }
+
+    @keyframes animate-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .logo-square {
+      width: 120px;
+      height: 120px;
+      background: #0B132B;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-electric-blue);
+      border: 1px solid var(--border-blue-glow);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+    }
+
+    .logo-square i {
+      font-size: 48px;
+      color: var(--accent-bright-cyan);
+    }
+
+    .official-tag {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-light-grey);
+      letter-spacing: 1px;
+    }
+
+    .dot-blue {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-electric-blue);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-electric-blue);
+    }
+
+    /* VISION & OBJECTIVES SECTION */
+    .vision-section {
+      padding: 90px 5%;
+      background-color: var(--bg-deep-slate);
+    }
+
+    .vision-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.6fr 0.4fr;
+      gap: 50px;
+      align-items: flex-start;
+    }
+
+    .pill-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background-color: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-blue-glow);
+      color: var(--accent-bright-cyan);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .vision-left h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      color: var(--text-white);
+      margin-bottom: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .vision-left p {
+      color: var(--text-light-grey);
+      margin-bottom: 18px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .vision-card {
+      background: var(--bg-card-glass);
+      backdrop-filter: blur(10px);
+      color: var(--text-white);
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid var(--border-blue-glow);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .vision-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      border-color: var(--accent-electric-blue);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+    }
+
+    .card-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent-bright-cyan);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .vision-card h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      margin-bottom: 14px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .vision-card p {
+      font-size: 14px;
+      color: var(--text-light-grey);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .card-footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-slate-subtle);
+    }
+
+    .footer-col-card span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col-card strong {
+      font-size: 13px;
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    /* CORE ACTIVITIES SECTION - BENTO GRID LAYOUT */
+    .activities-section {
+      padding: 100px 5%;
+      background-color: var(--bg-deep-slate);
+      border-top: 1px solid var(--border-slate-subtle);
+    }
+
+    .activities-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: 38px;
+      color: var(--text-white);
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .section-header p {
+      color: var(--text-light-grey);
+      font-size: 16px;
+    }
+
+    /* BENTO GRID STRUCTURAL LAYOUT */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    /* Row 1 Layout */
+    .bento-card-1 { grid-column: span 7; }
+    .bento-col-stack { grid-column: span 5; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* Row 2 Layout */
+    .bento-card-4 { grid-column: span 5; }
+    .bento-card-5 { grid-column: span 7; }
+
+    /* Row 3 Layout */
+    .bento-card-6 { grid-column: span 12; }
+
+    /* CARD DESIGN */
+    .bento-card {
+      background-color: var(--bg-dark-slate);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid var(--border-slate-subtle);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-electric-blue);
+      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
+    }
+
+    .card-top {
+      margin-bottom: 16px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(59, 130, 246, 0.1);
+      color: var(--accent-electric-blue);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      transition: var(--transition);
+    }
+
+    .bento-card:hover .card-icon {
+      background-color: var(--accent-electric-blue);
+      color: var(--text-white);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 15px var(--accent-electric-blue);
+    }
+
+    .bento-card h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      color: var(--text-white);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-light-grey);
+      line-height: 1.6;
+    }
+
+    .bullet-list i {
+      color: var(--accent-electric-blue);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--bg-deep-slate);
+      color: var(--text-light-grey);
+      padding: 70px 5% 0 5%;
+      font-size: 14px;
+      border-top: 1px solid var(--border-slate-subtle);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid var(--border-slate-subtle);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      color: var(--text-white);
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-bright-cyan);
+      padding-left: 4px;
+    }
+
+    .accreditations {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .accreditation-item {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-white);
+      border: 1px solid var(--border-slate-subtle);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      background-color: var(--text-white);
+      color: var(--bg-deep-slate);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--accent-electric-blue);
+      color: var(--text-white);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 12px var(--accent-electric-blue);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 25px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    /* ANIMATION UTILITIES */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1024px) {
+      .bento-card-1, .bento-col-stack, .bento-card-4, .bento-card-5, .bento-card-6 {
+        grid-column: span 12;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-container,
+      .vision-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar-left, .top-bar-right {
+        display: none;
+      }
+      .top-bar {
+        justify-content: center;
+      }
+
+      .main-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span><i class="fa-solid fa-phone"></i> 1800-123-4567 (Toll Free)</span>
+      <span><i class="fa-solid fa-location-dot"></i> Jhansi, Uttar Pradesh</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#">NIRF</a>
+      <a href="#">IQAC</a>
+      <a href="#">Careers</a>
+      <a href="#">Alumni</a>
+      <a href="#">Downloads</a>
+      <a href="#" class="btn-erp">ERP Login</a>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION BAR -->
+  <nav class="main-nav" id="mainNav">
+    <div class="logo">
+      <div class="logo-box">C</div>
+      <div class="logo-text">
+        <h1>CSE JHANSI</h1>
+        <span>COLLEGE OF SCIENCE & ENGINEERING</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Academics</a>
+      <a href="#">Admissions</a>
+      <a href="#">R&D</a>
+      <a href="#">Placement</a>
+      <a href="#" class="active">Life at SRGI</a>
+      <a href="#">Achievements</a>
+      <a href="#">Contact</a>
+    </div>
+    <a href="#" class="btn-apply">APPLY NOW</a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-text fade-in-left">
+        <div class="breadcrumb">Home > Student Clubs > Research & Analytics Club</div>
+        <div class="badge-group">
+          <span class="badge badge-blue">STUDENT ACTIVITY CENTER (SAC)</span>
+          <span class="badge badge-dark-slate">Technical & Research</span>
+        </div>
+        <h1>Research & Analytics Club</h1>
+        <p>Empowering minds with data science, statistical modeling, machine learning algorithms, and analytical decision-making capabilities.</p>
+      </div>
+      <div class="hero-image-wrapper fade-up">
+        <div class="glass-card">
+          <div class="logo-square">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="official-tag">
+            <span class="dot-blue"></span>
+            OFFICIAL CSE CLUB
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & OBJECTIVES SECTION -->
+  <section class="vision-section">
+    <div class="vision-container">
+      <div class="vision-left fade-up">
+        <span class="pill-badge">VISION & OBJECTIVES</span>
+        <h2>About Research & Analytics Club</h2>
+        <p>The Research & Analytics Club is a student-driven initiative committed to cultivating a robust data-centric mindset among engineers. We bridge academic concepts with real-world industry analytics using modern toolstacks like Python, R, SQL, Tableau, and Power BI.</p>
+        <p>Our focus extends to research methodologies, quantitative analysis, predictive modeling, and business intelligence, helping students transform raw data into actionable strategic insights.</p>
+      </div>
+      <div class="vision-card fade-up">
+        <span class="card-badge">ACTIVITY HIGHLIGHTS</span>
+        <h3>Empowering Future Achievers</h3>
+        <p>Hands-on participation in analytical hackathons, live industry projects, research paper publications, and expert mentorship.</p>
+        <div class="card-footer-grid">
+          <div class="footer-col-card">
+            <span>DOMAIN AREA</span>
+            <strong>Technical & Research</strong>
+          </div>
+          <div class="footer-col-card">
+            <span>AFFILIATION</span>
+            <strong>SAC • CSE Jhansi</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE ACTIVITIES SECTION (BENTO GRID DASHBOARD LAYOUT) -->
+  <section class="activities-section">
+    <div class="activities-container">
+      <div class="section-header fade-up">
+        <h2>Key Pillars & Initiatives</h2>
+        <p>An integrated analytics framework built for skill transformation, research, and corporate exposure.</p>
+      </div>
+      
+      <!-- BENTO GRID -->
+      <div class="bento-grid">
+        
+        <!-- ROW 1: LEFT LARGE CARD (60% / SPAN 7) -->
+        <div class="bento-card bento-card-1 fade-up">
+          <div class="card-top">
+            <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
+            <h3>Workshops & Training</h3>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Conducting hands-on workshops on tools like Python, R, SQL, Tableau, Power BI, and Excel.</li>
+          </ul>
+        </div>
+
+        <!-- ROW 1: RIGHT STACKED CARDS (40% / SPAN 5) -->
+        <div class="bento-col-stack">
+          <!-- CARD 2 -->
+          <div class="bento-card fade-up">
+            <div class="card-top">
+              <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
+              <h3>Case Study Competitions</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><i class="fa-solid fa-circle-check"></i> Hosting competitions to solve business problems using analytical techniques, such as Fidati ca and Avenir.</li>
+            </ul>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="bento-card fade-up">
+            <div class="card-top">
+              <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+              <h3>Live Projects & Internships</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><i class="fa-solid fa-circle-check"></i> Securing opportunities for students to work on real-time data projects with corporations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ROW 2: LEFT SMALL CARD (40% / SPAN 5) -->
+        <div class="bento-card bento-card-4 fade-up">
+          <div class="card-top">
+            <div class="card-icon"><i class="fa-solid fa-microphone"></i></div>
+            <h3>Guest Lectures & Panel Discussions</h3>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Organizing sessions with industry experts, such as Colloquium or Ask Me Anything (AMA) sessions.</li>
+          </ul>
+        </div>
+
+        <!-- ROW 2: RIGHT LARGE CARD (60% / SPAN 7) -->
+        <div class="bento-card bento-card-5 fade-up">
+          <div class="card-top">
+            <div class="card-icon"><i class="fa-solid fa-book"></i></div>
+            <h3>Knowledge Series & Research</h3>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Publishing newsletters, research blogs (e.g., Analytics Lens), and organizing journal clubs.</li>
+          </ul>
+        </div>
+
+        <!-- ROW 3: FULL WIDTH CARD (100% / SPAN 12) -->
+        <div class="bento-card bento-card-6 fade-up">
+          <div class="card-top">
+            <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+            <h3>Annual Symposiums & Expos</h3>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Conducting events like annual research summits or analytics fests to showcase student talent.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 15px;">
+          <div class="logo-box">C</div>
+          <div class="logo-text">
+            <h1 style="color: white;">CSE JHANSI</h1>
+            <span>SRGI CAMPUS</span>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin-bottom: 15px; color: var(--text-light-grey);">Premier institution dedicated to academic brilliance, innovation, and holistic student development.</p>
+        <div class="accreditations">
+          <div class="accreditation-item">AICTE</div>
+          <div class="accreditation-item">AKTU</div>
+          <div class="accreditation-item">BTE</div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Campus Links</h4>
+        <div class="footer-links">
+          <a href="#">SRGI Campus</a>
+          <a href="#">CSE Student Clubs</a>
+          <a href="#">Location Map</a>
+          <a href="#">Infrastructure</a>
+          <a href="#">Hostels & Facilities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>About CSE</h4>
+        <div class="footer-links">
+          <a href="#">Chairman's Message</a>
+          <a href="#">Director's Message</a>
+          <a href="#">Heritage of Excellence</a>
+          <a href="#">Educational Philosophy</a>
+          <a href="#">Why Choose SRGI</a>
+          <a href="#">Departments</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="#">Admissions 2026</a>
+          <a href="#">Training & Placement</a>
+          <a href="#">R&D Cell</a>
+          <a href="#">Career Opportunities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons" style="margin-top: 10px;">
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 College of Science & Engineering (CSE), Jhansi. All Rights Reserved.</div>
+      <div>Managed by Act T Connect</div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT: STICKY NAV GLOW & INTERSECTION OBSERVER -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Sticky Nav glow effect on scroll
+      const mainNav = id = document.getElementById("mainNav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 30) {
+          mainNav.classList.add("scrolled");
+        } else {
+          mainNav.classList.remove("scrolled");
+        }
+      });
+
+      // Intersection Observer for Smooth Fade Animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll(".fade-up, .fade-in-left").forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

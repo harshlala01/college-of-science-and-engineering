@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meditation Club | College of Science & Engineering (CSE), Jhansi</title>
+  
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* CSS RESET & VARIABLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-pastel-lavender: #F5F3FF;
+      --bg-card-white: #FFFFFF;
+      --bg-deep-indigo: #312E81;
+      --bg-dark-indigo: #1E1B4B;
+      --bg-muted-grey: #64748B;
+      --accent-sage: #10B981;
+      --accent-sage-hover: #059669;
+      --accent-gold: #F59E0B;
+      --accent-gold-hover: #D97706;
+      --text-indigo: #1E1B4B;
+      --text-muted: #64748B;
+      --text-white: #FFFFFF;
+      --text-light-muted: #94A3B8;
+      --border-purple-subtle: #E9D5FF;
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-pastel-lavender);
+      color: var(--text-indigo);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background-color: var(--bg-deep-indigo);
+      color: var(--text-light-muted);
+      font-size: 13px;
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .top-bar-left span {
+      margin-right: 20px;
+    }
+
+    .top-bar-left i {
+      color: var(--accent-gold);
+      margin-right: 6px;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .top-bar-right a:hover {
+      color: var(--text-white);
+    }
+
+    .btn-erp {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-indigo) !important;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .btn-erp:hover {
+      background-color: var(--accent-gold-hover);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+    }
+
+    /* MAIN NAV */
+    .main-nav {
+      background-color: var(--bg-pastel-lavender);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-purple-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-box {
+      width: 42px;
+      height: 42px;
+      background: var(--bg-deep-indigo);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 22px;
+      border-bottom: 3px solid var(--accent-sage);
+    }
+
+    .logo-text h1 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: var(--text-indigo);
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-indigo);
+      position: relative;
+    }
+
+    .nav-links a.active {
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-gold);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-sage);
+    }
+
+    .btn-apply {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-indigo);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .btn-apply:hover {
+      background-color: var(--accent-gold-hover);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, var(--bg-deep-indigo) 0%, var(--bg-dark-indigo) 100%);
+      color: var(--text-white);
+      padding: 90px 5%;
+      position: relative;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--text-light-muted);
+      margin-bottom: 20px;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-gold {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-indigo);
+    }
+
+    .badge-slate {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--accent-gold);
+    }
+
+    .hero-text h1 {
+      font-family: var(--font-heading);
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--text-white);
+    }
+
+    .hero-text p {
+      font-size: 16px;
+      color: var(--text-light-muted);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    .hero-image-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      position: relative;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .logo-square {
+      width: 120px;
+      height: 120px;
+      background: #4338CA;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      box-shadow: 0 10px 25px rgba(67, 56, 202, 0.5);
+    }
+
+    .logo-square i {
+      font-size: 48px;
+      color: var(--accent-sage);
+    }
+
+    .official-tag {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-light-muted);
+      letter-spacing: 1px;
+    }
+
+    .dot-gold {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-gold);
+    }
+
+    /* VISION & OBJECTIVES SECTION */
+    .vision-section {
+      padding: 90px 5%;
+      background-color: var(--bg-pastel-lavender);
+    }
+
+    .vision-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.6fr 0.4fr;
+      gap: 50px;
+      align-items: flex-start;
+    }
+
+    .pill-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background-color: #EDE9FE;
+      color: #5B21B6;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .vision-left h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      color: var(--text-indigo);
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .vision-left p {
+      color: var(--text-indigo);
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .vision-card {
+      background-color: var(--bg-deep-indigo);
+      color: var(--text-white);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-top: 3px solid var(--accent-gold);
+      box-shadow: 0 15px 30px rgba(49, 46, 129, 0.12);
+      transition: var(--transition);
+    }
+
+    .vision-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-gold);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .vision-card h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .vision-card p {
+      font-size: 14px;
+      color: var(--text-light-muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .card-footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-col-card span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-light-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col-card strong {
+      font-size: 13px;
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    /* CORE ACTIVITIES SECTION - CENTERED ZEN LAYOUT */
+    .activities-section {
+      padding: 100px 5%;
+      background-color: var(--bg-pastel-lavender);
+      border-top: 1px solid var(--border-purple-subtle);
+    }
+
+    .activities-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: 38px;
+      color: var(--text-indigo);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .section-header p {
+      color: var(--bg-muted-grey);
+      font-size: 16px;
+    }
+
+    /* ROW 1: 3 CARDS CENTERED */
+    .zen-top-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    /* ROW 2: 1 CARD CENTERED BELOW */
+    .zen-bottom-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .zen-bottom-row .zen-card {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .zen-card {
+      background-color: var(--bg-card-white);
+      border-radius: 20px;
+      padding: 35px;
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      border-top: 4px solid var(--accent-sage);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .zen-card:hover {
+      transform: translateY(-4px);
+      border-top-color: #059669;
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.12);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      background-color: #D1FAE5;
+      color: var(--accent-sage);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .zen-card:hover .card-icon {
+      background-color: var(--accent-sage);
+      color: var(--text-white);
+      transform: scale(1.08);
+    }
+
+    .zen-card h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      color: var(--text-indigo);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-indigo);
+    }
+
+    .bullet-list i {
+      color: var(--accent-sage);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--bg-dark-indigo);
+      color: var(--text-light-muted);
+      padding: 70px 5% 0 5%;
+      font-size: 14px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      color: var(--text-white);
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      padding-left: 4px;
+    }
+
+    .accreditations {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .accreditation-item {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-white);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      background-color: var(--text-white);
+      color: var(--bg-dark-indigo);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark-indigo);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 25px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    /* ANIMATION UTILITIES */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .hero-container,
+      .vision-container {
+        grid-template-columns: 1fr;
+      }
+
+      .zen-top-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar-left, .top-bar-right {
+        display: none;
+      }
+      .top-bar {
+        justify-content: center;
+      }
+
+      .main-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero-text h1 {
+        font-size: 38px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span><i class="fa-solid fa-phone"></i> 1800-123-4567 (Toll Free)</span>
+      <span><i class="fa-solid fa-location-dot"></i> Jhansi, Uttar Pradesh</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#">NIRF</a>
+      <a href="#">IQAC</a>
+      <a href="#">Careers</a>
+      <a href="#">Alumni</a>
+      <a href="#">Downloads</a>
+      <a href="#" class="btn-erp">ERP Login</a>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION BAR -->
+  <nav class="main-nav">
+    <div class="logo">
+      <div class="logo-box">C</div>
+      <div class="logo-text">
+        <h1>CSE JHANSI</h1>
+        <span>COLLEGE OF SCIENCE & ENGINEERING</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Academics</a>
+      <a href="#">Admissions</a>
+      <a href="#">R&D</a>
+      <a href="#">Placement</a>
+      <a href="#" class="active">Life at SRGI</a>
+      <a href="#">Achievements</a>
+      <a href="#">Contact</a>
+    </div>
+    <a href="#" class="btn-apply">APPLY NOW</a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-text fade-in-left">
+        <div class="breadcrumb">Home > Student Clubs > Meditation Club</div>
+        <div class="badge-group">
+          <span class="badge badge-gold">STUDENT ACTIVITY CENTER (SAC)</span>
+          <span class="badge badge-slate">Technical & Research</span>
+        </div>
+        <h1>Meditation Club</h1>
+        <p>Cultivating inner peace, stress reduction, mindfulness practices, guided body scans, and emotional balance across academic life.</p>
+      </div>
+      <div class="hero-image-wrapper fade-up">
+        <div class="glass-card">
+          <div class="logo-square">
+            <i class="fa-solid fa-spa"></i>
+          </div>
+          <div class="official-tag">
+            <span class="dot-gold"></span>
+            OFFICIAL CSE CLUB
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & OBJECTIVES SECTION -->
+  <section class="vision-section">
+    <div class="vision-container">
+      <div class="vision-left fade-up">
+        <span class="pill-badge">VISION & OBJECTIVES</span>
+        <h2>About Meditation Club</h2>
+        <p>The Meditation Club serves as a tranquil oasis designed to help students pause, breathe, and regain focus amidst demanding academic schedules. We cultivate sustainable mental clarity, emotional resilience, and bodily awareness.</p>
+        <p>Through guided body scan meditation, sensory grounding exercises, reflective journaling, and nature walks, members discover practical, lifelong tools to alleviate anxiety and achieve harmony.</p>
+      </div>
+      <div class="vision-card fade-up">
+        <span class="card-badge">ACTIVITY HIGHLIGHTS</span>
+        <h3>Empowering Future Achievers</h3>
+        <p>Hands-on participation in guided breathing labs, sensory grounding workshops, and peer wellness circles.</p>
+        <div class="card-footer-grid">
+          <div class="footer-col-card">
+            <span>DOMAIN AREA</span>
+            <strong>Technical & Research</strong>
+          </div>
+          <div class="footer-col-card">
+            <span>AFFILIATION</span>
+            <strong>SAC • CSE Jhansi</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE ACTIVITIES SECTION (CENTERED ZEN LAYOUT) -->
+  <section class="activities-section">
+    <div class="activities-container">
+      <div class="section-header fade-up">
+        <h2>Key Pillars & Initiatives</h2>
+        <p>A harmonious, centered framework curated to foster mental calm, focus, and holistic well-being.</p>
+      </div>
+      
+      <!-- TOP ROW: 3 CENTERED CARDS -->
+      <div class="zen-top-row">
+        <!-- CARD 1 -->
+        <div class="zen-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
+          <h3>Core Meditation Practices</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Body Scan Meditation for physical relaxation</li>
+            <li><i class="fa-solid fa-circle-check"></i> Guided Visualization & Peaceful Imagery</li>
+            <li><i class="fa-solid fa-circle-check"></i> Loving-Kindness Meditation for empathy</li>
+            <li><i class="fa-solid fa-circle-check"></i> Focused Breathing techniques (Pranayama)</li>
+          </ul>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="zen-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3>Mindful & Sensory Activities</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> 5-4-3-2-1 Sensory Grounding Technique</li>
+            <li><i class="fa-solid fa-circle-check"></i> Mindful Eating (Raisin & Sensory Exercise)</li>
+            <li><i class="fa-solid fa-circle-check"></i> Mindful Nature Walks across campus</li>
+          </ul>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="zen-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-palette"></i></div>
+          <h3>Creative & Social Activities</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Mindfulness Journaling & Reflection</li>
+            <li><i class="fa-solid fa-circle-check"></i> Mindfulness Coloring for stress release</li>
+            <li><i class="fa-solid fa-circle-check"></i> "Thought Bath Mat" Awareness Game</li>
+            <li><i class="fa-solid fa-circle-check"></i> Object Storytelling & Perspective Building</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- BOTTOM ROW: 1 CENTERED CARD (BASE) -->
+      <div class="zen-bottom-row">
+        <div class="zen-card fade-up">
+          <div class="card-icon"><i class="fa-solid fa-star"></i></div>
+          <h3>Outcomes of Club Participation</h3>
+          <ul class="bullet-list">
+            <li><i class="fa-solid fa-circle-check"></i> Reduced Stress & Anxiety: Provides actionable mental tools to navigate intense academic pressures, exams, and personal challenges with composure.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 15px;">
+          <div class="logo-box">C</div>
+          <div class="logo-text">
+            <h1 style="color: white;">CSE JHANSI</h1>
+            <span>SRGI CAMPUS</span>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin-bottom: 15px;">Premier institution dedicated to academic brilliance, innovation, and holistic student development.</p>
+        <div class="accreditations">
+          <div class="accreditation-item">AICTE</div>
+          <div class="accreditation-item">AKTU</div>
+          <div class="accreditation-item">BTE</div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Campus Links</h4>
+        <div class="footer-links">
+          <a href="#">SRGI Campus</a>
+          <a href="#">CSE Student Clubs</a>
+          <a href="#">Location Map</a>
+          <a href="#">Infrastructure</a>
+          <a href="#">Hostels & Facilities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>About CSE</h4>
+        <div class="footer-links">
+          <a href="#">Chairman's Message</a>
+          <a href="#">Director's Message</a>
+          <a href="#">Heritage of Excellence</a>
+          <a href="#">Educational Philosophy</a>
+          <a href="#">Why Choose SRGI</a>
+          <a href="#">Departments</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="#">Admissions 2026</a>
+          <a href="#">Training & Placement</a>
+          <a href="#">R&D Cell</a>
+          <a href="#">Career Opportunities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons" style="margin-top: 10px;">
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 College of Science & Engineering (CSE), Jhansi. All Rights Reserved.</div>
+      <div>Managed by Act T Connect</div>
+    </div>
+  </footer>
+
+  <!-- INTERSECTION OBSERVER SCRIPT FOR ANIMATIONS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll(".fade-up, .fade-in-left").forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

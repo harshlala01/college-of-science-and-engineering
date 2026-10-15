@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Engineering & Technology Institute - Contact Us</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navyPrimary: '#081b33',
+                        navyDark: '#051122',
+                        accentGold: '#eab308',
+                        buttonGold: '#f59e0b',
+                        gradientGoldStart: '#fbbf24',
+                        gradientGoldEnd: '#d97706',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #eab308 0%, #d97706 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+        }
+        /* Glowing sphere effect like in screenshot */
+        .sunburst-glow {
+            background: radial-gradient(circle, rgba(251,191,36,0.35) 0%, rgba(245,158,11,0.15) 40%, rgba(5,17,34,0) 70%);
+        }
+        /* Curved glowing arch on bottom left of hero banner */
+        .hero-arch-glow {
+            box-shadow: inset -10px 0 30px rgba(234, 179, 8, 0.25);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #051122;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+    </style>
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+</head>
+<body class="bg-[#f0f4f8] text-gray-800 font-sans antialiased">
+
+    <!-- Top Utility Bar -->
+    <div class="bg-[#030b18] text-white py-2 px-4 sm:px-8 border-b border-white/10 text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <!-- Contact Info -->
+            <div class="flex items-center gap-6 flex-wrap justify-center sm:justify-start">
+                <a href="tel:+917700300300" class="flex items-center gap-2 hover:text-accentGold transition-colors">
+                    <span class="text-accentGold"><i class="fa-solid fa-phone"></i></span>
+                    <span class="font-medium">+91-7700-300-300</span>
+                </a>
+                <span class="text-gray-600">|</span>
+                <a href="contact.html"><span><i class="fas fa-map-marker-alt"></i> NH-75, Gwalior Road, Jhansi (U.P.) - 284419</span></a>
+            </div>
+            <!-- Social Icons & Apply Button -->
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2.5 text-gray-300">
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <a href="#inquiry-form" class="btn-gold text-navyDark font-bold px-4 py-1.5 rounded-full text-xs shadow-md inline-flex items-center gap-1.5">
+                    <span>Apply Now</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-[#081b33] shadow-md border-b border-white/5 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md p-1 border-2 border-accentGold">
+                    <div class="w-full h-full rounded-full bg-[#051122] flex items-center justify-center text-accentGold font-black text-xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-black tracking-wide text-white leading-tight">ABC</h1>
+                    <p class="text-[9px] text-gray-300 font-semibold uppercase tracking-wider">Engineering & Technology Institute</p>
+                    <p class="text-[8px] text-accentGold tracking-widest font-bold">Learn | Innovate | Lead</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold">
+                <a href="index.html" class="hover:text-accentGold transition-colors">Home</a>
+                <a href="#" class="hover:text-accentGold transition-colors">About Us</a>
+                <a href="#" class="hover:text-accentGold transition-colors">Academics</a>
+                <a href="#" class="hover:text-accentGold transition-colors">Admissions</a>
+                <a href="#" class="hover:text-accentGold transition-colors">R&D</a>
+                <a href="#" class="hover:text-accentGold transition-colors">Placement</a>
+                <a href="#" class="hover:text-accentGold transition-colors">Life at ABC</a>
+                <a href="#" class="hover:text-accentGold transition-colors">Achievements</a>
+                <a href="#" class="text-accentGold font-bold border-b-2 border-accentGold pb-1">Contact</a>
+            </nav>
+
+            <!-- Apply Now Button & Mobile Menu Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="#inquiry-form" class="hidden sm:inline-flex btn-gold text-navyDark font-extrabold px-5 py-2 rounded-full text-xs shadow-lg items-center gap-2">
+                    <span>Apply Now</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <button id="menu-btn" class="lg:hidden text-white text-2xl focus:outline-none hover:text-accentGold">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navyDark border-t border-white/10 px-6 py-4 space-y-3">
+            <a href="index.html" class="block hover:text-accentGold py-1 text-sm font-medium">Home</a>
+            <a href="#" class="block hover:text-accentGold py-1 text-sm font-medium">About Us</a>
+            <a href="#" class="block hover:text-accentGold py-1 text-sm font-medium">Academics</a>
+            <a href="#" class="block hover:text-accentGold py-1 text-sm font-medium">Admissions</a>
+            <a href="#" class="block hover:text-accentGold py-1 text-sm font-medium">R&D</a>
+            <a href="#" class="block hover:text-accentGold py-1 text-sm font-medium">Placement</a>
+            <a href="#" class="block hover:text-accentGold py-1 text-sm font-medium">Life at ABC</a>
+            <a href="#" class="block hover:text-accentGold py-1 text-sm font-medium">Achievements</a>
+            <a href="#" class="block text-accentGold font-bold py-1 text-sm">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero / Header Banner Section matching exact screenshot layout -->
+    <section class="relative bg-[#051122] text-white overflow-hidden min-h-[340px] flex items-center">
+        <!-- Right side Campus Building Image Background -->
+        <div class="absolute right-0 top-0 bottom-0 w-full lg:w-[62%] bg-cover bg-right sm:bg-center z-0 opacity-80" 
+             style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80');">
+            <!-- Smooth Gradient Overlay blending image into navy background -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#051122] via-[#051122]/80 to-transparent"></div>
+            <!-- Golden Sunlight Overlay Effect on top right -->
+            <div class="absolute top-0 right-0 w-96 h-96 sunburst-glow pointer-events-none"></div>
+        </div>
+
+        <!-- Decorative Left Curved Glowing Line -->
+        <div class="absolute left-[-100px] top-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-amber-500/20 rounded-full pointer-events-none"></div>
+        <div class="absolute left-[-150px] top-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-amber-500/10 rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 relative z-10 w-full">
+            <!-- Breadcrumb -->
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-300 mb-6">
+                <a href="index.html" class="hover:text-accentGold flex items-center gap-1.5"><i class="fa-solid fa-house text-accentGold text-xs"></i> Home</a>
+                <span><i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i></span>
+                <span class="text-white font-medium">Contact</span>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <div class="max-w-xl">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-accentGold font-bold text-xs sm:text-sm tracking-widest uppercase">GET IN TOUCH</span>
+                    <span class="w-12 h-[2px] bg-accentGold"></span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-3 text-white leading-tight">
+                    Contact Admissions & Campus
+                </h1>
+                <p class="text-gray-200 text-xs sm:text-sm leading-relaxed font-normal">
+                    Reach Out to our 24/7 Admissions Helpline or Visit our 80-Acre Campus in Jhansi.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column: Info Cards & Inquiry Form -->
+            <div class="lg:col-span-6 space-y-4">
+                
+                <!-- Campus Location Card -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <!-- Dark Navy Rounded Icon Container with Amber Icon (Exact match with screenshot) -->
+                        <div class="w-12 h-12 rounded-full bg-[#0a192f] text-accentGold flex items-center justify-center text-lg shrink-0 shadow-sm border border-amber-500/20">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-gray-900 text-sm sm:text-base">Campus Location</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-0.5 font-medium">NH-75, Jhansi-Gwalior Road, Karari, Jhansi (U.P.) - 284419</p>
+                        </div>
+                    </div>
+                    <div class="text-navyDark/60 group-hover:text-accentGold transition-colors pl-2">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Helpline Numbers Card -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <!-- Dark Navy Rounded Icon Container with Amber Icon -->
+                        <div class="w-12 h-12 rounded-full bg-[#0a192f] text-accentGold flex items-center justify-center text-lg shrink-0 shadow-sm border border-amber-500/20">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-gray-900 text-sm sm:text-base">Helpline Numbers</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-0.5 font-medium">Toll-Free: <span class="font-semibold text-gray-800">1800-890-0272</span></p>
+                        </div>
+                    </div>
+                    <div class="text-navyDark/60 group-hover:text-accentGold transition-colors pl-2">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Email Helpdesk Card -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <!-- Dark Navy Rounded Icon Container with Amber Icon -->
+                        <div class="w-12 h-12 rounded-full bg-[#0a192f] text-accentGold flex items-center justify-center text-lg shrink-0 shadow-sm border border-amber-500/20">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-gray-900 text-sm sm:text-base">Email Helpdesk</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-0.5 font-medium">
+                                General: <span class="text-gray-800 font-semibold">info@abc.edu.in</span> | Placement: <span class="text-gray-800 font-semibold">placement@abc.edu.in</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text-navyDark/60 group-hover:text-accentGold transition-colors pl-2">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Send Direct Inquiry Form -->
+                <div id="inquiry-form" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 mt-6">
+                    <div class="mb-5">
+                        <h3 class="text-lg sm:text-xl font-black text-gray-900">Send Direct Inquiry</h3>
+                        <div class="w-10 h-1 bg-accentGold rounded-full mt-1"></div>
+                    </div>
+
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Full Name -->
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Your Full Name *</label>
+                                <input type="text" id="fullName" required placeholder="Enter your full name" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 text-xs sm:text-sm bg-gray-50/30">
+                            </div>
+                            <!-- Email Address -->
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Email Address *</label>
+                                <input type="email" id="email" required placeholder="Enter your email address" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 text-xs sm:text-sm bg-gray-50/30">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Phone Number -->
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Phone Number *</label>
+                                <input type="tel" id="phone" required placeholder="Enter your phone number" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 text-xs sm:text-sm bg-gray-50/30">
+                            </div>
+                            <!-- Inquiry Type -->
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Inquiry Type</label>
+                                <select id="inquiryType" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 text-xs sm:text-sm bg-gray-50/30">
+                                    <option value="Admissions">Admissions 2026</option>
+                                    <option value="Placement">Training & Placement</option>
+                                    <option value="General">General Query</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Message / Query *</label>
+                            <textarea id="message" rows="3" required placeholder="Type your message here..." 
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 text-xs sm:text-sm bg-gray-50/30 resize-none"></textarea>
+                        </div>
+
+                        <!-- Success message box -->
+                        <div id="form-success" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+                            <span>Thank you! Your inquiry has been submitted successfully.</span>
+                        </div>
+
+                        <!-- Submit Button with Gradient Gold Styling -->
+                        <button type="submit" class="w-full btn-gold text-white font-bold py-3 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-transform text-sm">
+                            <span>Submit Inquiry</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Interactive Map Simulation & Info Cards -->
+            <div class="lg:col-span-6 space-y-4">
+                
+                <!-- Map Card Container -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-100">
+                    <!-- Map Header Gold Badge -->
+                    <div class="btn-gold text-navyDark px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 mb-4 shadow-sm">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>ABC Engineering & Technology Institute, Jhansi</span>
+                    </div>
+
+                    <!-- Map Render Container -->
+                    <div class="relative w-full h-[360px] sm:h-[400px] rounded-xl overflow-hidden border border-gray-200 bg-[#e5e3df]">
+                        <!-- Map Image Canvas Mockup -->
+                        <div class="absolute inset-0 bg-cover bg-center opacity-90" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=80'); filter: contrast(1.05) saturate(1.1);"></div>
+                        
+                        <!-- Map Overlay Graphic simulation -->
+                        <svg class="absolute inset-0 w-full h-full opacity-60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M-50,180 Q150,140 350,220 T700,180" fill="none" stroke="#fde047" stroke-width="8"/>
+                            <path d="M220,-20 L280,450" fill="none" stroke="#ffffff" stroke-width="12"/>
+                        </svg>
+
+                        <!-- Google Map Marker Card Popup -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[85%] z-20">
+                            <div class="bg-white rounded-xl shadow-2xl p-3 w-64 border border-gray-200 text-left">
+                                <div class="font-bold text-xs text-gray-900 leading-snug">ABC Engineering & Technology Institute</div>
+                                <div class="text-[10px] text-gray-500 mt-0.5">NH-75, Jhansi-Gwalior Road, Karari, Jhansi (U.P.) - 284419</div>
+                                <div class="flex items-center gap-1 text-[11px] mt-1.5">
+                                    <span class="font-bold text-gray-800">4.5</span>
+                                    <span class="text-amber-500 text-[10px] flex">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                    </span>
+                                    <span class="text-blue-600 underline text-[10px] cursor-pointer">(1,248 reviews)</span>
+                                </div>
+                                <a href="#" class="text-[10px] text-blue-600 font-semibold hover:underline mt-1 block">View larger map</a>
+                            </div>
+                            <!-- Pin Icon Drop Point -->
+                            <div class="flex justify-center -mt-1">
+                                <div class="text-red-600 text-3xl drop-shadow-md">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Zoom Controls -->
+                        <div class="absolute bottom-4 right-4 z-20 flex flex-col bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <button onclick="zoomMap(1)" class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 text-gray-700 font-bold text-base border-b border-gray-200">+</button>
+                            <button onclick="zoomMap(-1)" class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 text-gray-700 font-bold text-base">-</button>
+                        </div>
+
+                        <!-- Attribution -->
+                        <div class="absolute bottom-1 left-2 z-10 text-[9px] text-gray-600 font-medium bg-white/70 px-1 rounded">
+                            Map data ©2026 Google
+                        </div>
+                    </div>
+
+                    <!-- Bottom Quick Info Cards with Gold Round Icons -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                        <!-- Visit Us Card -->
+                        <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-200/80 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100/80 text-amber-700 flex items-center justify-center text-base shrink-0">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs text-gray-900">Visit Us</h4>
+                                <p class="text-[10px] text-gray-600 leading-tight mt-0.5">Mon - Sat : 9:00 AM - 5:00 PM<br><span class="text-gray-400">(Except Holidays)</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Campus Tour Card -->
+                        <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-200/80 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100/80 text-amber-700 flex items-center justify-center text-base shrink-0">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs text-gray-900">Campus Tour</h4>
+                                <p class="text-[10px] text-gray-600 leading-tight mt-0.5">Schedule a Campus Visit<br><span class="text-gray-400">(For Groups & Individuals)</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Section matching reference layout -->
+    <footer class="bg-[#051122] text-white pt-14 pb-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-white/10">
+                
+                <!-- Col 1: Institute Info -->
+                <div class="lg:col-span-1 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center p-1 border border-accentGold">
+                            <div class="w-full h-full rounded-full bg-navyDark flex items-center justify-center text-accentGold font-bold text-sm">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="text-base font-extrabold text-white leading-tight">ABC</h2>
+                            <p class="text-[8px] text-gray-300 uppercase">Engineering & Technology Institute</p>
+                            <p class="text-[7px] text-accentGold font-semibold">Learn | Innovate | Lead</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        ABC Engineering & Technology Institute is a premier technical institute committed to providing quality education, fostering innovation and developing skilled engineers for a better tomorrow.
+                    </p>
+                    <div class="flex items-center gap-2.5 pt-1">
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-xs"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Accreditations -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-white border-l-2 border-accentGold pl-2">Accreditations</h3>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><span class="text-accentGold"><i class="fa-solid fa-circle-check text-[10px]"></i></span> AICTE Approved</li>
+                        <li class="flex items-center gap-2"><span class="text-accentGold"><i class="fa-solid fa-circle-check text-[10px]"></i></span> Affiliated to AKTU</li>
+                        <li class="flex items-center gap-2"><span class="text-accentGold"><i class="fa-solid fa-circle-check text-[10px]"></i></span> Affiliated to BTE UP</li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Campus -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-white border-l-2 border-accentGold pl-2">Campus</h3>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> SRGI Campus</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> CSE Student Clubs (29+)</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Location Map</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Infrastructure</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Hostels & Facilities</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: About CSE -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-white border-l-2 border-accentGold pl-2">About CSE</h3>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Chairman's Message</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Director's Message</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Heritage of Excellence</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Educational Philosophy</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Why Choose ABC</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Departments</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 5: Quick Links -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-white border-l-2 border-accentGold pl-2">Quick Links</h3>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Admissions 2026</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Training & Placement</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> R&D Cell</a></li>
+                        <li><a href="#" class="hover:text-accentGold transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-accentGold"></i> Career Opportunities</a></li>
+                    </ul>
+                    <div class="pt-2">
+                        <p class="text-xs font-bold text-white mb-2">Follow Us</p>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-accentGold hover:text-navyDark transition-all text-[11px]"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-400 gap-3">
+                <p>© 2025 ABC Engineering & Technology Institute. All Rights Reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-accentGold transition-colors">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-accentGold transition-colors">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/917700300300" target="_blank" class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-all transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="fixed bottom-6 right-6 z-50 w-10 h-10 bg-accentGold hover:bg-amber-400 text-navyDark rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-105 font-bold">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const successBox = document.getElementById('form-success');
+            successBox.classList.remove('hidden');
+            
+            document.getElementById('contactForm').reset();
+
+            setTimeout(() => {
+                successBox.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Map Zoom logic
+        function zoomMap(direction) {
+            const mapBg = document.querySelector('.relative.w-full.h-\\[360px\\]');
+            if(mapBg) {
+                mapBg.style.transform = `scale(${direction > 0 ? 1.05 : 0.95})`;
+                setTimeout(() => {
+                    mapBg.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }
+    </script>
+</body>
+</html>
