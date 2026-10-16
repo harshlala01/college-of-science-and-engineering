@@ -269,15 +269,56 @@
 
     const toggle = header.querySelector(".site-nav-toggle");
     const menu = header.querySelector(".site-nav");
+    const updateMobileMenuHeight = () => {
+      if (window.matchMedia("(max-width: 1280px)").matches && menu.classList.contains("is-open")) {
+        const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        const availableHeight = Math.max(0, viewportHeight - menu.getBoundingClientRect().top - 12);
+        menu.style.maxHeight = `${availableHeight}px`;
+      } else {
+        menu.style.removeProperty("max-height");
+      }
+    };
+    const syncMobileMenuLayout = () => {
+      updateMobileMenuHeight();
+      if (!window.matchMedia("(max-width: 1280px)").matches || !menu.classList.contains("is-open")) {
+        return;
+      }
+
+      const expandedItem = menu.querySelector(":scope > .site-nav-item.is-expanded");
+      if (!expandedItem) {
+        return;
+      }
+
+      const menuTop = menu.getBoundingClientRect().top;
+      const itemBounds = expandedItem.getBoundingClientRect();
+      const dropdown = expandedItem.querySelector(":scope > .site-dropdown");
+      if (itemBounds.top < menuTop || dropdown.getBoundingClientRect().bottom > menu.getBoundingClientRect().bottom) {
+        menu.scrollTop += itemBounds.top - menuTop;
+      }
+    };
+
     header.querySelectorAll(".site-submenu-toggle, .site-nav-label").forEach(button => {
       button.addEventListener("click", () => {
         const item = button.closest(".site-nav-item");
         const isDesktopHover = window.matchMedia("(min-width: 1281px) and (hover: hover)").matches;
         const isOpen = isDesktopHover || !item.classList.contains("is-expanded");
+        if (isOpen && !isDesktopHover) {
+          menu.querySelectorAll(".site-nav-item.is-expanded").forEach(openItem => {
+            if (openItem !== item) {
+              openItem.classList.remove("is-expanded");
+              openItem.querySelectorAll(":scope > .site-submenu-toggle, :scope > .site-nav-label").forEach(toggleButton => {
+                toggleButton.setAttribute("aria-expanded", "false");
+              });
+            }
+          });
+        }
         item.classList.toggle("is-expanded", isOpen);
         item.querySelectorAll(":scope > .site-submenu-toggle, :scope > .site-nav-label").forEach(toggleButton => {
           toggleButton.setAttribute("aria-expanded", String(isOpen));
         });
+        if (isOpen && !isDesktopHover) {
+          syncMobileMenuLayout();
+        }
       });
     });
     header.querySelectorAll(".site-dropdown-trigger").forEach(button => {
@@ -285,6 +326,15 @@
         const group = button.closest(".site-dropdown-group");
         const isOpen = group.classList.toggle("is-expanded");
         button.setAttribute("aria-expanded", String(isOpen));
+        if (isOpen && window.matchMedia("(max-width: 1280px)").matches) {
+          syncMobileMenuLayout();
+          const menuTop = menu.getBoundingClientRect().top;
+          const groupBounds = group.getBoundingClientRect();
+          const submenu = group.querySelector(".site-submenu");
+          if (groupBounds.top < menuTop || submenu.getBoundingClientRect().bottom > menu.getBoundingClientRect().bottom) {
+            menu.scrollTop += groupBounds.top - menuTop;
+          }
+        }
       });
     });
 
@@ -327,14 +377,24 @@
 
     toggle.addEventListener("click", () => {
       const isOpen = menu.classList.toggle("is-open");
+      syncMobileMenuLayout();
       toggle.setAttribute("aria-expanded", String(isOpen));
       toggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
       toggle.firstElementChild.innerHTML = isOpen ? "&times;" : "&#9776;";
     });
 
+    window.addEventListener("resize", syncMobileMenuLayout);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", syncMobileMenuLayout);
+    }
+    const layoutObserver = new ResizeObserver(syncMobileMenuLayout);
+    layoutObserver.observe(header.querySelector(".site-utility-bar"));
+    layoutObserver.observe(header.querySelector(".site-header-main"));
+
     menu.addEventListener("click", event => {
       if (event.target.closest("a")) {
         menu.classList.remove("is-open");
+        updateMobileMenuHeight();
         header.querySelectorAll(".is-expanded").forEach(item => item.classList.remove("is-expanded"));
         header.querySelectorAll('[aria-expanded="true"]').forEach(button => button.setAttribute("aria-expanded", "false"));
         toggle.setAttribute("aria-expanded", "false");
@@ -346,6 +406,7 @@
     document.addEventListener("click", event => {
       if (!header.contains(event.target)) {
         menu.classList.remove("is-open");
+        updateMobileMenuHeight();
         header.querySelectorAll(".is-expanded").forEach(item => item.classList.remove("is-expanded"));
         header.querySelectorAll('[aria-expanded="true"]').forEach(button => button.setAttribute("aria-expanded", "false"));
         toggle.setAttribute("aria-expanded", "false");

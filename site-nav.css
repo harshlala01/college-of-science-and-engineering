@@ -655,11 +655,13 @@ body > div[class*="py-2"][class*="flex"][class*="justify-between"][class*="borde
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
+    justify-content: flex-start !important;
     gap: 2px;
   }
 
   .site-nav-item {
     flex-wrap: wrap;
+    flex: 0 0 auto;
   }
 
   .site-nav-item > a,
@@ -733,6 +735,7 @@ body > div[class*="py-2"][class*="flex"][class*="justify-between"][class*="borde
 
   .site-nav .site-apply {
     justify-content: center;
+    flex: 0 0 auto;
     margin-top: 8px;
   }
 
