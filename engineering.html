@@ -39,6 +39,12 @@
             transform: translateY(-4px);
             box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
         }
+        .dept-card .dept-photo {
+            transition: transform 0.6s ease;
+        }
+        .dept-card:hover .dept-photo {
+            transform: scale(1.05);
+        }
         /* Floating WhatsApp Icon */
         .whatsapp-float {
             position: fixed;
@@ -162,15 +168,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- Right Column: Image Placeholder -->
-                <div class="lg:col-span-5 bg-slate-900 rounded-xl p-6 text-white relative overflow-hidden min-h-[220px] flex flex-col justify-between shadow-inner">
-                    <span class="absolute top-3 left-3 bg-red-600 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider">HIGH-END COMPUTING LABS</span>
-                    <div class="text-center my-auto">
-                        <div class="text-3xl font-extrabold text-amber-400 tracking-widest italic">IMG</div>
-                        <div class="text-[11px] text-slate-400 mt-1">State-of-the-art Infrastructure</div>
-                    </div>
-                    <div class="text-right">
-                        <a href="#" class="bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs px-4 py-2 rounded-lg shadow transition inline-block">View Course Details &rarr;</a>
+                <div class="dept-image-panel group lg:col-span-5 rounded-xl relative overflow-hidden min-h-[220px] flex flex-col justify-between shadow-inner">
+                    <img src="images/lab-cse.jpg" alt="Close-up of computer circuit boards in the CSE computing lab" class="dept-photo absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-slate-950/25"></div>
+                    <span class="absolute top-3 left-3 bg-red-600 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider text-white">HIGH-END COMPUTING LABS</span>
+                    <div class="relative z-10 mt-auto p-5 flex items-end justify-between gap-3 text-white">
+                        <span class="text-xs font-medium drop-shadow">AI, computing &amp; cloud infrastructure</span>
+                        <a href="graduated.html#program-cse" class="shrink-0 bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs px-4 py-2 rounded-lg shadow transition">View Course Details &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -201,15 +205,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- Right Column -->
-                <div class="lg:col-span-5 bg-slate-900 rounded-xl p-6 text-white relative overflow-hidden min-h-[220px] flex flex-col justify-between shadow-inner">
-                    <span class="absolute top-3 left-3 bg-amber-500 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider">ELECTRICAL SIMULATION LABS</span>
-                    <div class="text-center my-auto">
-                        <div class="text-3xl font-extrabold text-amber-400 tracking-widest italic">IMG</div>
-                        <div class="text-[11px] text-slate-400 mt-1">Advanced Circuit Testing</div>
-                    </div>
-                    <div class="text-right">
-                        <a href="#" class="bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs px-4 py-2 rounded-lg shadow transition inline-block">View Course Details &rarr;</a>
+                <div class="dept-image-panel group lg:col-span-5 rounded-xl relative overflow-hidden min-h-[220px] flex flex-col justify-between shadow-inner">
+                    <img src="images/lab-electrical.jpg" alt="High-voltage transmission lines for electrical engineering studies" class="dept-photo absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-slate-950/25"></div>
+                    <span class="absolute top-3 left-3 bg-amber-500 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider text-slate-950">ELECTRICAL SIMULATION LABS</span>
+                    <div class="relative z-10 mt-auto p-5 flex items-end justify-between gap-3 text-white">
+                        <span class="text-xs font-medium drop-shadow">Power systems &amp; circuit testing</span>
+                        <a href="graduated.html#program-ee" class="shrink-0 bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs px-4 py-2 rounded-lg shadow transition">View Course Details &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -218,15 +220,13 @@
         <!-- Card 3: Mechanical (Left Image, Right Text as per Prompt variation) -->
         <div id="dept-mech" class="dept-card bg-white rounded-2xl card-shadow border border-slate-200/80 p-6 sm:p-8 border-l-8 border-l-pink-600" data-aos="fade-up">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <!-- Left Image Placeholder -->
-                <div class="lg:col-span-5 bg-slate-900 rounded-xl p-6 text-white relative overflow-hidden min-h-[220px] flex flex-col justify-between shadow-inner order-2 lg:order-1">
-                    <span class="absolute top-3 left-3 bg-pink-600 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider">ROBOTICS & CAD WORKSHOP</span>
-                    <div class="text-center my-auto">
-                        <div class="text-3xl font-extrabold text-amber-400 tracking-widest italic">IMG</div>
-                        <div class="text-[11px] text-slate-400 mt-1">Precision Machining & 3D Modeling</div>
-                    </div>
-                    <div class="text-right">
-                        <a href="#" class="bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs px-4 py-2 rounded-lg shadow transition inline-block">View Course Details &rarr;</a>
+                <div class="dept-image-panel group lg:col-span-5 rounded-xl relative overflow-hidden min-h-[220px] flex flex-col justify-between shadow-inner order-2 lg:order-1">
+                    <img src="images/lab-mechanical.jpg" alt="Mechanical engineering workshop with precision manufacturing equipment" class="dept-photo absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-slate-950/25"></div>
+                    <span class="absolute top-3 left-3 bg-pink-600 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider text-white">ROBOTICS &amp; CAD WORKSHOP</span>
+                    <div class="relative z-10 mt-auto p-5 flex items-end justify-between gap-3 text-white">
+                        <span class="text-xs font-medium drop-shadow">Precision machining &amp; 3D modelling</span>
+                        <a href="graduated.html#program-me" class="shrink-0 bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs px-4 py-2 rounded-lg shadow transition">View Course Details &rarr;</a>
                     </div>
                 </div>
                 <!-- Right Text Column -->
@@ -281,14 +281,13 @@
                     </div>
                 </div>
                 <!-- Right Column -->
-                <div class="lg:col-span-5 bg-slate-900 rounded-xl p-6 text-white relative overflow-hidden min-h-[220px] flex flex-col justify-between shadow-inner">
-                    <span class="absolute top-3 left-3 bg-emerald-600 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider">STRUCTURAL TESTING LAB</span>
-                    <div class="text-center my-auto">
-                        <div class="text-3xl font-extrabold text-amber-400 tracking-widest italic">IMG</div>
-                        <div class="text-[11px] text-slate-400 mt-1">Material Stress & Strain Testing</div>
-                    </div>
-                    <div class="text-right">
-                        <a href="#" class="bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs px-4 py-2 rounded-lg shadow transition inline-block">View Course Details &rarr;</a>
+                <div class="dept-image-panel group lg:col-span-5 rounded-xl relative overflow-hidden min-h-[220px] flex flex-col justify-between shadow-inner">
+                    <img src="images/lab-civil.jpg" alt="Civil engineer reviewing architectural plans at a construction site" class="dept-photo absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-slate-950/25"></div>
+                    <span class="absolute top-3 left-3 bg-emerald-600 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider text-white">STRUCTURAL TESTING LAB</span>
+                    <div class="relative z-10 mt-auto p-5 flex items-end justify-between gap-3 text-white">
+                        <span class="text-xs font-medium drop-shadow">Materials, structures &amp; infrastructure</span>
+                        <a href="graduated.html#program-ce" class="shrink-0 bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs px-4 py-2 rounded-lg shadow transition">View Course Details &rarr;</a>
                     </div>
                 </div>
             </div>

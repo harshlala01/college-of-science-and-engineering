@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Faculty profile at the College of Science & Engineering, Jhansi.">
+    <title>Faculty Profile | College of Science & Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site-nav.css">
+    <script src="site-nav.js" defer></script>
+    <style>
+        :root {
+            color-scheme: light;
+            --profile-navy: #0f2c59;
+            --profile-red: #e53e3e;
+            --profile-bg: #f4f7fb;
+            --profile-muted: #64748b;
+            font-family: Inter, Arial, sans-serif;
+        }
+
+        body { margin: 0; background: var(--profile-bg); color: #1e293b; }
+        .site-header { animation: header-drop .55s cubic-bezier(.2,.7,.2,1) both; }
+        .profile-hero { padding: 42px max(24px, calc((100vw - 1240px) / 2)) 46px; color: #fff; background: linear-gradient(110deg, #0f2c59 0%, #193b69 68%, #9f313b 100%); }
+        .profile-hero a { color: rgba(255, 255, 255, .82); text-decoration: none; }
+        .profile-hero a:hover { color: #fff; }
+        .profile-tag { display: inline-block; margin-top: 24px; color: #fbbf24; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+        .profile-hero h1 { margin: 8px 0 12px; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
+        .profile-hero-badge { display: inline-flex; align-items: center; gap: 9px; padding: 9px 15px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: rgba(255,255,255,.1); color: #fff; font-size: 13px; }
+        .profile-layout { display: grid; grid-template-columns: minmax(250px, 3fr) minmax(0, 7fr); gap: 28px; width: min(1240px, calc(100% - 48px)); margin: 36px auto 64px; align-items: start; }
+        .profile-sidebar { animation: enter-from-left .65s ease both; }
+        .profile-card, .profile-info-card, .profile-content-card, .contact-card { border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; box-shadow: 0 4px 16px rgba(15, 44, 89, .045); }
+        .profile-card { padding: 24px; background: var(--profile-navy); color: #fff; text-align: center; box-shadow: 0 12px 25px rgba(15, 44, 89, .18); }
+        .profile-photo { display: block; width: 128px; height: 128px; margin: 0 auto 16px; border: 2px solid rgba(255,255,255,.38); border-radius: 10px; object-fit: cover; object-position: center 30%; }
+        .profile-card h2 { margin: 0; font-size: 21px; font-weight: 800; }
+        .profile-role { margin: 6px 0 3px; color: #d7e1ef; font-size: 14px; }
+        .profile-institution { margin: 0; color: #aebed3; font-size: 12px; }
+        .profile-info-card { margin-top: 18px; padding: 8px 18px; }
+        .profile-info-row { display: grid; grid-template-columns: 18px 1fr; gap: 11px; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
+        .profile-info-row:last-child { border-bottom: 0; }
+        .profile-info-row i { margin-top: 3px; color: var(--profile-navy); }
+        .profile-info-row strong { display: block; margin-bottom: 3px; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; }
+        .profile-info-row span { color: var(--profile-muted); font-size: 13px; overflow-wrap: anywhere; }
+        .profile-actions { display: grid; gap: 10px; margin-top: 18px; }
+        .profile-button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; min-height: 46px; border: 1px solid var(--profile-navy); border-radius: 8px; background: var(--profile-navy); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+        .profile-button:hover { transform: scale(1.02); background: #1a365d; }
+        .profile-button.secondary { border-color: #cbd5e1; background: #fff; color: #334155; }
+        .profile-button.secondary:hover { background: #f8fafc; }
+        .profile-content { display: grid; gap: 18px; }
+        .profile-content-card { padding: clamp(20px, 3vw, 30px); animation: enter-from-bottom .6s ease both; }
+        .profile-content-card:nth-child(2) { animation-delay: .1s; }
+        .profile-content-card:nth-child(3) { animation-delay: .2s; }
+        .profile-content-card:nth-child(4) { animation-delay: .3s; }
+        .profile-content-card h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; color: #0f172a; font-size: 18px; }
+        .profile-content-card h2 i { color: var(--profile-red); font-size: 16px; }
+        .profile-summary { margin: 0; color: #526176; font-size: 14px; line-height: 1.8; }
+        .qualification-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .overflow-x-auto { overflow-x: auto; }
+        .qualification-table th, .qualification-table td { padding: 14px; border-bottom: 1px solid #e8edf3; text-align: left; }
+        .qualification-table th { background: #f8fafc; color: #64748b; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
+        .qualification-table tr:last-child td { border-bottom: 0; }
+        .profile-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+        .profile-tag-chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 999px; background: #f8fafc; color: #334155; font-size: 12px; }
+        .profile-tag-chip i { color: var(--profile-navy); }
+        .experience-highlight { display: flex; align-items: center; gap: 16px; padding: 17px; border-radius: 10px; background: #f8fafc; }
+        .experience-highlight i { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; border-radius: 10px; background: #e8eef7; color: var(--profile-navy); }
+        .experience-highlight strong { display: block; color: #172033; font-size: 15px; }
+        .experience-highlight span { color: var(--profile-muted); font-size: 12px; }
+        .contact-section { width: min(1240px, calc(100% - 48px)); margin: 0 auto 70px; }
+        .contact-heading { margin-bottom: 22px; text-align: center; }
+        .contact-heading span { color: var(--profile-navy); font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+        .contact-heading h2 { margin: 7px 0 0; color: #0f172a; font-size: 30px; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        .contact-card { padding: 24px; }
+        .contact-info { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; padding: 14px; border: 1px solid #e2e8f0; border-radius: 9px; }
+        .contact-info i { color: var(--profile-navy); }
+        .contact-info strong { display: block; font-size: 12px; }
+        .contact-info span { color: var(--profile-muted); font-size: 12px; }
+        .contact-form { display: grid; gap: 12px; margin-top: 20px; }
+        .contact-form input, .contact-form textarea { width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid #dbe2ea; border-radius: 7px; background: #f8fafc; font: inherit; font-size: 13px; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid #0f2c5940; border-color: var(--profile-navy); }
+        .contact-form textarea { min-height: 92px; resize: vertical; }
+        .contact-form button { min-height: 44px; border: 0; border-radius: 7px; background: var(--profile-red); color: #fff; font-weight: 700; cursor: pointer; }
+        .contact-form button:hover { background: #c53030; }
+        .contact-map { width: 100%; min-height: 390px; border: 0; border-radius: 9px; }
+        .floating-apply { position: fixed; z-index: 1000; top: 50%; right: 0; padding: 16px 11px; border-radius: 9px 0 0 9px; background: var(--profile-red); color: #fff; font-size: 12px; font-weight: 800; text-decoration: none; writing-mode: vertical-rl; transform: translateY(-50%); animation: apply-pulse 2.4s ease-in-out infinite; }
+        @keyframes enter-from-left { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes enter-from-bottom { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes header-drop { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+        @keyframes apply-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(229, 62, 62, .3); } 50% { box-shadow: 0 0 0 8px rgba(229, 62, 62, 0); } }
+        @media (max-width: 760px) {
+            .profile-layout { grid-template-columns: 1fr; width: min(calc(100% - 32px), 560px); margin-top: 22px; }
+            .profile-hero { padding: 30px 20px 34px; }
+            .contact-section { width: min(calc(100% - 32px), 560px); }
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-heading h2 { font-size: 25px; }
+            .contact-map { min-height: 300px; }
+            .floating-apply { padding: 12px 8px; font-size: 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body>
+    <header id="navbar"><nav aria-label="Loading navigation"></nav></header>
+    <section class="profile-hero">
+        <div class="profile-breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; <a href="faculty.html">Faculty &amp; Staff</a> &nbsp;›&nbsp; <span id="breadcrumb-name">Faculty Profile</span></div>
+        <span class="profile-tag">Academic Excellence &amp; Mentorship</span>
+        <h1 id="hero-name">Faculty Profile</h1>
+        <div class="profile-hero-badge"><i class="fa-solid fa-graduation-cap"></i><span id="hero-role">College of Science &amp; Engineering, Jhansi</span></div>
+    </section>
+    <main class="profile-layout">
+        <aside class="profile-sidebar">
+            <section class="profile-card">
+                <img id="profile-photo" class="profile-photo" src="images/faculty-rajesh.jpg" alt="">
+                <h2 id="profile-name">Faculty Profile</h2>
+                <p id="profile-role" class="profile-role"></p>
+                <p class="profile-institution">College of Science &amp; Engineering, Jhansi</p>
+            </section>
+            <section class="profile-info-card" aria-label="Faculty contact details">
+                <div class="profile-info-row"><i class="fa-solid fa-graduation-cap"></i><div><strong>Qualification</strong><span id="profile-qualification"></span></div></div>
+                <div class="profile-info-row"><i class="fa-solid fa-clock"></i><div><strong>Experience</strong><span id="profile-experience"></span></div></div>
+                <div class="profile-info-row"><i class="fa-solid fa-book-open"></i><div><strong>Specialization</strong><span id="profile-specialization"></span></div></div>
+                <div class="profile-info-row"><i class="fa-solid fa-envelope"></i><div><strong>Email</strong><span id="profile-email"></span></div></div>
+                <div class="profile-info-row"><i class="fa-solid fa-phone"></i><div><strong>Contact</strong><span id="profile-phone"></span></div></div>
+            </section>
+            <div class="profile-actions">
+                <a id="email-button" class="profile-button" href="#"><i class="fa-solid fa-envelope"></i> Contact Faculty</a>
+                <a class="profile-button secondary" href="faculty.html"><i class="fa-solid fa-arrow-left"></i> Back to Faculty</a>
+            </div>
+        </aside>
+        <div class="profile-content">
+            <section class="profile-content-card">
+                <h2><i class="fa-solid fa-user-tie"></i> Professional Profile</h2>
+                <p id="profile-summary" class="profile-summary"></p>
+            </section>
+            <section class="profile-content-card">
+                <h2><i class="fa-solid fa-award"></i> Academic Qualifications</h2>
+                <div class="overflow-x-auto">
+                    <table class="qualification-table">
+                        <thead><tr><th>Degree</th><th>Institution</th><th>Academic Area</th></tr></thead>
+                        <tbody><tr><td id="qualification-degree"></td><td id="qualification-institution"></td><td id="qualification-area"></td></tr></tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="profile-content-card">
+                <h2><i class="fa-solid fa-lightbulb"></i> Areas of Expertise</h2>
+                <div id="profile-tags" class="profile-tags"></div>
+            </section>
+            <section class="profile-content-card">
+                <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+                <div class="experience-highlight">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div><strong id="experience-value"></strong><span id="experience-description"></span></div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <section class="contact-section" id="contact">
+        <div class="contact-heading"><span>Connect with our faculty</span><h2>Get in Touch</h2></div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-info"><i class="fa-solid fa-location-dot"></i><div><strong>Campus</strong><span>NH-75, Gwalior Road, Jhansi (U.P.) - 284419</span></div></div>
+                <div class="contact-info"><i class="fa-solid fa-phone"></i><div><strong>College Office</strong><span>+91 755 280 0100 / 101</span></div></div>
+                <form id="faculty-message" class="contact-form">
+                    <input name="sender" type="text" placeholder="Your name" aria-label="Your name" required>
+                    <input name="subject" type="text" placeholder="Subject" aria-label="Subject" required>
+                    <textarea name="message" placeholder="Your message" aria-label="Your message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            <iframe class="contact-map" title="Map to College of Science & Engineering, Jhansi" src="https://maps.google.com/maps?q=NH-75%2C%20Gwalior%20Road%2C%20Jhansi%2C%20Uttar%20Pradesh&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <a class="floating-apply" href="admission.html#enquiry-form"><i class="fa-solid fa-arrow-up-right-from-square"></i>&nbsp; Apply Now</a>
+    <script>
+        const facultyProfiles = {
+            "rajesh-kumar": { name: "Dr. Rajesh Kumar", role: "Vice Chancellor", qualification: "Ph.D. (IIT Delhi)", experience: "20+ Years", specialization: "Interface Learning", email: "vc@riverside.edu.in", phone: "+91 98765 43210", image: "images/faculty-rajesh.jpg", area: "Academic Leadership" },
+            "sneha-patel": { name: "Dr. Sneha Patel", role: "Dean, Academic Affairs", qualification: "Ph.D. (IIT Bombay)", experience: "16+ Years", specialization: "Data Structures & Algorithms", email: "dean.acad@riverside.edu.in", phone: "+91 98765 43211", image: "images/faculty-sneha.jpg", area: "Computer Science" },
+            "amit-sharma": { name: "Prof. Amit Sharma", role: "Registrar", qualification: "M.Tech (IIT Roorkee)", experience: "18+ Years", specialization: "Higher Education Administration", email: "registrar@riverside.edu.in", phone: "+91 98765 43212", image: "images/faculty-amit.jpg", area: "Higher Education Administration" },
+            "pooja-verma": { name: "Dr. Pooja Verma", role: "Professor", qualification: "Ph.D. (IIT Kanpur)", experience: "14+ Years", specialization: "Thermal Engineering", email: "pooja.verma@riverside.edu.in", phone: "+91 98765 43213", image: "images/faculty-pooja.jpg", area: "Mechanical Engineering" },
+            "vikram-singh": { name: "Dr. Vikram Singh", role: "Associate Professor", qualification: "Ph.D. (BITS Pilani)", experience: "12+ Years", specialization: "Web Technologies", email: "vikram.singh@riverside.edu.in", phone: "+91 98765 43214", image: "images/faculty-vikram.jpg", area: "Computer Science" },
+            "anjali-mehta": { name: "Dr. Anjali Mehta", role: "Assistant Professor", qualification: "M.Tech (IIT Delhi)", experience: "7+ Years", specialization: "Power Systems", email: "anjali.mehta@riverside.edu.in", phone: "+91 98765 43215", image: "images/faculty-anjali.jpg", area: "Electrical Engineering" },
+            "rohan-desai": { name: "Prof. Rohan Desai", role: "Assistant Professor", qualification: "M.Tech (IIT Bombay)", experience: "9+ Years", specialization: "Geotechnical Engineering", email: "rohan.desai@riverside.edu.in", phone: "+91 98765 43216", image: "images/faculty-rohan.jpg", area: "Civil Engineering" },
+            "kavita-iyer": { name: "Dr. Kavita Iyer", role: "Assistant Professor", qualification: "Ph.D. (IIT Madras)", experience: "8+ Years", specialization: "Manufacturing Systems", email: "kavita.iyer@riverside.edu.in", phone: "+91 98765 43217", image: "images/faculty-kavita.jpg", area: "Mechanical Engineering" }
+        };
+
+        const profileKey = new URLSearchParams(window.location.search).get("faculty");
+        const profile = facultyProfiles[profileKey];
+        const pageContent = document.querySelector(".profile-layout");
+
+        if (!profile) {
+            document.title = "Faculty Profile Not Found | College of Science & Engineering";
+            pageContent.innerHTML = '<section class="profile-content-card"><h1>Faculty profile not found</h1><p class="profile-summary">Choose a faculty member from the directory to view their profile.</p><a class="profile-button" href="faculty.html">Go to Faculty Directory</a></section>';
+        } else {
+            document.title = `${profile.name} | Faculty Profile`;
+            document.getElementById("breadcrumb-name").textContent = profile.name;
+            document.getElementById("hero-name").textContent = profile.name;
+            document.getElementById("hero-role").textContent = profile.role;
+            document.getElementById("profile-name").textContent = profile.name;
+            document.getElementById("profile-role").textContent = profile.role;
+            document.getElementById("profile-photo").src = profile.image;
+            document.getElementById("profile-photo").alt = profile.name;
+            document.getElementById("profile-qualification").textContent = profile.qualification;
+            document.getElementById("profile-experience").textContent = profile.experience;
+            document.getElementById("profile-specialization").textContent = profile.specialization;
+            document.getElementById("profile-email").textContent = profile.email;
+            document.getElementById("profile-phone").textContent = profile.phone;
+            document.getElementById("email-button").href = `mailto:${profile.email}`;
+            document.getElementById("qualification-degree").textContent = profile.qualification.split(" (")[0];
+            document.getElementById("qualification-institution").textContent = profile.qualification.match(/\((.+)\)/)?.[1] || "Not specified";
+            document.getElementById("qualification-area").textContent = profile.area;
+            document.getElementById("profile-summary").textContent = `${profile.name} serves as ${profile.role} at the College of Science & Engineering, Jhansi. Academic qualifications include ${profile.qualification}, with ${profile.experience} of experience and a focus on ${profile.specialization}.`;
+            document.getElementById("experience-value").textContent = profile.experience;
+            document.getElementById("experience-description").textContent = ` of academic and professional experience as ${profile.role}.`;
+
+            const tagList = document.getElementById("profile-tags");
+            [profile.specialization, profile.area].forEach(tag => {
+                const chip = document.createElement("span");
+                chip.className = "profile-tag-chip";
+                chip.innerHTML = '<i class="fa-solid fa-check"></i>';
+                chip.append(document.createTextNode(tag));
+                tagList.append(chip);
+            });
+
+            document.getElementById("faculty-message").addEventListener("submit", event => {
+                event.preventDefault();
+                const form = event.currentTarget;
+                const subject = encodeURIComponent(form.elements.subject.value);
+                const body = encodeURIComponent(`From: ${form.elements.sender.value}\n\n${form.elements.message.value}`);
+                window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+            });
+        }
+    </script>
+</body>
+</html>
