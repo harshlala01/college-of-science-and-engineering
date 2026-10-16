@@ -79,45 +79,7 @@
     `;
   }
 
-  const clubPageFiles = new Set([
-    "club-detail.html",
-    "aryabhatta.html",
-    "athlete.html",
-    "cinematic.html",
-    "corporate.html",
-    "creativity.html",
-    "cv_raman.html",
-    "dance.html",
-    "drama.html",
-    "entrepreneurs.html",
-    "event.html",
-    "food.html",
-    "humour.html",
-    "innovation.html",
-    "instrumental.html",
-    "it_club.html",
-    "leadership.html",
-    "literature.html",
-    "marketing.html",
-    "media.html",
-    "meditation.html",
-    "research.html",
-    "saksharta.html",
-    "sampurna.html",
-    "singing.html",
-    "social_media.html",
-    "social.html",
-    "sports_club.html",
-    "sustainable.html",
-    "tech_gamers.html"
-  ]);
-
-  function installClubFooter() {
-    const page = window.location.pathname.split("/").pop().toLowerCase();
-    if (!clubPageFiles.has(page)) {
-      return;
-    }
-
+  function installSiteFooter() {
     const footer = document.createElement("footer");
     footer.className = "site-footer";
     footer.innerHTML = `
@@ -178,6 +140,8 @@
   }
 
   function installSiteNavigation() {
+    installSiteFooter();
+
     const oldHeader = document.querySelector("#navbar, body > header, body > nav");
     if (!oldHeader) {
       console.error("Shared site navigation could not find the page header.");
@@ -238,7 +202,9 @@
           <nav class="site-nav" id="site-nav" aria-label="Main navigation">
             ${navigation.map(({ label, href, page, groups, links }) => `
               <div class="site-nav-item${groups || links ? " has-dropdown" : ""}">
-                <a href="${href}"${page === currentPage ? ' aria-current="page"' : ""}>${label}</a>
+                ${groups || links
+                  ? `<button class="site-nav-label" type="button" aria-expanded="false"${page === currentPage ? ' aria-current="page"' : ""}>${label}</button>`
+                  : `<a href="${href}"${page === currentPage ? ' aria-current="page"' : ""}>${label}</a>`}
                 ${groups || links ? `
                   <button class="site-submenu-toggle" type="button" aria-label="Show ${label} menu" aria-expanded="false">
                     <span class="site-chevron" aria-hidden="true"></span>
@@ -301,15 +267,17 @@
       }
     });
 
-    installClubFooter();
-
     const toggle = header.querySelector(".site-nav-toggle");
     const menu = header.querySelector(".site-nav");
-    header.querySelectorAll(".site-submenu-toggle").forEach(button => {
+    header.querySelectorAll(".site-submenu-toggle, .site-nav-label").forEach(button => {
       button.addEventListener("click", () => {
         const item = button.closest(".site-nav-item");
-        const isOpen = item.classList.toggle("is-expanded");
-        button.setAttribute("aria-expanded", String(isOpen));
+        const isDesktopHover = window.matchMedia("(min-width: 1281px) and (hover: hover)").matches;
+        const isOpen = isDesktopHover || !item.classList.contains("is-expanded");
+        item.classList.toggle("is-expanded", isOpen);
+        item.querySelectorAll(":scope > .site-submenu-toggle, :scope > .site-nav-label").forEach(toggleButton => {
+          toggleButton.setAttribute("aria-expanded", String(isOpen));
+        });
       });
     });
     header.querySelectorAll(".site-dropdown-trigger").forEach(button => {
@@ -322,17 +290,20 @@
 
     if (window.matchMedia("(min-width: 1281px) and (hover: hover)").matches) {
       header.querySelectorAll(".site-nav-item.has-dropdown").forEach(item => {
-        const toggleButton = item.querySelector(":scope > .site-submenu-toggle");
         item.addEventListener("pointerenter", event => {
           if (event.pointerType !== "touch") {
             item.classList.add("is-expanded");
-            toggleButton.setAttribute("aria-expanded", "true");
+            item.querySelectorAll(":scope > .site-submenu-toggle, :scope > .site-nav-label").forEach(button => {
+              button.setAttribute("aria-expanded", "true");
+            });
           }
         });
         item.addEventListener("pointerleave", () => {
           if (!item.matches(":focus-within")) {
             item.classList.remove("is-expanded");
-            toggleButton.setAttribute("aria-expanded", "false");
+            item.querySelectorAll(":scope > .site-submenu-toggle, :scope > .site-nav-label").forEach(button => {
+              button.setAttribute("aria-expanded", "false");
+            });
           }
         });
       });

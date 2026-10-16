@@ -352,6 +352,7 @@ body > div[class*="py-2"][class*="flex"][class*="justify-between"][class*="borde
 }
 
 .site-nav a,
+.site-nav-label,
 .site-submenu-toggle {
   display: inline-flex;
   align-items: center;
@@ -366,6 +367,15 @@ body > div[class*="py-2"][class*="flex"][class*="justify-between"][class*="borde
   transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
 }
 
+.site-nav-label {
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .site-submenu-toggle {
   justify-content: center;
   width: 18px;
@@ -378,8 +388,12 @@ body > div[class*="py-2"][class*="flex"][class*="justify-between"][class*="borde
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"],
+.site-nav-label:hover,
+.site-nav-label[aria-current="page"],
 .site-nav-item:focus-within > a,
+.site-nav-item:focus-within > .site-nav-label,
 .site-nav-item:hover > a,
+.site-nav-item:hover > .site-nav-label,
 .site-nav-item:focus-within > .site-submenu-toggle,
 .site-nav-item:hover > .site-submenu-toggle {
   color: #a97012;
@@ -580,6 +594,7 @@ body > div[class*="py-2"][class*="flex"][class*="justify-between"][class*="borde
   }
 
   .site-nav a,
+  .site-nav-label,
   .site-submenu-toggle {
     font-size: 13px;
   }
@@ -647,15 +662,22 @@ body > div[class*="py-2"][class*="flex"][class*="justify-between"][class*="borde
     flex-wrap: wrap;
   }
 
-  .site-nav-item > a {
+  .site-nav-item > a,
+  .site-nav-item > .site-nav-label {
     flex: 1;
   }
 
   .site-nav a,
+  .site-nav-label,
   .site-submenu-toggle {
     min-height: 44px;
     padding: 0 8px;
     font-size: 14px;
+  }
+
+  .site-nav-item > .site-nav-label {
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .site-submenu-toggle {
